@@ -1,0 +1,3 @@
+/Users/robert/ubb/DSA/Lab3/MultiMap/build/CMakeFiles/App.dir
+/Users/robert/ubb/DSA/Lab3/MultiMap/build/CMakeFiles/edit_cache.dir
+/Users/robert/ubb/DSA/Lab3/MultiMap/build/CMakeFiles/rebuild_cache.dir
