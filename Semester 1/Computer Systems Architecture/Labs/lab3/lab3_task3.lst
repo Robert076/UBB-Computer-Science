@@ -1,0 +1,63 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 1700                        a dw 23
+    14 00000002 0A                          b db 10
+    15 00000003 0F000000                    e dd 15
+    16 00000007 1400000000000000            x dq 20
+    17 0000000F 00000000                    TEMP dd 0
+    18                                      
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ;unsigned
+    23                                          ; x-b+8+(2*a-b)/(b*b)+e; a-word; b-byte; e-doubleword; x-qword
+    24 00000000 8A1D[02000000]                  mov BL, [b]
+    25 00000006 B700                            mov BH, 0; BX = b
+    26 00000008 6A00                            push 0
+    27 0000000A 6653                            push BX
+    28 0000000C 5B                              pop EBX; EBX = b
+    29 0000000D A1[07000000]                    mov EAX, [x]
+    30 00000012 29D8                            sub EAX, EBX ; x - b
+    31 00000014 83C008                          add EAX, 8
+    32 00000017 A3[0F000000]                    mov [TEMP], EAX ; TEMP = x - b + 8
+    33 0000001C B002                            mov AL, 2
+    34 0000001E B400                            mov AH, 0; AX = 2
+    35 00000020 668B0D[00000000]                mov CX, [a]
+    36 00000027 66F7E1                          mul CX ; DX:AX = AX * CX
+    37 0000002A 6652                            push DX
+    38 0000002C 6650                            push AX
+    39 0000002E 58                              pop EAX; EAX = 2 * a
+    40 0000002F 89C2                            mov EDX, EAX ; EDX = 2 * a
+    41 00000031 B400                            mov AH, 0
+    42 00000033 A0[02000000]                    mov AL, [b]
+    43 00000038 6A00                            push 0
+    44 0000003A 6650                            push AX
+    45 0000003C 58                              pop EAX ; EAX = b
+    46 0000003D 89C1                            mov ECX, EAX
+    47 0000003F 29C2                            sub EDX, EAX ; 2 * a - b = EDX
+    48 00000041 89D3                            mov EBX, EDX
+    49 00000043 8A25[02000000]                  mov AH, [b]
+    50 00000049 F6E4                            mul AH
+    51 0000004B 6689C3                          mov BX, AX
+    52 0000004E 89D0                            mov EAX, EDX
+    53 00000050 50                              push EAX
+    54 00000051 6658                            pop AX
+    55 00000053 665A                            pop DX
+    56 00000055 66F7F3                          div BX
+    57 00000058 B400                            mov AH, 0; AL = cat, AH = rest de dinainte da il facem 0 ca sa avem ax = al adica ax = impartirea aia
+    58                                          ; acuma adunam ce o ramas de la inceput
+    59 0000005A 0305[0F000000]                  add EAX, [TEMP]
+    60 00000060 0305[03000000]                  add EAX, [e]
+    61                                          ; exit(0)
+    62 00000066 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    63 00000068 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

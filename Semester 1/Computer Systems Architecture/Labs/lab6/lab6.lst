@@ -1,0 +1,49 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 070204010709211409-         s1 db 7, 2, 4, 1, 7, 9, 33, 20, 9, 76, 34, 12
+    13 00000009 4C220C             
+    14                                      lens1 equ $-s1
+    15 0000000C 211409                      s2 db 33, 20, 9
+    16                                      lens2 equ $-s2
+    17 0000000F 01<rept>                    rez times lens1 db 1
+    18                                      l equ lens1-lens2+1
+    19                                      ; ...
+    20                                  
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 B90A000000                      mov ecx, l
+    25 00000005 BE[00000000]                    mov esi, s1
+    26 0000000A BB00000000                      mov ebx, 0
+    27 0000000F BA00000000                      mov edx, 0
+    28 00000014 E323                            jecxz final
+    29                                          loop1:
+    30 00000016 56                                  push esi            ; la a[i]
+    31 00000017 51                                  push ecx            ;indicele i
+    32 00000018 B903000000                          mov ecx, lens2
+    33 0000001D BF[0C000000]                        mov edi, s2
+    34 00000022 F3A6                                repe cmpsb          ; do while esi=edi
+    35 00000024 59                                  pop ecx             ; luam inapoi i
+    36 00000025 750E                                jne notfound
+    37 00000027 BA0A000000                              mov edx, l  
+    38 0000002C 29CA                                    sub edx, ecx    
+    39 0000002E 8993[0F000000]                          mov [rez+ebx], edx    ;r[i] = index la care am gasit aparitia lui b in a
+    40 00000034 43                                      inc ebx
+    41                                              notfound:
+    42 00000035 5E                                  pop esi
+    43 00000036 46                                  inc esi             ; i++
+    44 00000037 E2DD                            loop loop1
+    45                                          final:
+    46                                          ; exit(0)
+    47 00000039 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    48 0000003B FF15[00000000]                  call    [exit]       ; call exit to terminate the program
