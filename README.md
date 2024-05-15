@@ -1,2 +1,2 @@
 # UBB-CS
-Toata facultatea profil info engleza
+The courses I took at UBB University during my Bachelor's in Computer Science.
