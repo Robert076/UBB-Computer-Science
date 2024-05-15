@@ -1,4 +1,4 @@
-This is the first semester of my bachelor's degree in computer science at BBU.
+This is the first semester of my bachelor's degree in computer science at UBB.
 
 Easily one of my favorite semesters, with the subject I liked most being Algebra and Computer Systems Architecture.
 
