@@ -1,0 +1,61 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                  ; our code starts here
+    14 00000000 FB                          a db -5
+    15 00000001 0A00                        b dw 10
+    16 00000003 0F000000                    c dd 15
+    17 00000007 1E00000000000000            d dq 30
+    18 0000000F 00000000                    aux1 dd 0
+    19 00000013 00000000                    aux2 dd 0
+    20                                  
+    21                                  ; (c+b+a)-(d+d)
+    22                                  ; a - byte, b - word, c - double word, d - qword - Signed representation
+    23                                  
+    24                                  
+    25                                  segment code use32 class=code
+    26                                      start:
+    27 00000000 A0[00000000]                    mov AL, [a]
+    28 00000005 6698                            cbw
+    29 00000007 98                              cwde
+    30 00000008 89C3                            mov EBX, EAX
+    31 0000000A 66A1[01000000]                  mov AX, [b]
+    32 00000010 98                              cwde
+    33                                          
+    34 00000011 89C1                            mov ECX, EAX
+    35 00000013 A1[03000000]                    mov EAX, [c]
+    36                                          
+    37 00000018 01C3                            add EBX, EAX
+    38 0000001A 01CB                            add EBX, ECX
+    39                                          
+    40 0000001C A1[07000000]                    mov EAX, dword[d]
+    41 00000021 8B15[0B000000]                  mov EDX, dword[d + 4]
+    42                                          
+    43 00000027 B900000000                      mov ECX, 0
+    44                                          
+    45 0000002C 891D[0F000000]                  mov [aux1], EBX
+    46 00000032 890D[13000000]                  mov [aux2], ECX
+    47                                          
+    48 00000038 8B1D[07000000]                  mov EBX, [d]
+    49 0000003E 8B0D[0B000000]                  mov ECX, [d + 4]
+    50                                          
+    51 00000044 01D8                            add EAX, EBX
+    52 00000046 11CA                            adc EDX, ECX
+    53                                          
+    54 00000048 8B1D[0F000000]                  mov EBX, [aux1]
+    55 0000004E 8B0D[13000000]                  mov ECX, [aux2]
+    56                                          
+    57 00000054 29C3                            sub EBX, EAX
+    58 00000056 19D1                            sbb ECX, EDX ; result in ECX:EBX
+    59                                          ; exit(0)
+    60 00000058 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 0000005A FF15[00000000]                  call    [exit]       ; call exit to terminate the program

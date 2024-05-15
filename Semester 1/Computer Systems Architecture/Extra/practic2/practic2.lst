@@ -1,0 +1,90 @@
+     1                                  ; move elements from a file to another, each char + 1
+     2                                  bits 32
+     3                                  global start
+     4                                  
+     5                                  extern fopen, fclose, fread, fwrite, perror, exit
+     6                                  import fopen msvcrt.dll
+     7                                  import fclose msvcrt.dll
+     8                                  import fread msvcrt.dll
+     9                                  import fwrite msvcrt.dll
+    10                                  import perror msvcrt.dll
+    11                                  import exit msvcrt.dll
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 66696C652E74787400          inputfile db "file.txt", 0 ; input file
+    15 00000009 7200                        inputmode db "r", 0        ; input mode
+    16 0000000B 6F75742E74787400            outputfile db "out.txt", 0  ; output file
+    17 00000013 7700                        outputmode db "w", 0        ; output mode
+    18 00000015 FFFFFFFF                    filedescriptorinput dd -1 ; file descriptor input
+    19 00000019 FFFFFFFF                    filedescriptoroutput dd -1 ; file descriptor output
+    20 0000001D 6572726F7200                e db "error", 0
+    21 00000023 00                          c db 0
+    22                                  
+    23                                  segment code use32 class=code
+    24                                      start:
+    25 00000000 68[09000000]                    push inputmode
+    26 00000005 68[00000000]                    push inputfile
+    27 0000000A FF15[00000000]                  call [fopen]
+    28 00000010 83C408                          add esp, 8
+    29                                          
+    30 00000013 83F800                          cmp eax, 0
+    31 00000016 0F8498000000                    je end1
+    32 0000001C A3[15000000]                    mov [filedescriptorinput], eax
+    33                                  
+    34 00000021 68[13000000]                    push outputmode
+    35 00000026 68[0B000000]                    push outputfile
+    36 0000002B FF15[00000000]                  call [fopen]
+    37 00000031 83C408                          add esp, 8
+    38                                          
+    39 00000034 83F800                          cmp eax, 0
+    40 00000037 745C                            je end2
+    41 00000039 A3[19000000]                    mov [filedescriptoroutput], eax
+    42                                  
+    43                                          loop1:
+    44 0000003E FF35[15000000]                      push dword [filedescriptorinput]
+    45 00000044 6A01                                push dword 1
+    46 00000046 6A01                                push dword 1
+    47 00000048 68[23000000]                        push c
+    48 0000004D FF15[00000000]                      call [fread]
+    49 00000053 83C410                              add esp, 16
+    50                                              
+    51 00000056 83F800                              cmp eax, 0
+    52 00000059 7429                                je end_loop1
+    53                                  
+    54 0000005B A0[23000000]                        mov al, [c]
+    55 00000060 3C14                                cmp al, 20
+    56 00000062 7406                                je nuincrement
+    57 00000064 FE05[23000000]                      inc byte [c]
+    58                                              nuincrement:
+    59 0000006A FF35[19000000]                      push dword [filedescriptoroutput]
+    60 00000070 6A01                                push dword 1
+    61 00000072 6A01                                push dword 1
+    62 00000074 68[23000000]                        push c
+    63 00000079 FF15[00000000]                      call [fwrite]
+    64 0000007F 83C410                              add esp, 16
+    65                                              
+    66 00000082 EBBA                            jmp loop1
+    67                                          end_loop1:
+    68                                          
+    69 00000084 FF35[19000000]                  push dword[filedescriptoroutput]
+    70 0000008A FF15[00000000]                  call [fclose]
+    71 00000090 83C404                          add esp, 4
+    72                                          
+    73 00000093 EB0E                            jmp ok
+    74                                          end2:
+    75 00000095 68[1D000000]                        push e
+    76 0000009A FF15[00000000]                      call [perror]
+    77 000000A0 83C404                              add esp, 4
+    78                                          ok:
+    79 000000A3 FF35[15000000]                      push dword[filedescriptorinput]
+    80 000000A9 FF15[00000000]                      call [fclose]
+    81 000000AF 83C404                              add esp, 4
+    82 000000B2 EB0E                                jmp ok2
+    83                                          end1:
+    84 000000B4 68[1D000000]                        push e
+    85 000000B9 FF15[00000000]                      call [perror]
+    86 000000BF 83C404                              add esp, 4
+    87                                          ok2:
+    88                                          
+    89 000000C2 6A00                            push dword 0
+    90 000000C4 FF15[00000000]                  call [exit]

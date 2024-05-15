@@ -1,0 +1,84 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, scanf, printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import scanf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import printf msvcrt.dll
+    11                                  
+    12                                  ; our data is declared here (the variables needed by our program)
+    13                                  segment data use32 class=data
+    14 00000000 00000000                    n dd 0
+    15 00000004 25640000                    rf dd "%d"
+    16 00000008 256420616E64202564-         pf dd "%d and %d are prime between them",  0
+    16 00000011 20617265207072696D-
+    16 0000001A 65206265747765656E-
+    16 00000023 207468656D00000000 
+    17 0000002C CC000000<rept>              x times 100 dd 0CCh
+    18                                  ; numerele prime intre ele dintr-un sir
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 68[00000000]                    push dword n
+    22 00000005 68[04000000]                    push dword rf
+    23 0000000A FF15[00000000]                  call [scanf]
+    24 00000010 83C408                          add esp, 4 * 2
+    25                                          
+    26 00000013 8B0D[00000000]                  mov ecx, [n]
+    27 00000019 E37C                            jecxz theend
+    28                                          
+    29 0000001B BE[2C000000]                    mov esi, x
+    30                                          
+    31                                          citireNumere:
+    32 00000020 51                                  push ecx
+    33 00000021 56                                  push dword esi
+    34 00000022 68[04000000]                        push dword rf
+    35 00000027 FF15[00000000]                      call [scanf]
+    36 0000002D 83C408                              add esp, 4 * 2
+    37 00000030 59                                  pop ecx
+    38 00000031 83C604                              add esi, 4
+    39 00000034 E2EA                                loop citireNumere ; dec ecx; cmp ecx, 0; jne citireNumere
+    40                                          
+    41 00000036 BE00000000                      mov esi, 0
+    42 0000003B 8B0D[00000000]                  mov ecx, [n]
+    43                                          
+    44                                          repeta1:
+    45 00000041 8B86[2C000000]                  mov eax, [x + esi]
+    46 00000047 83C604                          add esi, 4
+    47 0000004A 89F7                            mov edi, esi
+    48 0000004C 83EE04                          sub esi, 4
+    49 0000004F 51                              push ecx
+    50 00000050 49                              dec ecx
+    51 00000051 E344                            jecxz theend
+    52                                          repeta2:
+    53 00000053 8B9F[2C000000]                      mov ebx, [x + edi]
+    54 00000059 50                                  push eax
+    55 0000005A 51                                  push ecx
+    56                                              gcd:
+    57 0000005B BA00000000                              mov edx, 0
+    58 00000060 F7F3                                    div ebx ;edx rest eax cat
+    59 00000062 89D8                                    mov eax, ebx
+    60 00000064 89D3                                    mov ebx, edx
+    61 00000066 83FB00                                  cmp ebx, 0
+    62 00000069 75F0                                    jne gcd
+    63 0000006B 83F801                              cmp eax, 1
+    64 0000006E 751A                                jne nuSuntPrimeIntreEle
+    65 00000070 FFB6[2C000000]                      push dword [x + esi]
+    66 00000076 FFB7[2C000000]                      push dword [x + edi]
+    67 0000007C 68[08000000]                        push pf
+    68 00000081 FF15[00000000]                      call [printf]
+    69 00000087 83C40C                              add esp, 4 * 3
+    70                                              nuSuntPrimeIntreEle:
+    71 0000008A 83C704                              add edi, 4
+    72 0000008D 59                                  pop ecx
+    73 0000008E 58                                  pop eax
+    74 0000008F E2C2                                loop repeta2
+    75 00000091 59                              pop ecx
+    76 00000092 83C604                          add esi, 4
+    77 00000095 E2AA                            loop repeta1
+    78                                          theend:
+    79                                          
+    80 00000097 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    81 00000099 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
