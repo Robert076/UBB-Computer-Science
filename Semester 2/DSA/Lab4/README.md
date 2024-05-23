@@ -1,0 +1,1 @@
+ADT Bag using a hastable with open addressing (double hashing) in which the elements are stored. If an element appears multiple times, it will be stored multiple times in the hastable.
