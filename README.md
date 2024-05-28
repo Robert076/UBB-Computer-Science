@@ -4,27 +4,27 @@
     <ul>
       <li>
         <a href="Semester 1/Algebra"> 
-          :abacus: Algebra 
+             Algebra 
         </a>
       </li>
       <li>
         <a href="Semester 1/Analysis"> 
-          :heavy_exclamation_mark: Analysis 
+          Analysis 
         </a>
       </li>
       <li>
         <a href="Semester 1/Computational Logic"> 
-          :8ball: Computational Logic 
+          Computational Logic 
         </a>
       </li>
       <li>
         <a href="Semester 1/FP"> 
-          :shark: Fundamentals of Programming 
+          Fundamentals of Programming 
         </a>
       </li>
       <li>
         <a href="Semester 1/Computer Systems Architecture"> 
-          :computer: Computer Systems Architecture 
+          Computer Systems Architecture 
         </a>
       </li>
     </ul>
