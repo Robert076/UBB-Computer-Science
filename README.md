@@ -3,7 +3,7 @@
     <ul>
       <li>
         <a href="Semester 1/Algebra"> 
-          :cube: Algebra 
+          :four_leaf_clover: Algebra 
         </a>
       </li>
     </ul>
