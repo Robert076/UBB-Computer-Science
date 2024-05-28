@@ -12,18 +12,18 @@
         </a>
       </li>
       <li>
-        <a href="Semester 1/Computational-Logic"> 
-          :four_leaf_clover: Algebra 
+        <a href="Semester 1/Computational Logic"> 
+          :asterisk: Computational Logic 
         </a>
       </li>
       <li>
         <a href="Semester 1/FP"> 
-          :four_leaf_clover: Algebra 
+          :arrow_backward: Fundamentals of Programming 
         </a>
       </li>
       <li>
-        <a href="Semester 1/Computer-Systems-Architecture"> 
-          :four_leaf_clover: Algebra 
+        <a href="Semester 1/Computer Systems Architecture"> 
+          :computer: Computer Systems Architecture 
         </a>
       </li>
     </ul>
