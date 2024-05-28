@@ -2,7 +2,7 @@
   <li>:open_file_folder: Semester 1
     <ul>
       <li>
-        <a href="https://github.com/Robert076/Algebra"> 
+        <a href="[https://github.com/Robert076/Algebra](https://github.com/Robert076/UBB-Computer-Science/tree/main/Semester%201/Algebra)"> 
           :clubs: Algebra 
         </a>
       </li>
