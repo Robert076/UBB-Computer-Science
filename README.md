@@ -4,12 +4,12 @@
     <ul>
       <li>
         <a href="Semester 1/Algebra"> 
-          :four_leaf_clover: Algebra 
+          :abacus: Algebra 
         </a>
       </li>
       <li>
         <a href="Semester 1/Analysis"> 
-          :heavy_check_mark: Analysis 
+          :heavy_exclamation_mark: Analysis 
         </a>
       </li>
       <li>
