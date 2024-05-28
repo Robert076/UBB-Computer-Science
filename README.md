@@ -6,6 +6,26 @@
           :four_leaf_clover: Algebra 
         </a>
       </li>
+      <li>
+        <a href="Semester 1/Analysis"> 
+          :four_leaf_clover: Algebra 
+        </a>
+      </li>
+      <li>
+        <a href="Semester 1/Computational-Logic"> 
+          :four_leaf_clover: Algebra 
+        </a>
+      </li>
+      <li>
+        <a href="Semester 1/FP"> 
+          :four_leaf_clover: Algebra 
+        </a>
+      </li>
+      <li>
+        <a href="Semester 1/Computer-Systems-Architecture"> 
+          :four_leaf_clover: Algebra 
+        </a>
+      </li>
     </ul>
   </li>
   <li>:open_file_folder: Semester 2
