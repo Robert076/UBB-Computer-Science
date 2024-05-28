@@ -3,7 +3,7 @@
     <ul>
       <li>
         <a href="Semester 1/Algebra"> 
-          :clubs: Algebra 
+          :cube: Algebra 
         </a>
       </li>
     </ul>
