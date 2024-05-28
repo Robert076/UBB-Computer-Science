@@ -1,6 +1,6 @@
 # UBB Computer Science
 <ul>
-  <li>Semester 1
+  <li>**Semester 1**
     <ul>
       <li>
         <a href="Semester 1/Algebra"> 
