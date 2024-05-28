@@ -8,7 +8,7 @@
       </li>
       <li>
         <a href="Semester 1/Analysis"> 
-          :four_leaf_clover: Algebra 
+          :heavy_check_mark: Analysis 
         </a>
       </li>
       <li>
