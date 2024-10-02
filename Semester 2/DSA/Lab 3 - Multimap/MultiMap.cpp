@@ -6,101 +6,123 @@
 using namespace std;
 
 
-MultiMap::MultiMap() {
-	head.next = nullptr;
-	head.value = NULL_TELEM;
+MultiMap::MultiMap(int capacity) {
+	this->capacity = capacity;
+	this->elems = new TElem[capacity];
+	this->next = new int[capacity];
+	this->head = -1;
+	this->firstEmpty = 0;
+	for (int i = 0; i < capacity - 1; i++) 
+	{
+		this->next[i] = -1;
+	}
 }
 
+void MultiMap::resize()
+{
+	TElem* newElems = new TElem[this->capacity * 2];
+	int* newNext = new int[this->capacity * 2];
+	for (int i = 0; i < this->capacity; i++)
+	{
+		newElems[i] = this->elems[i];
+		newNext[i] = this->next[i];
+	}
+	for (int i = this->capacity; i < this->capacity * 2 - 1; i++)
+	{
+		newNext[i] = -1;
+	}
+	delete[] this->elems;
+	delete[] this->next;
+	this->elems = newElems;
+	this->next = newNext;
+	this->firstEmpty = this->capacity;
+	this->capacity *= 2;
+}
 
 void MultiMap::add(TKey c, TValue v) {
-	node* newNode = new node;
-    newNode->value = TElem(c, v);
-    newNode->next = nullptr;
-
-	if(this->head.value == NULL_TELEM)
+	if(this->size() == this->capacity)
 	{
-		this->head = *newNode;
+		this->resize();
+	}
+	if (this->head == -1)
+	{
+		this->elems[this->firstEmpty] = TElem(c, v);
+		this->head = this->firstEmpty;
+		this->firstEmpty = this->next[this->firstEmpty]; 
 	}
 	else
 	{
-		node* current = &this->head;
-		while(current->next != nullptr)
-			current = current->next;
-		current->next = newNode;
+		int current = this->head;
+		while (this->next[current] != -1)
+		{
+			current = this->next[current];
+		}
+		this->elems[this->firstEmpty] = TElem(c, v);
+		this->next[current] = this->firstEmpty;
+		this->firstEmpty = this->next[this->firstEmpty];
 	}
 }
 
 bool MultiMap::remove(TKey c, TValue v) {
-    if (this->head.value == NULL_TELEM) {
-        return false;
-    }
-    
-    bool removed = false;
-
-    // Handle removal of head node
-    if (this->head.value.first == c && this->head.value.second == v) {
-        if (this->head.next == nullptr) {
-            this->head.value = NULL_TELEM;
-            return true;
-        } else {
-            node* toDelete = this->head.next;
-            this->head = *this->head.next;
-            delete toDelete;
-            return true;
-        }
-    }
-
-    // Handle removal of nodes after head
-    node* current = &this->head;
-    while (current->next != nullptr) {
-        if (current->next->value.first == c && current->next->value.second == v) {
-            node* toDelete = current->next;
-            current->next = current->next->next;
-            delete toDelete;
-            return true;
-        } else {
-            current = current->next;
-        }
-    }
-
-    return removed;
+	if (this->head == -1)
+	{
+		return false;
+	}
+	int current = this->head;
+	int previous = -1;
+	while (current != -1 && this->elems[current].first != c && this->elems[current].second != v)
+	{
+		previous = current;
+		current = this->next[current];
+	}
+	if (current == -1)
+	{
+		return false;
+	}
+	if (current == this->head)
+	{
+		this->head = this->next[current];
+		this->next[current] = this->firstEmpty;
+		this->firstEmpty = current;
+	}
+	else
+	{
+		this->next[previous] = this->next[current];
+		this->next[current] = this->firstEmpty;
+		this->firstEmpty = current;
+	}
+	return false;
 }
 
 
 vector<TValue> MultiMap::search(TKey c) const {
-	vector<TValue> result;
-	const node* current = &this->head;
-	while(current != nullptr)
+	vector<TValue> values;
+	int current = this->head;
+	while (current != -1)
 	{
-		if(current->value.first == c)
-			result.push_back(current->value.second);
-		current = current->next;
+		if (this->elems[current].first == c)
+		{
+			values.push_back(this->elems[current].second);
+		}
+		current = this->next[current];
 	}
-	return result;
+	return values;
 }
 
 
 int MultiMap::size() const {
 	int size = 0;
-	if(this->head.value != NULL_TELEM)
+	int current = this->head;
+	while(current != -1)
 	{
-		const node* current = &this->head;
-		size = 1;
-		while(current->next != nullptr)
-		{
-			current = current->next;
-			++size;
-		}
-		return size;
+		size++;
+		current = this->next[current];
 	}
-	return 0;
 }
 
 
 bool MultiMap::isEmpty() const {
-	if(this->head.value == NULL_TELEM)
-		return true;
-	return false;
+	return this->head == -1;
 }
 
 MultiMapIterator MultiMap::iterator() const {
@@ -109,12 +131,7 @@ MultiMapIterator MultiMap::iterator() const {
 
 
 MultiMap::~MultiMap() {
-    node* current = this->head.next; // Start from the first actual node, not the head
-    while(current != nullptr)
-    {
-        node* toDelete = current;
-        current = current->next;
-        delete toDelete;
-    }
+	delete[] this->elems;
+	delete[] this->next;
 }
 
