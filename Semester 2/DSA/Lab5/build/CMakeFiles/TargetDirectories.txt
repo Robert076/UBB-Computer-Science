@@ -1,0 +1,3 @@
+/Users/robert/UBB/DSA/Lab5/build/CMakeFiles/main.dir
+/Users/robert/UBB/DSA/Lab5/build/CMakeFiles/edit_cache.dir
+/Users/robert/UBB/DSA/Lab5/build/CMakeFiles/rebuild_cache.dir

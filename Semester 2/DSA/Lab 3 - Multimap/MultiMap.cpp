@@ -11,6 +11,7 @@ MultiMap::MultiMap(int capacity) {
 	this->elems = new TElem[capacity];
 	this->next = new int[capacity];
 	this->head = -1;
+<<<<<<< HEAD
 	this->firstEmpty = 0;
 	for (int i = 0; i < capacity - 1; i++) 
 	{
@@ -60,10 +61,46 @@ void MultiMap::add(TKey c, TValue v) {
 		this->elems[this->firstEmpty] = TElem(c, v);
 		this->next[current] = this->firstEmpty;
 		this->firstEmpty = this->next[this->firstEmpty];
+=======
+	for(int i = 0; i < this->capacity - 1; i++)
+		this->next[i] = i + 1;
+	this->next[capacity - 1] = -1;
+	this->firstEmpty = 0;
+}
+
+void MultiMap::add(TKey c, TValue v) {
+	if(this->firstEmpty == -1)
+	{
+		TElem* newElems = new TElem[this->capacity * 2];
+		int* newNext = new int[this->capacity * 2];
+		for(int i = 0; i < this->capacity; i++)
+		{
+			newElems[i] = this->elems[i];
+			newNext[i] = this->next[i];
+		}
+		for(int i = this->capacity; i < this->capacity * 2 - 1; i++)
+		{
+			newNext[i] = i + 1;
+		}
+		newNext[this->capacity * 2 - 1] = -1;
+		delete[] this->elems;
+		delete[] this->next;
+
+		this->elems = newElems;
+		this->next = newNext;
+		this->firstEmpty = this->capacity;
+		this->capacity *= 2;
+>>>>>>> f589eefe6cb250fc0ac333a85800b6c66d9c1614
 	}
+	int newPosition = this->firstEmpty;
+	this->elems[newPosition] = TElem(c, v);
+	this->firstEmpty = this->next[firstEmpty];
+	this->next[newPosition] = this->head;
+	this->head = newPosition;
 }
 
 bool MultiMap::remove(TKey c, TValue v) {
+<<<<<<< HEAD
 	if (this->head == -1)
 	{
 		return false;
@@ -92,11 +129,35 @@ bool MultiMap::remove(TKey c, TValue v) {
 		this->firstEmpty = current;
 	}
 	return false;
+=======
+	int nodC = this->head;
+	int prevNode = -1;
+	while(nodC != -1 && this->elems[nodC] != TElem(c, v))
+	{
+		prevNode = nodC;
+		nodC = this->next[nodC];
+	}
+	if(nodC != -1)
+	{
+		if(nodC == this->head)
+			this->head = this->next[head];
+		else
+			this->next[prevNode] = this->next[nodC];
+		this->next[nodC] = this->firstEmpty;
+		this->firstEmpty = nodC;
+	}
+	else
+	{
+		return false;
+	}
+	return true;
+>>>>>>> f589eefe6cb250fc0ac333a85800b6c66d9c1614
 }
 
 
 vector<TValue> MultiMap::search(TKey c) const {
 	vector<TValue> values;
+<<<<<<< HEAD
 	int current = this->head;
 	while (current != -1)
 	{
@@ -105,6 +166,14 @@ vector<TValue> MultiMap::search(TKey c) const {
 			values.push_back(this->elems[current].second);
 		}
 		current = this->next[current];
+=======
+	int nodC = this->head;
+	while(nodC != -1)
+	{
+		if(this->elems[nodC].first == c)
+			values.push_back(this->elems[nodC].second);
+		nodC = this->next[nodC];
+>>>>>>> f589eefe6cb250fc0ac333a85800b6c66d9c1614
 	}
 	return values;
 }
@@ -118,6 +187,10 @@ int MultiMap::size() const {
 		size++;
 		current = this->next[current];
 	}
+<<<<<<< HEAD
+=======
+	return size;
+>>>>>>> f589eefe6cb250fc0ac333a85800b6c66d9c1614
 }
 
 

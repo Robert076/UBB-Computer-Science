@@ -1,1 +1,1 @@
-The Computational Logic course I took at BBU during my first year of studying.
+The computational logic course I took at <strong>UBB</strong>
