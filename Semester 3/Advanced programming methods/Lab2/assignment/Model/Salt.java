@@ -18,4 +18,8 @@ public class Salt implements IEnt {
     public Integer Compute() {
         return this.pricePerKg;
     }
+
+    public String getType() {
+        return "Salt";
+    }
 }

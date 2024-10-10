@@ -1,5 +1,7 @@
 package Model;
 
+import MyException.MyException;
+
 public class Flour implements IEnt {
     private Integer pricePerKg;
 
@@ -17,5 +19,9 @@ public class Flour implements IEnt {
 
     public Integer Compute() {
         return this.pricePerKg;
+    }
+
+    public String getType() {
+        return "Flour";
     }
 }

@@ -8,5 +8,10 @@ public interface IRepo {
 
     public IEnt readEntity(Integer pos) throws MyException;
 
+    public void deleteEntity(Integer pos) throws MyException;
+
     public IEnt[] getAll();
+
+    public Integer getCurrentPos();
+
 }

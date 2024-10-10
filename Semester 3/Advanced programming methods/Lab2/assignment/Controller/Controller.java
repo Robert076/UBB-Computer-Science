@@ -27,4 +27,29 @@ public class Controller {
             return null;
         }
     }
+
+    public IEnt[] getPricesAbove20() {
+        IEnt entities[] = this.repo.getAll();
+        IEnt result[] = new IEnt[entities.length];
+        int k = 0;
+        Integer size = this.repo.getCurrentPos();
+        for (int i = 0; i < size; i++) {
+            if (entities[i] != null) {
+                if (entities[i].Compute() > 200) {
+                    result[k++] = entities[i];
+                }
+            }
+        }
+        return result;
+    }
+
+    public Boolean deleteEntity(Integer pos) {
+        try {
+            this.repo.deleteEntity(pos);
+            return true;
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
