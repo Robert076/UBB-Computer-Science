@@ -34,13 +34,16 @@ public class Controller {
         int k = 0;
         Integer size = this.repo.getCurrentPos();
         for (int i = 0; i < size; i++) {
-            if (entities[i] != null) {
-                if (entities[i].Compute() > 200) {
-                    result[k++] = entities[i];
-                }
+            if (entities[i].Compute() > 200) {
+                result[k++] = entities[i];
             }
         }
-        return result;
+        IEnt[] finalResult = new IEnt[k];
+        for (int i = 0; i < k; i++) {
+            finalResult[i] = result[i];
+        }
+
+        return finalResult;
     }
 
     public Boolean deleteEntity(Integer pos) {

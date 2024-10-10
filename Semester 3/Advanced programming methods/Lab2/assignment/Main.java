@@ -4,7 +4,6 @@ import Model.Flour;
 import Model.IEnt;
 import Model.Salt;
 import Model.Sugar;
-import MyException.MyException;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,8 +40,7 @@ public class Main {
 
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            if (result[i] != null)
-                System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i].getType() + ": " + result[i].Compute());
         }
         System.out.println("");
 
@@ -71,8 +69,7 @@ public class Main {
         result = controller.getPricesAbove20();
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            if (result[i] != null)
-                System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i].getType() + ": " + result[i].Compute());
         }
         System.out.println("");
 
@@ -82,8 +79,7 @@ public class Main {
         result = controller.getPricesAbove20();
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            if (result[i] != null)
-                System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i].getType() + ": " + result[i].Compute());
         }
         System.out.println("");
 

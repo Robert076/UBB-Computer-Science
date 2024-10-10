@@ -20,30 +20,28 @@ public class Repo implements IRepo {
     }
 
     public IEnt readEntity(Integer pos) throws MyException {
-        if (pos >= elements.length)
+        if (pos >= currPos)
             throw new MyException("Invalid position for read");
         else
             return elements[pos];
     }
 
     public void deleteEntity(Integer pos) throws MyException {
-        if (pos >= elements.length) {
+        if (pos < 0 || pos >= currPos) {
             throw new MyException("Invalid position for delete");
         }
-        IEnt[] newElements = new IEnt[elements.length];
-        for (int i = 0, k = 0; i < elements.length; i++) {
-            if (i != pos) {
-                newElements[k] = elements[i];
-                k++;
-            }
+
+        for (int i = pos; i < currPos - 1; i++) {
+            elements[i] = elements[i + 1];
         }
-        elements = newElements;
+
+        elements[--currPos] = null;
     }
 
     public IEnt[] getAll() {
-        IEnt[] copyOfElements = new IEnt[elements.length];
+        IEnt[] copyOfElements = new IEnt[currPos];
 
-        for (int i = 0; i < elements.length; i++) {
+        for (int i = 0; i < currPos; i++) {
             copyOfElements[i] = elements[i];
         }
 
