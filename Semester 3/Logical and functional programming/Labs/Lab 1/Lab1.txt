@@ -1,0 +1,12 @@
+1. a) transform a list in a set
+          { {}, if index >= list.size()
+f(list) = { list[index] U f(list,index + 1), if list[index] doesnt belong in our set
+          { f(list, index + 1), if list[index] is already in the set
+
+
+b) union of two sets
+
+                    { set2, if set1 is empty
+Union(set1, set2) = { set1, if set2 is empty
+                    { Union(set1', set2) where set1 = {s1} U set1' and s1 belongs in set2 (s1 is the first element of set1)
+                    { s1 U Union(set1', set2) if A={s1} U set1' and s1 doesnt belong in set2

@@ -76,6 +76,8 @@ public class Main {
         controller.deleteEntity(0);
         controller.deleteEntity(1);
         controller.deleteEntity(2);
+        controller.deleteEntity(2);
+        controller.deleteEntity(2);
         result = controller.getPricesAbove20();
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
@@ -85,5 +87,6 @@ public class Main {
 
         // raises exception
         controller.deleteEntity(100);
+        controller.deleteEntity(5);
     }
 }

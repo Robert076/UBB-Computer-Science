@@ -1,7 +1,5 @@
 package Model;
 
-import MyException.MyException;
-
 public class Flour implements IEnt {
     private Integer pricePerKg;
 
