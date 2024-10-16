@@ -19,7 +19,7 @@ public class Sugar implements IEnt {
         return this.pricePerKg;
     }
 
-    public String getType() {
-        return "Sugar";
+    public String toString() {
+        return "Sugar" + this.pricePerKg.toString();
     }
 }

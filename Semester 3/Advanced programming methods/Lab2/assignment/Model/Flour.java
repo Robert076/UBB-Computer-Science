@@ -19,7 +19,7 @@ public class Flour implements IEnt {
         return this.pricePerKg;
     }
 
-    public String getType() {
-        return "Flour";
+    public String toString() {
+        return "Flour: " + this.pricePerKg.toString();
     }
 }

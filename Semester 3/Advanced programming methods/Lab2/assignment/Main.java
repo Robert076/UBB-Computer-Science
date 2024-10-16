@@ -40,7 +40,7 @@ public class Main {
 
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i]);
         }
         System.out.println("");
 
@@ -69,7 +69,7 @@ public class Main {
         result = controller.getPricesAbove20();
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i]);
         }
         System.out.println("");
 
@@ -81,7 +81,7 @@ public class Main {
         result = controller.getPricesAbove20();
         System.out.println("Prices above 200: ");
         for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i].getType() + ": " + result[i].Compute());
+            System.out.println(result[i]);
         }
         System.out.println("");
 

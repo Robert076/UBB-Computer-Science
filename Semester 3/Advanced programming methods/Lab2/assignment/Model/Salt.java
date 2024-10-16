@@ -19,7 +19,7 @@ public class Salt implements IEnt {
         return this.pricePerKg;
     }
 
-    public String getType() {
-        return "Salt";
+    public String toString() {
+        return "Salt" + this.pricePerKg.toString();
     }
 }
