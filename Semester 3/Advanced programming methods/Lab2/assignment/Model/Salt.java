@@ -20,6 +20,6 @@ public class Salt implements IEnt {
     }
 
     public String toString() {
-        return "Salt" + this.pricePerKg.toString();
+        return "Salt: " + this.pricePerKg.toString();
     }
 }
