@@ -14,7 +14,7 @@ class CompoundStatement implements IStatement {
         return "(" + first.toString() + ";" + second.toString() + ")";
     }
 
-    ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> stack = state.getStack();
         stack.push(second);
         stack.push(first);
@@ -29,7 +29,7 @@ class PrintStatement implements IStatement {
         return "print(" + exp.toString() + ")";
     }
 
-    ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException {
         // todo
         return state;
     }
@@ -45,7 +45,7 @@ class AssignmentStatement implements IStatement {
         return id + "=" + exp.toString();
     }
 
-    ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> stack = state.getStack();
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
 
@@ -80,7 +80,7 @@ class IfStatement implements IStatement {
         return "(IF(" + exp.toString() + ") THEN (" + thenS.toString() + ") ELSE (" + elseS.toString() + "))";
     }
 
-    ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException {
         // todo
         return state;
     }
@@ -181,7 +181,7 @@ class ArithmeticExpression implements Expression {
     Expression e2;
     int op; // 1 - plus, 2 - minus, 3 - star, 4 - divide
 
-    Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException {
         Value v1, v2;
         v1 = e1.eval(table);
 
@@ -197,15 +197,17 @@ class ArithmeticExpression implements Expression {
 
                 if (op == 1)
                     return new IntValue(n1 + n2);
-                if (op == 2)
+                else if (op == 2)
                     return new IntValue(n1 - n2);
-                if (op == 3)
+                else if (op == 3)
                     return new IntValue(n1 * n2);
-                if (op == 4)
+                else if (op == 4)
                     if (n2 == 0)
                         throw new MyException("Divison by zero");
                     else
                         return new IntValue(n1 / n2);
+                else
+                    throw new MyException("Invalid operand. Operand must be between 1-4 inclusive.");
             } else
                 throw new MyException("Second operand is not an integer");
         } else
@@ -216,7 +218,7 @@ class ArithmeticExpression implements Expression {
 class ValueExpression implements Expression {
     Value e;
 
-    Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException {
         return e;
     }
 }
@@ -226,15 +228,16 @@ class LogicExpression implements Expression {
     Expression e2;
     int op;
 
-    Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException {
         // todo
+        return new IntValue(2);
     }
 }
 
 class VariableExpression implements Expression {
     String id;
 
-    Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException {
         return table.lookup(id);
     }
 }
@@ -258,7 +261,11 @@ class MyStack<T> implements MyIStack<T> {
 }
 
 interface MyIDictionary<T, V> {
+    boolean isDefined(String id);
 
+    Value lookup(String id);
+
+    void update(String id, Value val);
 }
 
 interface MyIList<T> {
@@ -281,4 +288,12 @@ class ProgramState {
         _exeStack.push(_originalProgram);
     }
     // ... override tostring, setters getters for all fields
+
+    public MyIStack<IStatement> getStack() {
+        return this.exeStack;
+    }
+
+    MyIDictionary<String, Value> getSymbolTable() {
+        return this.symbolTable;
+    }
 }
