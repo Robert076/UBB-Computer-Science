@@ -1,0 +1,7 @@
+package model.statements;
+
+class NopStatement implements IStatement {
+    public ProgramState execute(ProgramState state) throws MyException {
+        return state;
+    }
+}
