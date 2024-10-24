@@ -1,6 +1,5 @@
 package model.statements;
 
-import model.expressions.*;
 import model.programState.*;
 import model.types.*;
 import MyException.MyException;

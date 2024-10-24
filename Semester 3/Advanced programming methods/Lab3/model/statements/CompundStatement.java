@@ -1,6 +1,7 @@
 package model.statements;
 
 import model.dataStructures.myStack.*;
+import model.programState.*;
 import MyException.MyException;
 
 class CompoundStatement implements IStatement {

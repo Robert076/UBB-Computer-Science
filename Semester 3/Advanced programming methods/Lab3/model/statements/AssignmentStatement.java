@@ -6,6 +6,7 @@ import model.expressions.*;
 import model.dataStructures.myDictionary.*;
 import model.values.*;
 import model.types.*;
+import model.programState.*;
 
 public class AssignmentStatement implements IStatement {
     String id;
