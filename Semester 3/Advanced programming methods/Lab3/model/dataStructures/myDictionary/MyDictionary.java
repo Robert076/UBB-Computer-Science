@@ -30,4 +30,12 @@ public class MyDictionary<T, V> implements MyIDictionary<T, V> {
             throw new MyException("Key provided for update doesn't exist");
         }
     }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (T key : this.dictionary.keySet()) {
+            s.append(key).append(" -> ").append(this.dictionary.get(key)).append("\n");
+        }
+        return s.toString();
+    }
 }

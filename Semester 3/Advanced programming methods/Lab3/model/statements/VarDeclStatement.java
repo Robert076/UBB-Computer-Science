@@ -1,6 +1,8 @@
 package model.statements;
 
+import model.dataStructures.myDictionary.*;
 import model.programState.*;
+import model.values.*;
 import model.types.*;
 import MyException.MyException;
 
@@ -18,6 +20,8 @@ class VarDeclStatement implements IStatement {
     }
 
     public ProgramState execute(ProgramState state) throws MyException {
+        MyIDictionary<String, Value> dict = state.getSymbolTable();
+
         return state;
     }
 }

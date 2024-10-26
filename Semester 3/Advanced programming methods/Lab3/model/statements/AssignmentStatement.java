@@ -1,7 +1,6 @@
 package model.statements;
 
 import MyException.MyException;
-import model.dataStructures.myStack.*;
 import model.expressions.*;
 import model.dataStructures.myDictionary.*;
 import model.values.*;
@@ -12,12 +11,16 @@ public class AssignmentStatement implements IStatement {
     String id;
     Expression exp;
 
+    public AssignmentStatement(String _id, Expression _exp) {
+        this.id = _id;
+        this.exp = _exp;
+    }
+
     public String toString() {
         return id + "=" + exp.toString();
     }
 
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIStack<IStatement> stack = state.getStack();
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
 
         if (symTable.isDefined(id)) {

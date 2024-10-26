@@ -6,15 +6,22 @@ public class BoolValue implements Value {
     boolean val;
 
     public BoolValue(boolean v) {
-        val = v;
+        this.val = v;
     }
 
     public boolean getVal() {
-        return val;
+        return this.val;
     }
 
     public String toString() {
-        return String.valueOf(val);
+        return String.valueOf(this.val);
+    }
+
+    public boolean equals(Value another) {
+        if (!another.getType().equals(this.getType())) {
+            return false;
+        }
+        return ((BoolValue) another).getVal() == this.val;
     }
 
     public Type getType() {

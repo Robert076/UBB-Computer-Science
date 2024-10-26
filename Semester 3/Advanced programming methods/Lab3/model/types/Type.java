@@ -1,5 +1,7 @@
 package model.types;
 
 public interface Type {
-    public boolean equals(Object another);
+    String toString();
+
+    public boolean equals(Type another);
 }

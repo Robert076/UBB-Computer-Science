@@ -6,4 +6,6 @@ import model.values.*;
 
 public interface Expression {
     Value eval(MyIDictionary<String, Value> table) throws MyException;
+
+    String toString()
 }
