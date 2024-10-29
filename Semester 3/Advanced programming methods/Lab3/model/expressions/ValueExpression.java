@@ -5,9 +5,25 @@ import model.dataStructures.myDictionary.*;
 import MyException.MyException;
 
 public class ValueExpression implements Expression {
-    Value e;
+    Value val;
+
+    public ValueExpression(Value _val) {
+        this.val = _val;
+    }
+
+    public Value getVal() {
+        return this.val;
+    }
+
+    public void setVal(Value _val) {
+        this.val = _val;
+    }
 
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
-        return e;
+        return this.val;
+    }
+
+    public String toString() {
+        return "ValueExp{" + "val = " + this.val + "}";
     }
 }

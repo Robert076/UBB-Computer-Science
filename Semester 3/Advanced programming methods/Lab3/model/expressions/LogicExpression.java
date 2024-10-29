@@ -14,6 +14,36 @@ public class LogicExpression implements Expression {
     Expression rightExp;
     LogicalOperator op;
 
+    public LogicExpression(Expression _leftExp, Expression _rightExp, LogicalOperator _op) {
+        this.leftExp = _leftExp;
+        this.rightExp = _rightExp;
+        this.op = _op;
+    }
+
+    public void setLeftExp(Expression _leftExp) {
+        this.leftExp = _leftExp;
+    }
+
+    public void setRightExp(Expression _rightExp) {
+        this.rightExp = _rightExp;
+    }
+
+    public void setOperator(LogicalOperator _op) {
+        this.op = _op;
+    }
+
+    public Expression getLeftExp() {
+        return this.leftExp;
+    }
+
+    public Expression getRightExp() {
+        return this.rightExp;
+    }
+
+    public LogicalOperator getOperator() {
+        return this.op;
+    }
+
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         Value leftVal = this.leftExp.eval(table);
         Value rightVal = this.rightExp.eval(table);
@@ -37,5 +67,10 @@ public class LogicExpression implements Expression {
             else
                 return new BoolValue(false);
         }
+    }
+
+    public String toString() {
+        return "LogicExpression{ leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = " + this.rightExp
+                + "}";
     }
 }

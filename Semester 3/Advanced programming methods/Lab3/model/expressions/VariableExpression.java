@@ -7,7 +7,23 @@ import MyException.MyException;
 public class VariableExpression implements Expression {
     String id;
 
+    public VariableExpression(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         return table.lookup(id);
+    }
+
+    public String toString() {
+        return "VariableExpression{id = " + this.id + "}";
     }
 }

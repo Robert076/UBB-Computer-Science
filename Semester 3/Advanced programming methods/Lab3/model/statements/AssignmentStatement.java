@@ -17,7 +17,7 @@ public class AssignmentStatement implements IStatement {
     }
 
     public String toString() {
-        return id + "=" + exp.toString();
+        return id + " = " + exp.toString();
     }
 
     public ProgramState execute(ProgramState state) throws MyException {
