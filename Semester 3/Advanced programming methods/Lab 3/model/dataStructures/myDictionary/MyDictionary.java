@@ -23,7 +23,7 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
 
     @Override
     public V lookup(K key) throws MyException {
-        if (isDefined(key)) {
+        if (this.isDefined(key)) {
             return this.dictionary.get(key);
         } else {
             throw new MyException("Key provided for lookup doesn't exist");
@@ -32,7 +32,7 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
 
     @Override
     public void update(K key, V val) throws MyException {
-        if (isDefined(key)) {
+        if (this.isDefined(key)) {
             this.dictionary.put(key, val);
         } else {
             throw new MyException("Key provided for update doesn't exist");
