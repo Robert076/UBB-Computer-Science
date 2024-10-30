@@ -19,10 +19,12 @@ public class ValueExpression implements Expression {
         this.val = _val;
     }
 
+    @Override
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         return this.val;
     }
 
+    @Override
     public String toString() {
         return "ValueExp{" + "val = " + this.val + "}";
     }

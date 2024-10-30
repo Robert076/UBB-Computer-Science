@@ -19,10 +19,12 @@ public class VariableExpression implements Expression {
         this.id = id;
     }
 
+    @Override
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         return table.lookup(id);
     }
 
+    @Override
     public String toString() {
         return "VariableExpression{id = " + this.id + "}";
     }

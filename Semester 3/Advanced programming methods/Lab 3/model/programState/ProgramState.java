@@ -30,4 +30,8 @@ public class ProgramState {
     public MyIDictionary<String, Value> getSymbolTable() {
         return this.symbolTable;
     }
+
+    IStatement deepCopy(IStatement stmt) {
+        return stmt;
+    }
 }

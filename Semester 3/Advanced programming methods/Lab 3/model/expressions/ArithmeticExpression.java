@@ -44,6 +44,7 @@ public class ArithmeticExpression implements Expression {
         this.op = _op;
     }
 
+    @Override
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         Value v1, v2;
         v1 = this.leftExp.eval(table);
@@ -77,6 +78,7 @@ public class ArithmeticExpression implements Expression {
             throw new MyException("First operand is not an integer");
     }
 
+    @Override
     public String toString() {
         return "ArithmeticExpression{leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = "
                 + this.rightExp + "}";

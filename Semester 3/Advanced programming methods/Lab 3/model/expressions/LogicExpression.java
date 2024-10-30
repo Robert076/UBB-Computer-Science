@@ -44,6 +44,7 @@ public class LogicExpression implements Expression {
         return this.op;
     }
 
+    @Override
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         Value leftVal = this.leftExp.eval(table);
         Value rightVal = this.rightExp.eval(table);
@@ -69,6 +70,7 @@ public class LogicExpression implements Expression {
         }
     }
 
+    @Override
     public String toString() {
         return "LogicExpression{ leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = " + this.rightExp
                 + "}";
