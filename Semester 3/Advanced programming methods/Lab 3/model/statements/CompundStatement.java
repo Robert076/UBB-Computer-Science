@@ -13,10 +13,12 @@ class CompoundStatement implements IStatement {
         this.second = _second;
     }
 
+    @Override
     public String toString() {
-        return "(" + this.first.toString() + ";" + this.second.toString() + ")";
+        return "CompoundStatement{" + this.first.toString() + ";" + this.second.toString() + "}\n";
     }
 
+    @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> stack = state.getStack();
         stack.push(second);

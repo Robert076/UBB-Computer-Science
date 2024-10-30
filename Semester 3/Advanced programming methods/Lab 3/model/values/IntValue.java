@@ -17,16 +17,19 @@ public class IntValue implements Value {
         return this.val;
     }
 
+    @Override
     public String toString() {
         return Integer.toString(this.val);
     }
 
+    @Override
     public boolean equals(Value another) {
         if (!another.getType().equals(this.getType()))
             return false;
         return ((IntValue) another).getVal() == this.val;
     }
 
+    @Override
     public Type getType() {
         return new IntType();
     }

@@ -13,10 +13,12 @@ public class BoolValue implements Value {
         return this.val;
     }
 
+    @Override
     public String toString() {
         return String.valueOf(this.val);
     }
 
+    @Override
     public boolean equals(Value another) {
         if (!another.getType().equals(this.getType())) {
             return false;
@@ -24,6 +26,7 @@ public class BoolValue implements Value {
         return ((BoolValue) another).getVal() == this.val;
     }
 
+    @Override
     public Type getType() {
         return new BoolType();
     }

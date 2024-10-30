@@ -10,12 +10,14 @@ public class MyStack<T> implements MyIStack<T> {
         this.stack = new Stack<>();
     }
 
+    @Override
     public T pop() throws MyException {
         if (stack.empty())
             throw new MyException("Cannot pop from empty stack");
         return this.stack.pop();
     }
 
+    @Override
     public void push(T v) {
         this.stack.push(v);
     }

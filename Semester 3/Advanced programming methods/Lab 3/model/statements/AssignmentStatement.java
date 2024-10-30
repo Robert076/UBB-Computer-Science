@@ -16,10 +16,12 @@ public class AssignmentStatement implements IStatement {
         this.exp = _exp;
     }
 
+    @Override
     public String toString() {
-        return id + " = " + exp.toString();
+        return "AssignmentStatement{" + id + " = " + exp.toString() + "}\n";
     }
 
+    @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
 
@@ -35,5 +37,4 @@ public class AssignmentStatement implements IStatement {
             throw new MyException("The used variable " + id + " was not declared before");
         return state;
     }
-    // ...
 }

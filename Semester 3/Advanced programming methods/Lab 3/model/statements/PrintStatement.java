@@ -7,10 +7,20 @@ import MyException.MyException;
 class PrintStatement implements IStatement {
     Expression exp;
 
-    public String toString() {
-        return "print(" + exp.toString() + ")";
+    public Expression getExp() {
+        return this.exp;
     }
 
+    public void setExp(Expression _exp) {
+        this.exp = _exp;
+    }
+
+    @Override
+    public String toString() {
+        return "PrintStatement{" + exp.toString() + "}\n";
+    }
+
+    @Override
     public ProgramState execute(ProgramState state) throws MyException {
 
         return state;

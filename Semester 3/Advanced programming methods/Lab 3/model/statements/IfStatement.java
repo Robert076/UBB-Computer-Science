@@ -23,7 +23,7 @@ class IfStatement implements IStatement {
     @Override
     public String toString() {
         return "(IF(" + this.exp.toString() + ") THEN (" + this.thenS.toString() + ") ELSE (" + this.elseS.toString()
-                + "))";
+                + "))\n";
     }
 
     @Override
