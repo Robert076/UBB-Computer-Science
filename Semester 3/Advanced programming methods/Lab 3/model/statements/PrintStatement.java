@@ -4,8 +4,12 @@ import model.expressions.*;
 import model.programState.*;
 import MyException.MyException;
 
-class PrintStatement implements IStatement {
+public class PrintStatement implements IStatement {
     Expression exp;
+
+    public PrintStatement(Expression _exp) {
+        this.exp = _exp;
+    }
 
     public Expression getExp() {
         return this.exp;

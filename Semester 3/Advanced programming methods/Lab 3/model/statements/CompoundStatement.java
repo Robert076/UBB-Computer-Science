@@ -4,7 +4,7 @@ import model.dataStructures.myStack.*;
 import model.programState.*;
 import MyException.MyException;
 
-class CompoundStatement implements IStatement {
+public class CompoundStatement implements IStatement {
     IStatement first;
     IStatement second;
 

@@ -8,7 +8,7 @@ import model.values.BoolValue;
 import model.values.Value;
 import MyException.MyException;
 
-class IfStatement implements IStatement {
+public class IfStatement implements IStatement {
     Expression exp;
     IStatement thenS;
     IStatement elseS;

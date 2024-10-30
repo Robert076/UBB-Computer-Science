@@ -3,7 +3,7 @@ package model.statements;
 import model.programState.*;
 import MyException.MyException;
 
-class NopStatement implements IStatement {
+public class NopStatement implements IStatement {
     public NopStatement() {
 
     }

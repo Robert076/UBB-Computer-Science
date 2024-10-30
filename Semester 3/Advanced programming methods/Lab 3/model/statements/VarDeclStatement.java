@@ -6,7 +6,7 @@ import model.values.*;
 import model.types.*;
 import MyException.MyException;
 
-class VarDeclStatement implements IStatement {
+public class VarDeclStatement implements IStatement {
     String name;
     Type type;
 
