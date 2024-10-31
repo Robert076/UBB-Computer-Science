@@ -41,7 +41,9 @@ public class View {
                                         new ValueExpression(new IntValue(0)), ArithmeticOperator.MULTIPLY)),
                         new PrintStatement(new VariableExpression("a"))));
         MyStack<IStatement> exeStack = new MyStack<IStatement>();
-        exeStack.push(ex2);
+        IStatement ex3 = new CompoundStatement(new VarDeclStatement("c", new IntType()),
+                new AssignmentStatement("c", new ValueExpression(new IntValue(4))));
+
         MyDictionary<String, Value> symTable = new MyDictionary<String, Value>();
         MyList<Value> out = new MyList<Value>();
         System.out.println(exeStack);
