@@ -2,21 +2,16 @@ package view;
 
 import java.util.Scanner;
 
+import MyException.MyException;
 import controller.Controller;
 import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myList.MyList;
 import model.dataStructures.myStack.MyStack;
-import model.expressions.ValueExpression;
-import model.expressions.VariableExpression;
+import model.expressions.*;
 import model.programState.ProgramState;
-import model.statements.AssignmentStatement;
-import model.statements.CompoundStatement;
-import model.statements.IStatement;
-import model.statements.PrintStatement;
-import model.statements.VarDeclStatement;
-import model.types.IntType;
-import model.values.IntValue;
-import model.values.Value;
+import model.statements.*;
+import model.types.*;
+import model.values.*;
 
 public class View {
     // print meniu
@@ -36,13 +31,23 @@ public class View {
     }
 
     public void runApp() {
-        this.printMenu();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your choice: ");
-        String choice = scanner.nextLine();
-        System.out.println(choice);
-        IStatement ex1 = new CompoundStatement(new VarDeclStatement("v", new IntType()),
-                new CompoundStatement(new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
-                        new PrintStatement(new VariableExpression("v"))));
+        IStatement ex1 = new CompoundStatement(new VarDeclStatement("c", new IntType()),
+                new CompoundStatement(new AssignmentStatement("c", new ValueExpression(new IntValue(2))),
+                        new PrintStatement(new VariableExpression("c"))));
+        MyStack<IStatement> exeStack = new MyStack<IStatement>();
+        exeStack.push(ex1);
+        MyDictionary<String, Value> symTable = new MyDictionary<String, Value>();
+        MyList<Value> out = new MyList<Value>();
+        System.out.println(exeStack);
+        ProgramState prgState = new ProgramState(exeStack, symTable, out, ex1);
+        try {
+            this.controller.setCurrentProgram(prgState);
+            controller.fullExecution();
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(symTable);
+        System.out.println(out);
     }
 }

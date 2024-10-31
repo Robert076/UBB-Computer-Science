@@ -1,7 +1,12 @@
 package model.statements;
 
+import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myList.MyIList;
+import model.dataStructures.myList.MyList;
+import model.dataStructures.myStack.MyIStack;
 import model.expressions.*;
 import model.programState.*;
+import model.values.Value;
 import MyException.MyException;
 
 public class PrintStatement implements IStatement {
@@ -26,8 +31,11 @@ public class PrintStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
+        MyIList<Value> out = state.getOut();
+        MyIDictionary<String, Value> symTable = state.getSymbolTable();
 
-        return state;
+        out.add(exp.eval(symTable));
+        return null;
     }
 
     // todo

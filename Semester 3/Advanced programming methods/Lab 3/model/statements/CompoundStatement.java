@@ -20,7 +20,7 @@ public class CompoundStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIStack<IStatement> stack = state.getStack();
+        MyIStack<IStatement> stack = state.getExeStack();
         stack.push(second);
         stack.push(first);
         return state;

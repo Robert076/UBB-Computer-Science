@@ -18,6 +18,11 @@ public class MyStack<T> implements MyIStack<T> {
     }
 
     @Override
+    public String toString() {
+        return stack.toString();
+    }
+
+    @Override
     public void push(T v) {
         this.stack.push(v);
     }

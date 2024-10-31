@@ -14,7 +14,8 @@ public class Controller {
     }
 
     public ProgramState oneStepExecution(ProgramState state) throws MyException {
-        MyIStack<IStatement> stk = state.getStack();
+        MyIStack<IStatement> stk = state.getExeStack();
+        System.out.println("Execut\n");
         if (stk.isEmpty()) {
             throw new MyException("Execution stack is empty!");
         }
@@ -24,8 +25,12 @@ public class Controller {
 
     public void fullExecution() throws MyException {
         ProgramState prgState = this.repo.getCurrentProgram();
-        while (!prgState.getStack().isEmpty()) {
+        while (!prgState.getExeStack().isEmpty()) {
             this.oneStepExecution(prgState);
         }
+    }
+
+    public void setCurrentProgram(ProgramState programState) {
+        this.repo.setCurrentProgram(programState);
     }
 }

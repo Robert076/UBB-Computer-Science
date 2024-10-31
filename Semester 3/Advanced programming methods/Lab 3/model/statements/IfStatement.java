@@ -37,9 +37,9 @@ public class IfStatement implements IStatement {
 
         BoolValue v = (BoolValue) val;
         if (v.getVal())
-            state.getStack().push(thenS);
+            state.getExeStack().push(thenS);
         else
-            state.getStack().push(elseS);
+            state.getExeStack().push(elseS);
         return state;
     }
 }

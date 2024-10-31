@@ -13,22 +13,45 @@ public class ProgramState {
 
     IStatement originalProgram; // optional but good
 
-    ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
+    public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
             IStatement _originalProgram) {
         exeStack = _exeStack;
         symbolTable = _symbolTable;
         out = _out;
         originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
-        _exeStack.push(_originalProgram);
+        this.exeStack.push(_originalProgram);
     }
-    // ... override tostring, setters getters for all fields
 
-    public MyIStack<IStatement> getStack() {
+    @Override
+    public String toString() {
+        return "Program State: \n\n" +
+                "exeStack = " + this.exeStack +
+                "\nsymTable = " + this.symbolTable +
+                "\nout = " + out + "\n\n";
+    }
+
+    public MyIStack<IStatement> getExeStack() {
         return this.exeStack;
     }
 
     public MyIDictionary<String, Value> getSymbolTable() {
         return this.symbolTable;
+    }
+
+    public MyIList<Value> getOut() {
+        return this.out;
+    }
+
+    public void setExeStack(MyIStack<IStatement> _exeStack) {
+        this.exeStack = _exeStack;
+    }
+
+    public void setSymbolTable(MyIDictionary<String, Value> _symbolTable) {
+        this.symbolTable = _symbolTable;
+    }
+
+    public void setOut(MyIList<Value> _out) {
+        this.out = _out;
     }
 
     IStatement deepCopy(IStatement stmt) {
