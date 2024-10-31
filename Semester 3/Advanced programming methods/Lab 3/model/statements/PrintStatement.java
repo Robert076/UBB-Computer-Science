@@ -2,8 +2,6 @@ package model.statements;
 
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myList.MyIList;
-import model.dataStructures.myList.MyList;
-import model.dataStructures.myStack.MyIStack;
 import model.expressions.*;
 import model.programState.*;
 import model.values.Value;
@@ -12,23 +10,39 @@ import MyException.MyException;
 public class PrintStatement implements IStatement {
     Expression exp;
 
+    /*
+     * Constructor
+     */
     public PrintStatement(Expression _exp) {
         this.exp = _exp;
     }
 
+    /*
+     * Getter for expression
+     */
     public Expression getExp() {
         return this.exp;
     }
 
+    /*
+     * Setter for expression
+     */
     public void setExp(Expression _exp) {
         this.exp = _exp;
     }
 
+    /*
+     * Overriding toString()
+     */
     @Override
     public String toString() {
         return "PrintStatement{" + exp.toString() + "}\n";
     }
 
+    /*
+     * Overriding execute(), the method inherited from implementing the interface
+     * IStatement
+     */
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIList<Value> out = state.getOut();
@@ -37,6 +51,4 @@ public class PrintStatement implements IStatement {
         out.add(exp.eval(symTable));
         return null;
     }
-
-    // todo
 }

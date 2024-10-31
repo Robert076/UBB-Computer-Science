@@ -15,7 +15,6 @@ public class Controller {
 
     public ProgramState oneStepExecution(ProgramState state) throws MyException {
         MyIStack<IStatement> stk = state.getExeStack();
-        System.out.println("Execut\n");
         if (stk.isEmpty()) {
             throw new MyException("Execution stack is empty!");
         }
