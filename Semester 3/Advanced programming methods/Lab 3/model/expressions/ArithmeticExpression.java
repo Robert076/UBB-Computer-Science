@@ -5,10 +5,6 @@ import model.values.*;
 import model.types.*;
 import MyException.MyException;
 
-enum ArithmeticOperator {
-    PLUS, MINUS, MULTIPLY, DIVIDE
-}
-
 public class ArithmeticExpression implements Expression {
     Expression leftExp;
     Expression rightExp;

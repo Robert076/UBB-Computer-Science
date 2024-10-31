@@ -34,12 +34,18 @@ public class View {
         IStatement ex1 = new CompoundStatement(new VarDeclStatement("c", new IntType()),
                 new CompoundStatement(new AssignmentStatement("c", new ValueExpression(new IntValue(2))),
                         new PrintStatement(new VariableExpression("c"))));
+        IStatement ex2 = new CompoundStatement(new VarDeclStatement("a", new IntType()),
+                new CompoundStatement(
+                        new AssignmentStatement("a",
+                                new ArithmeticExpression(new ValueExpression(new IntValue(3)),
+                                        new ValueExpression(new IntValue(0)), ArithmeticOperator.MULTIPLY)),
+                        new PrintStatement(new VariableExpression("a"))));
         MyStack<IStatement> exeStack = new MyStack<IStatement>();
-        exeStack.push(ex1);
+        exeStack.push(ex2);
         MyDictionary<String, Value> symTable = new MyDictionary<String, Value>();
         MyList<Value> out = new MyList<Value>();
         System.out.println(exeStack);
-        ProgramState prgState = new ProgramState(exeStack, symTable, out, ex1);
+        ProgramState prgState = new ProgramState(exeStack, symTable, out, ex2);
         try {
             this.controller.setCurrentProgram(prgState);
             controller.fullExecution();
