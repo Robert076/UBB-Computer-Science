@@ -41,6 +41,9 @@ public class VariableExpression implements Expression {
         return symTable.lookup(id);
     }
 
+    /*
+     * Overriding toString()
+     */
     @Override
     public String toString() {
         return "VariableExpression{id = " + this.id + "}";
