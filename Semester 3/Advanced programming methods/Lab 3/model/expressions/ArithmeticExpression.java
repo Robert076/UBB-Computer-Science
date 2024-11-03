@@ -6,40 +6,74 @@ import model.types.*;
 import MyException.MyException;
 
 public class ArithmeticExpression implements Expression {
+    /*
+     * leftExp op rightExp
+     */
     Expression leftExp;
     Expression rightExp;
     ArithmeticOperator op;
 
+    /*
+     * Constructor
+     */
     public ArithmeticExpression(Expression _leftExp, Expression _rightExp, ArithmeticOperator _op) {
         this.leftExp = _leftExp;
         this.rightExp = _rightExp;
         this.op = _op;
     }
 
+    /*
+     * Getter for left expression
+     */
     public Expression getLeftExp() {
         return this.leftExp;
     }
 
+    /*
+     * Getter for right expression
+     */
     public Expression getRightExp() {
         return this.rightExp;
     }
 
+    /*
+     * Getter for operator
+     */
     public ArithmeticOperator getOperator() {
         return this.op;
     }
 
+    /*
+     * Setter for left expression
+     */
     public void setLeftExp(Expression _leftExp) {
         this.leftExp = _leftExp;
     }
 
+    /*
+     * Setter for right expression
+     */
     public void setRightExp(Expression _rightExp) {
         this.rightExp = _rightExp;
     }
 
+    /*
+     * Setter for operator
+     */
     public void setOperator(ArithmeticOperator _op) {
         this.op = _op;
     }
 
+    /*
+     * Overriding eval method that we got from implementing Expression.
+     * We check for types. Both leftExp.eval() and rightExp.eval() must have an
+     * integer as the result
+     * If at least one of them is not int, we raise exception
+     * Otherwise we just check what operator we got and return
+     * Whatever we got to return
+     * Also very important we check for division by zero and that the operator is in
+     * the enum.
+     */
     @Override
     public Value eval(MyIDictionary<String, Value> table) throws MyException {
         Value v1, v2;
@@ -74,6 +108,9 @@ public class ArithmeticExpression implements Expression {
             throw new MyException("First operand is not an integer");
     }
 
+    /*
+     * Overriding toString()
+     */
     @Override
     public String toString() {
         return "ArithmeticExpression{leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = "
