@@ -1,7 +1,7 @@
 package model.statements;
 
-import model.programState.*;
 import MyException.MyException;
+import model.programState.*;
 
 public interface IStatement {
     ProgramState execute(ProgramState state) throws MyException;

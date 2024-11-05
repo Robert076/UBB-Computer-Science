@@ -1,7 +1,7 @@
 package model.statements;
 
-import MyException.MyException;
 import model.expressions.*;
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.values.*;
 import model.types.*;

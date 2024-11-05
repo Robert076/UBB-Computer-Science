@@ -14,9 +14,6 @@ import model.types.*;
 import model.values.*;
 
 public class View {
-    // print meniu
-    // run program
-    // start program
     Controller controller;
 
     public View(Controller _controller) {
