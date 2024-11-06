@@ -48,10 +48,8 @@ public class View {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Your choice: ");
         Integer choice = Integer.parseInt(scanner.nextLine());
-        System.out.println("Type 1 if you want to execute step by step or 2 if you want a full execution: ");
-        Integer oneStep = Integer.parseInt(scanner.nextLine());
-
         scanner.close();
 
         IStatement programToRun;
@@ -65,22 +63,17 @@ public class View {
             return;
         }
 
+        this.controller.setDisplayFlag(true);
+
         ProgramState prgState = new ProgramState(exeStack, symTable, out, programToRun);
 
         try {
             this.controller.setCurrentProgram(prgState);
-            if (oneStep == 1) {
-                this.controller.fullExecution(oneStep);
-            } else {
-                this.controller.fullExecution(oneStep);
-            }
+            this.controller.fullExecution();
         } catch (MyException e) {
             System.out.println(e.getMessage());
         } catch (InvalidOperation e) {
             System.out.println(e.getMessage());
         }
-
-        System.out.println(symTable);
-        System.out.println(out);
     }
 }

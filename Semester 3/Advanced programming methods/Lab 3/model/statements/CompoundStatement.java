@@ -21,7 +21,7 @@ public class CompoundStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return "CompoundStatement{" + this.first.toString() + ";" + this.second.toString() + "}\n";
+        return " CompoundStatement{" + this.first.toString() + ";" + this.second.toString() + "} ";
     }
 
     /*

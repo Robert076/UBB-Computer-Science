@@ -69,6 +69,6 @@ public class VarDeclStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return "VarDeclStatement{" + "name = '" + this.name + "', type = " + this.type + "}\n";
+        return " VarDeclStatement{" + "name = '" + this.name + "', type = " + this.type + "} ";
     }
 }

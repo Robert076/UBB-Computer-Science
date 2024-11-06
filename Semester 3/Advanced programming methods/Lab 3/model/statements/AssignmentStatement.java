@@ -25,7 +25,7 @@ public class AssignmentStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return "AssignmentStatement{" + id + " = " + exp.toString() + "}\n";
+        return " AssignmentStatement{" + id + " = " + exp.toString() + "} ";
     }
 
     /*

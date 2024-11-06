@@ -43,8 +43,11 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (K key : this.dictionary.keySet()) {
-            s.append(key).append(" -> ").append(this.dictionary.get(key)).append("\n");
+            s.append(key).append(" -> ").append(this.dictionary.get(key)).append(", ");
         }
+        if (s.isEmpty())
+            return "Empty\n";
+        s.append('\n');
         return s.toString();
     }
 }

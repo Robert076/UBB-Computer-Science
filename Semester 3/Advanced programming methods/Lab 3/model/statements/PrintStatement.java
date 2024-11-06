@@ -38,7 +38,7 @@ public class PrintStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return "PrintStatement{" + exp.toString() + "}\n";
+        return " PrintStatement{" + exp.toString() + "} ";
     }
 
     /*

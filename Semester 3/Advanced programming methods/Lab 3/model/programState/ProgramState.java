@@ -36,10 +36,10 @@ public class ProgramState {
 
     @Override
     public String toString() {
-        return "Program State: \n\n" +
-                "exeStack = " + this.exeStack +
-                "\nsymTable = " + this.symbolTable +
-                "\nout = " + out + "\n\n";
+        return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n\n" +
+                " exeStack = " + this.exeStack +
+                "\n\n symTable = " + this.symbolTable +
+                "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
     }
 
     public MyIStack<IStatement> getExeStack() {
