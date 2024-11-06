@@ -3,6 +3,7 @@ package model.expressions;
 import model.values.*;
 import model.dataStructures.myDictionary.*;
 import model.types.BoolType;
+import MyException.InvalidOperation;
 import MyException.MyException;
 
 public class LogicExpression implements Expression {
@@ -72,7 +73,7 @@ public class LogicExpression implements Expression {
      * And return the according result.
      */
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException, InvalidOperation {
         Value leftVal = this.leftExp.eval(table);
         Value rightVal = this.rightExp.eval(table);
 

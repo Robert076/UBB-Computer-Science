@@ -3,6 +3,7 @@ package model.expressions;
 import model.dataStructures.myDictionary.*;
 import model.values.*;
 import model.types.*;
+import MyException.InvalidOperation;
 import MyException.MyException;
 
 public class ArithmeticExpression implements Expression {
@@ -75,7 +76,7 @@ public class ArithmeticExpression implements Expression {
      * the enum.
      */
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws MyException, InvalidOperation {
         Value v1, v2;
         v1 = this.leftExp.eval(table);
 
@@ -97,7 +98,7 @@ public class ArithmeticExpression implements Expression {
                     return new IntValue(n1 * n2);
                 else if (op == ArithmeticOperator.DIVIDE)
                     if (n2 == 0)
-                        throw new MyException("Divison by zero");
+                        throw new InvalidOperation("Divison by zero");
                     else
                         return new IntValue(n1 / n2);
                 else

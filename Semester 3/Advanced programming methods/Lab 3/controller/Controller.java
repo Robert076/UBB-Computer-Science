@@ -1,5 +1,6 @@
 package controller;
 
+import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myStack.MyIStack;
 import model.programState.ProgramState;
@@ -13,7 +14,7 @@ public class Controller {
         this.repo = _repo;
     }
 
-    public ProgramState oneStepExecution(ProgramState state) throws MyException {
+    public ProgramState oneStepExecution(ProgramState state) throws MyException, InvalidOperation {
         MyIStack<IStatement> stk = state.getExeStack();
         if (stk.isEmpty()) {
             throw new MyException("Execution stack is empty!");
@@ -22,9 +23,11 @@ public class Controller {
         return currentStatement.execute(state);
     }
 
-    public void fullExecution() throws MyException {
+    public void fullExecution(int flag) throws MyException, InvalidOperation {
         ProgramState prgState = this.repo.getCurrentProgram();
         while (!prgState.getExeStack().isEmpty()) {
+            if (flag == 1)
+                System.out.println(prgState);
             this.oneStepExecution(prgState);
         }
     }

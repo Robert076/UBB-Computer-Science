@@ -5,6 +5,8 @@ import model.dataStructures.myList.MyIList;
 import model.expressions.*;
 import model.programState.*;
 import model.values.Value;
+
+import MyException.InvalidOperation;
 import MyException.MyException;
 
 public class PrintStatement implements IStatement {
@@ -44,11 +46,11 @@ public class PrintStatement implements IStatement {
      * IStatement
      */
     @Override
-    public ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIList<Value> out = state.getOut();
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
 
         out.add(exp.eval(symTable));
-        return null;
+        return state;
     }
 }

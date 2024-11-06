@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import MyException.InvalidOperation;
 import MyException.MyException;
 import controller.Controller;
 import model.dataStructures.myDictionary.MyDictionary;
@@ -48,6 +49,9 @@ public class View {
         Scanner scanner = new Scanner(System.in);
 
         Integer choice = Integer.parseInt(scanner.nextLine());
+        System.out.println("Type 1 if you want to execute step by step or 2 if you want a full execution: ");
+        Integer oneStep = Integer.parseInt(scanner.nextLine());
+
         scanner.close();
 
         IStatement programToRun;
@@ -65,8 +69,14 @@ public class View {
 
         try {
             this.controller.setCurrentProgram(prgState);
-            controller.fullExecution();
+            if (oneStep == 1) {
+                this.controller.fullExecution(oneStep);
+            } else {
+                this.controller.fullExecution(oneStep);
+            }
         } catch (MyException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidOperation e) {
             System.out.println(e.getMessage());
         }
 

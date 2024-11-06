@@ -10,15 +10,27 @@ public class ProgramState {
     MyIStack<IStatement> exeStack;
     MyIDictionary<String, Value> symbolTable;
     MyIList<Value> out;
+    Integer count;
 
     IStatement originalProgram; // optional but good
 
     public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
             IStatement _originalProgram) {
-        exeStack = _exeStack;
-        symbolTable = _symbolTable;
-        out = _out;
-        originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
+        this.exeStack = _exeStack;
+        this.symbolTable = _symbolTable;
+        this.out = _out;
+        this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
+        this.count = 1;
+        this.exeStack.push(_originalProgram);
+    }
+
+    public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
+            IStatement _originalProgram, Integer count) { // for when we have a counter provided
+        this.exeStack = _exeStack;
+        this.symbolTable = _symbolTable;
+        this.out = _out;
+        this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
+        this.count = count;
         this.exeStack.push(_originalProgram);
     }
 
@@ -54,7 +66,11 @@ public class ProgramState {
         this.out = _out;
     }
 
-    IStatement deepCopy(IStatement stmt) {
-        return stmt;
+    public IStatement deepCopy(IStatement stmt) {
+        return stmt; // todo
+    }
+
+    public void init() {
+        // to do
     }
 }
