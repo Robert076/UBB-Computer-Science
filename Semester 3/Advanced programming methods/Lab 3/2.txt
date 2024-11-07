@@ -1,0 +1,2 @@
+2024/11/07 08:52:34
+ CompoundStatement{ VarDeclStatement{name = 'c', type = IntType} ; CompoundStatement{ AssignmentStatement{c = ValueExp{val = 2}} ; PrintStatement{VariableExpression{id = c}} } } 

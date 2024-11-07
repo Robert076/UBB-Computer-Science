@@ -1,0 +1,11 @@
+2024/11/07 08:53:41
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [ CompoundStatement{ VarDeclStatement{name = 'c', type = IntType} ; CompoundStatement{ AssignmentStatement{c = ValueExp{val = 2}} ; PrintStatement{VariableExpression{id = c}} } } ]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+

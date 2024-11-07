@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import MyException.InvalidOperation;
@@ -50,6 +51,8 @@ public class View {
 
         System.out.print("Your choice: ");
         Integer choice = Integer.parseInt(scanner.nextLine());
+        System.out.print("Where do you want to save logs? ('NONE' for skipping this): ");
+        String logFile = scanner.nextLine();
         scanner.close();
 
         IStatement programToRun;
@@ -64,6 +67,7 @@ public class View {
         }
 
         this.controller.setDisplayFlag(true);
+        this.controller.setLogFile(logFile);
 
         ProgramState prgState = new ProgramState(exeStack, symTable, out, programToRun);
 
@@ -73,6 +77,8 @@ public class View {
         } catch (MyException e) {
             System.out.println(e.getMessage());
         } catch (InvalidOperation e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

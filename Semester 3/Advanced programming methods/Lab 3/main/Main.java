@@ -10,7 +10,7 @@ public class Main {
         IRepository repo = new Repository();
         Controller controller = new Controller(repo);
         View view = new View(controller);
-        // run
+
         view.runApp();
     }
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myStack.MyIStack;
@@ -25,8 +27,9 @@ public class Controller {
         return currentStatement.execute(state);
     }
 
-    public void fullExecution() throws MyException, InvalidOperation {
+    public void fullExecution() throws MyException, InvalidOperation, IOException {
         ProgramState prgState = this.repo.getCurrentProgram();
+        this.repo.logProgramStateExecution();
         while (!prgState.getExeStack().isEmpty()) {
             if (this.displayFlag == true)
                 System.out.println(prgState);
@@ -47,5 +50,9 @@ public class Controller {
 
     public Boolean getDisplayFlag() {
         return this.displayFlag;
+    }
+
+    public void setLogFile(String logFile) {
+        this.repo.setLogFile(logFile);
     }
 }

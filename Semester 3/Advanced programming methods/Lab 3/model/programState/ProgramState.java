@@ -1,6 +1,7 @@
 package model.programState;
 
 import model.dataStructures.myStack.*;
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myList.*;
 import model.values.*;
@@ -36,7 +37,7 @@ public class ProgramState {
 
     @Override
     public String toString() {
-        return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n\n" +
+        return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n" +
                 " exeStack = " + this.exeStack +
                 "\n\n symTable = " + this.symbolTable +
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
