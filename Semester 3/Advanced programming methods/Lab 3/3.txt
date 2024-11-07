@@ -1,2 +1,0 @@
-2024/11/07 08:52:55
- CompoundStatement{ VarDeclStatement{name = 'a', type = IntType} ; CompoundStatement{ AssignmentStatement{a = ArithmeticExpression{leftExp = ValueExp{val = 2} , op = MULTIPLY , rightExp = ValueExp{val = 4}}} ; PrintStatement{VariableExpression{id = a}} } } 

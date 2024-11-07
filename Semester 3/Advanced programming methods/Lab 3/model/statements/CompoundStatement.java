@@ -24,6 +24,14 @@ public class CompoundStatement implements IStatement {
         return " CompoundStatement{" + this.first.toString() + ";" + this.second.toString() + "} ";
     }
 
+    public IStatement getFirst() {
+        return this.first;
+    }
+
+    public IStatement getSecond() {
+        return this.second;
+    }
+
     /*
      * Overriding execute(), the method inherited from implementing the IStatement
      * interface

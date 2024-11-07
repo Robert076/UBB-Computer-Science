@@ -40,7 +40,7 @@ public class Repository implements IRepository {
         LocalDateTime now = LocalDateTime.now();
         PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFile)));
         logFile.write(dtf.format(now) + "\n");
-        logFile.write(programState.toString());
+        logFile.write(programState.toStringLog());
         logFile.close();
     }
 

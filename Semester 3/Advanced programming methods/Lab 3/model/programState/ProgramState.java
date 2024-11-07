@@ -43,6 +43,28 @@ public class ProgramState {
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
     }
 
+    public String toStringLog() throws MyException {
+        StringBuilder logBuilder = new StringBuilder();
+        MyIStack<IStatement> tempStack = new MyStack<>();
+
+        while (!exeStack.isEmpty()) {
+            tempStack.push(exeStack.pop());
+        }
+
+        while (!tempStack.isEmpty()) {
+            IStatement statement = tempStack.pop();
+            exeStack.push(statement);
+            while (statement instanceof CompoundStatement) {
+                CompoundStatement compound = (CompoundStatement) statement;
+                logBuilder.append(compound.getFirst().toString()).append("\n");
+                statement = compound.getSecond();
+            }
+            logBuilder.append(statement.toString()).append("\n");
+        }
+
+        return logBuilder.toString();
+    }
+
     public MyIStack<IStatement> getExeStack() {
         return this.exeStack;
     }
