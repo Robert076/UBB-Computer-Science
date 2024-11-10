@@ -25,4 +25,4 @@ insert(X, [Y | Tail], [X, Y | Tail]) :-
 insert(X, [Y | Tail], [Y | ResultTail]) :-
     X > Y,
     insert(X, Tail, ResultTail).
- 
+ trace, sort_list_main([3, 1, 2, 5, 4], Result).
