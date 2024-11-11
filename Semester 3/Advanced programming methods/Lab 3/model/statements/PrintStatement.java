@@ -38,7 +38,7 @@ public class PrintStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return " PrintStatement{" + exp.toString() + "} ";
+        return "PrintStatement{" + exp.toString() + "}";
     }
 
     /*
@@ -52,5 +52,10 @@ public class PrintStatement implements IStatement {
 
         out.add(exp.eval(symTable));
         return state;
+    }
+
+    @Override
+    public IStatement deepCopy() {
+        return new PrintStatement(this.exp.deepCopy());
     }
 }

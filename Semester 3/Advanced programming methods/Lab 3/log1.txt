@@ -1,0 +1,66 @@
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'v', type = IntType};CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}, VarDeclStatement{name = 'v', type = IntType}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}]
+
+ symTable = v -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = v}}, AssignmentStatement{v = ValueExp{val = 2}}]
+
+ symTable = v -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = v}}]
+
+ symTable = v -> 2, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = []
+
+ symTable = v -> 2, 
+
+ out = [2]
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+

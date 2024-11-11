@@ -1,4 +1,0 @@
-2024/11/07 09:26:05
- VarDeclStatement{name = 'a', type = IntType} 
- AssignmentStatement{a = ArithmeticExpression{leftExp = ValueExp{val = 2} , op = MULTIPLY , rightExp = ValueExp{val = 4}}} 
- PrintStatement{VariableExpression{id = a}} 

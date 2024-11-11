@@ -10,4 +10,6 @@ public interface MyIStack<T> {
     boolean isEmpty();
 
     String toString();
+
+    T peek() throws MyException;
 }

@@ -23,7 +23,7 @@ public class IntValue implements Value {
     }
 
     @Override
-    public boolean equals(Value another) {
+    public Boolean equals(Value another) {
         if (!another.getType().equals(this.getType()))
             return false;
         return ((IntValue) another).getVal() == this.val;

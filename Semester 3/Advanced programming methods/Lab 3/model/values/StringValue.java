@@ -2,14 +2,14 @@ package model.values;
 
 import model.types.*;
 
-public class BoolValue implements Value {
-    Boolean val;
+public class StringValue implements Value {
+    String val;
 
-    public BoolValue(boolean v) {
+    public StringValue(String v) {
         this.val = v;
     }
 
-    public Boolean getVal() {
+    public String getVal() {
         return this.val;
     }
 
@@ -23,11 +23,11 @@ public class BoolValue implements Value {
         if (!another.getType().equals(this.getType())) {
             return false;
         }
-        return ((BoolValue) another).getVal() == this.val;
+        return ((StringValue) another).getVal() == this.val;
     }
 
     @Override
     public Type getType() {
-        return new BoolType();
+        return new StringType();
     }
 }

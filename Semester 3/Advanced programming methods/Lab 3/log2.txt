@@ -1,0 +1,154 @@
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{VarDeclStatement{name = 'b', type = IntType};CompoundStatement{AssignmentStatement{a = ValueExp{val = 5}};CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}}}}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'b', type = IntType};CompoundStatement{AssignmentStatement{a = ValueExp{val = 5}};CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}}}, VarDeclStatement{name = 'a', type = IntType}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'b', type = IntType};CompoundStatement{AssignmentStatement{a = ValueExp{val = 5}};CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}}}]
+
+ symTable = a -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{a = ValueExp{val = 5}};CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}}, VarDeclStatement{name = 'b', type = IntType}]
+
+ symTable = a -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{a = ValueExp{val = 5}};CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}}]
+
+ symTable = a -> 0, b -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}, AssignmentStatement{a = ValueExp{val = 5}}]
+
+ symTable = a -> 0, b -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{b = ValueExp{val = 2}};CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}}]
+
+ symTable = a -> 5, b -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}, AssignmentStatement{b = ValueExp{val = 2}}]
+
+ symTable = a -> 5, b -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'c', type = IntType};CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}}]
+
+ symTable = a -> 5, b -> 2, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}, VarDeclStatement{name = 'c', type = IntType}]
+
+ symTable = a -> 5, b -> 2, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}};PrintStatement{VariableExpression{id = c}}}]
+
+ symTable = a -> 5, b -> 2, c -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = c}}, AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}]
+
+ symTable = a -> 5, b -> 2, c -> 0, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = c}}]
+
+ symTable = a -> 5, b -> 2, c -> 2, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = []
+
+ symTable = a -> 5, b -> 2, c -> 2, 
+
+ out = [2]
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+

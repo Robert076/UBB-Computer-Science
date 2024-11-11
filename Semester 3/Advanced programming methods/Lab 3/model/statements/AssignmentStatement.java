@@ -25,7 +25,7 @@ public class AssignmentStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return " AssignmentStatement{" + id + " = " + exp.toString() + "} ";
+        return "AssignmentStatement{" + id + " = " + exp.toString() + "}";
     }
 
     /*
@@ -53,5 +53,10 @@ public class AssignmentStatement implements IStatement {
         } else
             throw new MyException("The used variable " + id + " was not declared before");
         return state;
+    }
+
+    @Override
+    public AssignmentStatement deepCopy() {
+        return new AssignmentStatement(this.id, this.exp);
     }
 }

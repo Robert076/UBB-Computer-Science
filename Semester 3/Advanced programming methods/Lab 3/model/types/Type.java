@@ -5,7 +5,7 @@ import model.values.Value;
 public interface Type {
     String toString();
 
-    public boolean equals(Type another);
+    public Boolean equals(Type another);
 
     public Value defaultValue();
 }

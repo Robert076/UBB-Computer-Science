@@ -1,6 +1,9 @@
 package model.programState;
 
 import model.dataStructures.myStack.*;
+
+import java.io.BufferedReader;
+
 import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myList.*;
@@ -11,27 +14,17 @@ public class ProgramState {
     MyIStack<IStatement> exeStack;
     MyIDictionary<String, Value> symbolTable;
     MyIList<Value> out;
-    Integer count;
+    MyIDictionary<StringValue, BufferedReader> fileTable;
 
     IStatement originalProgram; // optional but good
 
     public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
-            IStatement _originalProgram) {
+            IStatement _originalProgram, MyIDictionary<StringValue, BufferedReader> _fileTable) {
         this.exeStack = _exeStack;
         this.symbolTable = _symbolTable;
         this.out = _out;
         this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
-        this.count = 1;
-        this.exeStack.push(_originalProgram);
-    }
-
-    public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
-            IStatement _originalProgram, Integer count) { // for when we have a counter provided
-        this.exeStack = _exeStack;
-        this.symbolTable = _symbolTable;
-        this.out = _out;
-        this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
-        this.count = count;
+        this.fileTable = _fileTable;
         this.exeStack.push(_originalProgram);
     }
 
@@ -43,27 +36,32 @@ public class ProgramState {
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
     }
 
-    public String toStringLog() throws MyException {
-        StringBuilder logBuilder = new StringBuilder();
-        MyIStack<IStatement> tempStack = new MyStack<>();
+    // public String toStringLog() throws MyException {
+    // // Logger for program state - assuming a single statement (entire program)
+    // StringBuilder logBuilder = new StringBuilder();
 
-        while (!exeStack.isEmpty()) {
-            tempStack.push(exeStack.pop());
-        }
+    // logBuilder.append("\n+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n");
 
-        while (!tempStack.isEmpty()) {
-            IStatement statement = tempStack.pop();
-            exeStack.push(statement);
-            while (statement instanceof CompoundStatement) {
-                CompoundStatement compound = (CompoundStatement) statement;
-                logBuilder.append(compound.getFirst().toString()).append("\n");
-                statement = compound.getSecond();
-            }
-            logBuilder.append(statement.toString()).append("\n");
-        }
+    // // Display Execution Stack
+    // logBuilder.append("Execution Stack:\n");
+    // IStatement statement = exeStack.peek();
 
-        return logBuilder.toString();
-    }
+    // // Unroll compound statements and add each to logBuilder
+    // while (statement instanceof CompoundStatement) {
+    // CompoundStatement compound = (CompoundStatement) statement;
+    // logBuilder.append(" ").append(compound.getFirst().toString()).append("\n");
+    // statement = compound.getSecond();
+    // }
+    // // Log the last non-compound statement
+    // logBuilder.append(" ").append(statement.toString()).append("\n");
+
+    // // Log symbol table and output
+    // logBuilder.append("Symbol Table:\n").append(this.symbolTable).append("\n");
+    // logBuilder.append("Output:\n").append(this.out).append("\n");
+
+    // logBuilder.append("+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n");
+    // return logBuilder.toString();
+    // }
 
     public MyIStack<IStatement> getExeStack() {
         return this.exeStack;
@@ -75,6 +73,10 @@ public class ProgramState {
 
     public MyIList<Value> getOut() {
         return this.out;
+    }
+
+    public MyIDictionary<StringValue, BufferedReader> getFileTable() {
+        return this.fileTable;
     }
 
     public void setExeStack(MyIStack<IStatement> _exeStack) {

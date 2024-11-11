@@ -48,4 +48,9 @@ public class VariableExpression implements Expression {
     public String toString() {
         return "VariableExpression{id = " + this.id + "}";
     }
+
+    @Override
+    public VariableExpression deepCopy() {
+        return new VariableExpression(this.id);
+    }
 }

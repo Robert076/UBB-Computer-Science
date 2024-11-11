@@ -5,7 +5,7 @@ import model.types.*;
 public interface Value {
     String toString();
 
-    boolean equals(Value another);
+    Boolean equals(Value another);
 
     Type getType();
 }

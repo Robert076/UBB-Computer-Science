@@ -1,5 +1,6 @@
 package view;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -7,79 +8,72 @@ import MyException.InvalidOperation;
 import MyException.MyException;
 import controller.Controller;
 import model.dataStructures.myDictionary.MyDictionary;
+import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myList.MyIList;
 import model.dataStructures.myList.MyList;
+import model.dataStructures.myStack.MyIStack;
 import model.dataStructures.myStack.MyStack;
 import model.expressions.*;
 import model.programState.ProgramState;
 import model.statements.*;
 import model.types.*;
 import model.values.*;
+import repository.IRepository;
+import repository.Repository;
+import view.command.ExitCommand;
+import view.command.RunExample;
 
 public class View {
-    Controller controller;
-
-    public View(Controller _controller) {
-        this.controller = _controller;
-    }
-
-    public void printMenu() {
-        String[] outputs = { "Welcome to the toy interpreter language! Please pick an option", "1. Run program 1",
-                "2. Run program 2\n" };
-        for (String out : outputs)
-            System.out.println(out);
-    }
-
-    public void runApp() {
-        // program 1
-        this.printMenu();
-        IStatement ex1 = new CompoundStatement(new VarDeclStatement("c", new IntType()),
-                new CompoundStatement(new AssignmentStatement("c", new ValueExpression(new IntValue(2))),
-                        new PrintStatement(new VariableExpression("c"))));
-        // program 2
-        IStatement ex2 = new CompoundStatement(new VarDeclStatement("a", new IntType()),
+    private static IStatement createExample1() {
+        // int v; v = 2; Print(v)
+        return new CompoundStatement(
+                new VarDeclStatement("v", new IntType()),
                 new CompoundStatement(
-                        new AssignmentStatement("a",
-                                new ArithmeticExpression(new ValueExpression(new IntValue(2)),
-                                        new ValueExpression(new IntValue(4)), ArithmeticOperator.MULTIPLY)),
-                        new PrintStatement(new VariableExpression("a"))));
+                        new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
+                        new PrintStatement(new VariableExpression("v"))));
+    }
 
-        MyStack<IStatement> exeStack = new MyStack<IStatement>();
-        MyDictionary<String, Value> symTable = new MyDictionary<String, Value>();
-        MyList<Value> out = new MyList<Value>();
+    private static IStatement createExample2() {
+        // int a; int b; a = 5; b = 2; int c; c = a / b; Print(c);
+        return new CompoundStatement(
+                new VarDeclStatement("a", new IntType()),
+                new CompoundStatement(
+                        new VarDeclStatement("b", new IntType()),
+                        new CompoundStatement(
+                                new AssignmentStatement("a", new ValueExpression(new IntValue(5))),
+                                new CompoundStatement(
+                                        new AssignmentStatement("b", new ValueExpression(new IntValue(2))),
+                                        new CompoundStatement(new VarDeclStatement("c", new IntType()),
+                                                new CompoundStatement(
+                                                        new AssignmentStatement("c",
+                                                                new ArithmeticExpression(new VariableExpression("a"),
+                                                                        new VariableExpression("b"),
+                                                                        ArithmeticOperator.DIVIDE)),
+                                                        new PrintStatement(new VariableExpression("c"))))))));
+    }
 
-        Scanner scanner = new Scanner(System.in);
+    private static ProgramState createProgramState(IStatement originalProgram) {
+        MyIStack<IStatement> exeStack = new MyStack<>();
+        MyIDictionary<String, Value> symTable = new MyDictionary<>();
+        MyIList<Value> out = new MyList<>();
+        MyIDictionary<StringValue, BufferedReader> fileTable = new MyDictionary<>();
 
-        System.out.print("Your choice: ");
-        Integer choice = Integer.parseInt(scanner.nextLine());
-        System.out.print("Where do you want to save logs? ('NONE' for skipping this): ");
-        String logFile = scanner.nextLine();
-        scanner.close();
+        return new ProgramState(exeStack, symTable, out, originalProgram, fileTable);
+    }
 
-        IStatement programToRun;
+    private static Controller createController(IStatement _statement, String _logFilePath) {
+        ProgramState prgState = createProgramState(_statement);
+        IRepository repo = new Repository(prgState, _logFilePath);
+        return new Controller(repo);
+    }
 
-        if (choice == 1)
-            programToRun = ex1;
-        else if (choice == 2)
-            programToRun = ex2;
-        else {
-            System.out.println("Invalid input");
-            return;
-        }
+    public static void main(String[] args) {
+        TextMenu menu = new TextMenu();
 
-        this.controller.setDisplayFlag(true);
-        this.controller.setLogFile(logFile);
+        menu.addCommand(new RunExample("1", createExample1(), createController(createExample1(), "log1.txt")));
+        menu.addCommand(new RunExample("2", createExample2(), createController(createExample2(), "log2.txt")));
+        menu.addCommand(new ExitCommand("0", "Exit"));
 
-        ProgramState prgState = new ProgramState(exeStack, symTable, out, programToRun);
-
-        try {
-            this.controller.setCurrentProgram(prgState);
-            this.controller.fullExecution();
-        } catch (MyException e) {
-            System.out.println(e.getMessage());
-        } catch (InvalidOperation e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        menu.show();
     }
 }

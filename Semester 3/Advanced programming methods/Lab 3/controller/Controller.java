@@ -34,6 +34,7 @@ public class Controller {
             if (this.displayFlag == true)
                 System.out.println(prgState);
             this.oneStepExecution(prgState);
+            this.repo.logProgramStateExecution();
         }
         if (this.displayFlag == true)
             System.out.println(prgState);

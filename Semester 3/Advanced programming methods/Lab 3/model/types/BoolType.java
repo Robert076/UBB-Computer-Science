@@ -7,7 +7,7 @@ public class BoolType implements Type {
     }
 
     @Override
-    public boolean equals(Type another) {
+    public Boolean equals(Type another) {
         return another instanceof BoolType;
     }
 

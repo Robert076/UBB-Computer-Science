@@ -18,6 +18,13 @@ public class MyStack<T> implements MyIStack<T> {
     }
 
     @Override
+    public T peek() throws MyException {
+        if (stack.empty())
+            throw new MyException("Empty stack");
+        return stack.peek();
+    }
+
+    @Override
     public String toString() {
         return stack.toString();
     }

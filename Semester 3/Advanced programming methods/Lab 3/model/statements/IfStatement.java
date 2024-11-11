@@ -28,8 +28,8 @@ public class IfStatement implements IStatement {
      */
     @Override
     public String toString() {
-        return " IF{" + this.exp.toString() + "} THEN {" + this.thenS.toString() + "} ELSE {" + this.elseS.toString()
-                + "}} ";
+        return "IF{" + this.exp.toString() + "} THEN {" + this.thenS.toString() + "} ELSE {" + this.elseS.toString()
+                + "}}";
     }
 
     /*
@@ -53,5 +53,10 @@ public class IfStatement implements IStatement {
         else
             state.getExeStack().push(elseS);
         return state;
+    }
+
+    @Override
+    public IStatement deepCopy() {
+        return new IfStatement(this.exp.deepCopy(), this.thenS.deepCopy(), this.elseS.deepCopy());
     }
 }

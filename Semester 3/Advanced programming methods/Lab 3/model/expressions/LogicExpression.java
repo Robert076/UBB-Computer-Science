@@ -103,4 +103,9 @@ public class LogicExpression implements Expression {
         return "LogicExpression{ leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = " + this.rightExp
                 + "}";
     }
+
+    @Override
+    public LogicExpression deepCopy() {
+        return new LogicExpression(this.leftExp, this.rightExp, this.op);
+    }
 }

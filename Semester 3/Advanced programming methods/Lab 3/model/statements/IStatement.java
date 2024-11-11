@@ -8,4 +8,6 @@ public interface IStatement {
     ProgramState execute(ProgramState state) throws MyException, InvalidOperation;
 
     String toString();
+
+    IStatement deepCopy();
 }

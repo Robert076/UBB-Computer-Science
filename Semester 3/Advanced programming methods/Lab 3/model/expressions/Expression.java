@@ -9,4 +9,6 @@ public interface Expression {
     Value eval(MyIDictionary<String, Value> table) throws MyException, InvalidOperation;
 
     String toString();
+
+    Expression deepCopy();
 }

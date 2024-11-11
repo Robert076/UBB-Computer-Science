@@ -54,4 +54,9 @@ public class ValueExpression implements Expression {
     public String toString() {
         return "ValueExp{" + "val = " + this.val + "}";
     }
+
+    @Override
+    public ValueExpression deepCopy() {
+        return new ValueExpression(this.val);
+    }
 }

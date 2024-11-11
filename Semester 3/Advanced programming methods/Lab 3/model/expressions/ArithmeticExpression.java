@@ -117,4 +117,9 @@ public class ArithmeticExpression implements Expression {
         return "ArithmeticExpression{leftExp = " + this.leftExp + " , op = " + this.op + " , rightExp = "
                 + this.rightExp + "}";
     }
+
+    @Override
+    public ArithmeticExpression deepCopy() {
+        return new ArithmeticExpression(this.leftExp, this.rightExp, this.op);
+    }
 }
