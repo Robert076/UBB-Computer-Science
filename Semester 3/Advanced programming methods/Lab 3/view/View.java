@@ -47,6 +47,15 @@ public class View {
                                                         new PrintStatement(new VariableExpression("c"))))))));
     }
 
+    private static IStatement createExample3() {
+        return new CompoundStatement(new VarDeclStatement("file", new StringType()),
+                new CompoundStatement(new AssignmentStatement("file", new ValueExpression(new StringValue("test.in"))),
+                        new CompoundStatement(new OpenRFile(new VariableExpression("file")),
+                                new CompoundStatement(new VarDeclStatement("a", new IntType()),
+                                        new CompoundStatement(new ReadFile(new VariableExpression("file"), "a"),
+                                                new PrintStatement(new VariableExpression("a")))))));
+    }
+
     private static ProgramState createProgramState(IStatement originalProgram) {
         MyIStack<IStatement> exeStack = new MyStack<>();
         MyIDictionary<String, Value> symTable = new MyDictionary<>();
@@ -67,6 +76,7 @@ public class View {
 
         menu.addCommand(new RunExample("1", createExample1(), createController(createExample1(), "log1.txt")));
         menu.addCommand(new RunExample("2", createExample2(), createController(createExample2(), "log2.txt")));
+        menu.addCommand(new RunExample("3", createExample3(), createController(createExample3(), "log3.txt")));
         menu.addCommand(new ExitCommand("0", "Exit"));
 
         menu.show();

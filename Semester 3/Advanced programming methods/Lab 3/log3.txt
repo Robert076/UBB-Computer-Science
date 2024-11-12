@@ -1,0 +1,132 @@
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'file', type = String};CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}, VarDeclStatement{name = 'file', type = String}]
+
+ symTable = Empty
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}]
+
+ symTable = file -> , 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}, AssignmentStatement{file = ValueExp{val = test.in}}]
+
+ symTable = file -> , 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}]
+
+ symTable = file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}, openRFile{VariableExpression{id = file}}]
+
+ symTable = file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}]
+
+ symTable = file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}, VarDeclStatement{name = 'a', type = IntType}]
+
+ symTable = file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}]
+
+ symTable = a -> 0, file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = a}}, ReadFile{VariableExpression{id = file}, a}]
+
+ symTable = a -> 0, file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = [PrintStatement{VariableExpression{id = a}}]
+
+ symTable = a -> 15, file -> test.in, 
+
+ out = []
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ exeStack = []
+
+ symTable = a -> 15, file -> test.in, 
+
+ out = [15]
+
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
