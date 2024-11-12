@@ -4,7 +4,6 @@ import model.dataStructures.myStack.*;
 
 import java.io.BufferedReader;
 
-import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myList.*;
 import model.values.*;

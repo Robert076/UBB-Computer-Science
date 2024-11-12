@@ -1,11 +1,6 @@
 package view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Scanner;
-
-import MyException.InvalidOperation;
-import MyException.MyException;
 import controller.Controller;
 import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
