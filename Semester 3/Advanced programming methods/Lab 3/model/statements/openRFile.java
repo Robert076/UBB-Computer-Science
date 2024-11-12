@@ -13,10 +13,10 @@ import model.types.StringType;
 import model.values.StringValue;
 import model.values.Value;
 
-public class openRFile implements IStatement {
+public class OpenRFile implements IStatement {
     Expression exp;
 
-    public openRFile(Expression _exp) {
+    public OpenRFile(Expression _exp) {
         this.exp = _exp;
     }
 
@@ -42,8 +42,8 @@ public class openRFile implements IStatement {
     }
 
     @Override
-    public openRFile deepCopy() {
-        return new openRFile(exp.deepCopy());
+    public OpenRFile deepCopy() {
+        return new OpenRFile(exp.deepCopy());
     }
 
     @Override
