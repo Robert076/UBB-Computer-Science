@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import MyException.InvalidOperation;
 import MyException.MyException;
-import model.dataStructures.myStack.MyIStack;
 import model.expressions.Expression;
 import model.programState.ProgramState;
 import model.types.IntType;
