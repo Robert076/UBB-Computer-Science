@@ -42,7 +42,7 @@ public class RelationalExpression implements Expression {
             if (val1.getVal() >= val2.getVal())
                 return new BoolValue(true);
         } else if (this.op == RelationalOperator.G) {
-            if (val1.getVal() >= val2.getVal())
+            if (val1.getVal() > val2.getVal())
                 return new BoolValue(true);
         }
         return new BoolValue(false);
