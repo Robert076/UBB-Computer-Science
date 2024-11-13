@@ -48,7 +48,7 @@ public class Repository implements IRepository {
         } catch (IOException e) {
             throw new MyException("Error opening log file!");
         }
-        logFile.println(this.programState.toString());
+        logFile.println(this.programState.toStringLog());
         logFile.close();
     }
 

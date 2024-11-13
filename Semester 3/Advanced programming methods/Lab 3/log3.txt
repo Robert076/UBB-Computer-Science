@@ -1,132 +1,223 @@
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{VarDeclStatement{name = 'file', type = String};CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}}]
+Execution Stack:
+ VarDeclStatement{name = 'file', type = String}
+ AssignmentStatement{file = ValueExp{val = test.in}}
+ openRFile{VariableExpression{id = file}}
+ VarDeclStatement{name = 'a', type = IntType}
+ ReadFile{VariableExpression{id = file}, a}
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+Empty
 
- symTable = Empty
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}, VarDeclStatement{name = 'file', type = String}]
+Execution Stack:
+ VarDeclStatement{name = 'file', type = String}
+Symbol Table:
+Empty
 
- symTable = Empty
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{AssignmentStatement{file = ValueExp{val = test.in}};CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}}]
+Execution Stack:
+ AssignmentStatement{file = ValueExp{val = test.in}}
+ openRFile{VariableExpression{id = file}}
+ VarDeclStatement{name = 'a', type = IntType}
+ ReadFile{VariableExpression{id = file}, a}
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+file -> , 
 
- symTable = file -> , 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}, AssignmentStatement{file = ValueExp{val = test.in}}]
+Execution Stack:
+ AssignmentStatement{file = ValueExp{val = test.in}}
+Symbol Table:
+file -> , 
 
- symTable = file -> , 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{openRFile{VariableExpression{id = file}};CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}}]
+Execution Stack:
+ openRFile{VariableExpression{id = file}}
+ VarDeclStatement{name = 'a', type = IntType}
+ ReadFile{VariableExpression{id = file}, a}
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+file -> test.in, 
 
- symTable = file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}, openRFile{VariableExpression{id = file}}]
+Execution Stack:
+ openRFile{VariableExpression{id = file}}
+Symbol Table:
+file -> test.in, 
 
- symTable = file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{VarDeclStatement{name = 'a', type = IntType};CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}}]
+Execution Stack:
+ VarDeclStatement{name = 'a', type = IntType}
+ ReadFile{VariableExpression{id = file}, a}
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+file -> test.in, 
 
- symTable = file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}, VarDeclStatement{name = 'a', type = IntType}]
+Execution Stack:
+ VarDeclStatement{name = 'a', type = IntType}
+Symbol Table:
+file -> test.in, 
 
- symTable = file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{ReadFile{VariableExpression{id = file}, a};PrintStatement{VariableExpression{id = a}}}]
+Execution Stack:
+ ReadFile{VariableExpression{id = file}, a}
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+a -> 0, file -> test.in, 
 
- symTable = a -> 0, file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [PrintStatement{VariableExpression{id = a}}, ReadFile{VariableExpression{id = file}, a}]
+Execution Stack:
+ ReadFile{VariableExpression{id = file}, a}
+Symbol Table:
+a -> 0, file -> test.in, 
 
- symTable = a -> 0, file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [PrintStatement{VariableExpression{id = a}}]
+Execution Stack:
+ PrintStatement{VariableExpression{id = a}}
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+a -> 15, file -> test.in, 
 
- symTable = a -> 15, file -> test.in, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = []
+Execution Stack:
+ PrintStatement{VariableExpression{id = a}}
+Symbol Table:
+a -> 15, file -> test.in, 
 
- symTable = a -> 15, file -> test.in, 
+Output:
+[]
++ - - - - - - - - - - - - - - - - - - - - - - - +
 
- out = [15]
 
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+Execution Stack:
+ model.statements.CloseRFile@7291c18f
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+a -> 15, file -> test.in, 
+
+Output:
+[15]
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+Execution Stack:
+ model.statements.CloseRFile@7291c18f
+Symbol Table:
+a -> 15, file -> test.in, 
+
+Output:
+[15]
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+Execution Stack:
+ PrintStatement{VariableExpression{id = file}}
+Symbol Table:
+a -> 15, file -> test.in, 
+
+Output:
+[15]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
