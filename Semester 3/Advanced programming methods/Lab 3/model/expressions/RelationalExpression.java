@@ -1,23 +1,51 @@
 package model.expressions;
 
-import model.dataStructures.myDictionary.MyDictionary;
+import MyException.InvalidOperation;
+import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
-import model.programState.ProgramState;
+import model.types.IntType;
+import model.values.BoolValue;
 import model.values.IntValue;
 import model.values.Value;
 
 public class RelationalExpression implements Expression {
-    IntValue first, second;
+    Expression first, second;
     RelationalOperator op;
 
-    public RelationalExpression(IntValue _first, IntValue _second, RelationalOperator _op) {
+    public RelationalExpression(Expression _first, Expression _second, RelationalOperator _op) {
         this.first = _first;
         this.second = _second;
         this.op = _op;
     }
 
-    public Value eval(MyIDictionary<String, Value> symTable) {
-        return new IntValue();
+    public Value eval(MyIDictionary<String, Value> symTable) throws MyException, InvalidOperation {
+        if (!this.first.eval(symTable).getType().equals(new IntType())) {
+            throw new MyException("First expression: " + this.first + " does not evaluate to an integer");
+        }
+        if (!this.second.eval(symTable).getType().equals(new IntType())) {
+            throw new MyException("Second expression: " + this.second + " does not evaluate to an integer");
+        }
+
+        IntValue val1 = (IntValue) this.first.eval(symTable);
+        IntValue val2 = (IntValue) this.second.eval(symTable);
+
+        if (this.op == RelationalOperator.L) {
+            if (val1.getVal() < val2.getVal())
+                return new BoolValue(true);
+        } else if (this.op == RelationalOperator.LE) {
+            if (val1.getVal() <= val2.getVal())
+                return new BoolValue(true);
+        } else if (this.op == RelationalOperator.E) {
+            if (val1.getVal() == val2.getVal())
+                return new BoolValue(true);
+        } else if (this.op == RelationalOperator.GE) {
+            if (val1.getVal() >= val2.getVal())
+                return new BoolValue(true);
+        } else if (this.op == RelationalOperator.G) {
+            if (val1.getVal() >= val2.getVal())
+                return new BoolValue(true);
+        }
+        return new BoolValue(false);
     }
 
     public RelationalExpression deepCopy() {
