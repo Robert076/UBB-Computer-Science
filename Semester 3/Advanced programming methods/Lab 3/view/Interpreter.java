@@ -20,7 +20,7 @@ import repository.Repository;
 import view.command.ExitCommand;
 import view.command.RunExample;
 
-public class View {
+public class Interpreter {
         private static IStatement createExample1() {
                 // int v; v = 2; Print(v)
                 return new CompoundStatement(
@@ -56,9 +56,13 @@ public class View {
                                                                                                                                                 new VariableExpression(
                                                                                                                                                                 "b"),
                                                                                                                                                 ArithmeticOperator.DIVIDE)),
-                                                                                                                new PrintStatement(
-                                                                                                                                new VariableExpression(
-                                                                                                                                                "c"))))))));
+                                                                                                                new CompoundStatement(
+                                                                                                                                new PrintStatement(
+                                                                                                                                                new VariableExpression(
+                                                                                                                                                                "c")),
+                                                                                                                                new PrintStatement(
+                                                                                                                                                new VariableExpression(
+                                                                                                                                                                "b")))))))));
         }
 
         private static IStatement createExample3() {

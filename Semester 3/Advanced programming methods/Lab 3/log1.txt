@@ -1,66 +1,80 @@
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{VarDeclStatement{name = 'v', type = IntType};CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}}]
+Execution Stack:
+ VarDeclStatement{name = 'v', type = IntType}
+ AssignmentStatement{v = ValueExp{val = 2}}
+ PrintStatement{VariableExpression{id = v}}
+Symbol Table:
+Empty
 
- symTable = Empty
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}, VarDeclStatement{name = 'v', type = IntType}]
+Execution Stack:
+ VarDeclStatement{name = 'v', type = IntType}
+Symbol Table:
+Empty
 
- symTable = Empty
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [CompoundStatement{AssignmentStatement{v = ValueExp{val = 2}};PrintStatement{VariableExpression{id = v}}}]
+Execution Stack:
+ AssignmentStatement{v = ValueExp{val = 2}}
+ PrintStatement{VariableExpression{id = v}}
+Symbol Table:
+v -> 0, 
 
- symTable = v -> 0, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [PrintStatement{VariableExpression{id = v}}, AssignmentStatement{v = ValueExp{val = 2}}]
+Execution Stack:
+ AssignmentStatement{v = ValueExp{val = 2}}
+Symbol Table:
+v -> 0, 
 
- symTable = v -> 0, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = [PrintStatement{VariableExpression{id = v}}]
+Execution Stack:
+ PrintStatement{VariableExpression{id = v}}
+Symbol Table:
+v -> 2, 
 
- symTable = v -> 2, 
-
- out = []
-
+Output:
+[]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
+
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
- exeStack = []
+Execution Stack:
+Symbol Table:
+v -> 2, 
 
- symTable = v -> 2, 
-
- out = [2]
-
+Output:
+[2]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 

@@ -8,7 +8,7 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 Empty
@@ -40,7 +40,7 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> , 
@@ -71,7 +71,7 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -101,7 +101,7 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -130,7 +130,7 @@ Output:
 Execution Stack:
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 0, file -> test.in, 
@@ -158,7 +158,7 @@ Output:
 
 Execution Stack:
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -185,7 +185,7 @@ Output:
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
 Execution Stack:
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -199,7 +199,7 @@ Output:
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
 Execution Stack:
- model.statements.CloseRFile@7291c18f
+ model.statements.CloseRFile@34a245ab
 Symbol Table:
 a -> 15, file -> test.in, 
 
@@ -218,6 +218,18 @@ a -> 15, file -> test.in,
 
 Output:
 [15]
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+Execution Stack:
+Symbol Table:
+a -> 15, file -> test.in, 
+
+Output:
+[15, test.in]
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
