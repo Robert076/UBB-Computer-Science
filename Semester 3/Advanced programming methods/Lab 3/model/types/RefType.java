@@ -14,7 +14,7 @@ public class RefType implements Type {
         return this.inner;
     }
 
-    public boolean equals(Object another) {
+    public Boolean equals(Type another) {
         if (another instanceof RefType) {
             RefType _another = (RefType) another;
             return this.inner.equals(_another.getInner());
