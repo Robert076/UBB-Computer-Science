@@ -8,13 +8,16 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 Empty
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -28,6 +31,9 @@ Empty
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -40,13 +46,16 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> , 
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -60,6 +69,9 @@ file -> ,
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -71,13 +83,16 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -91,6 +106,9 @@ file -> test.in,
 
 Output:
 []
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -101,13 +119,16 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -121,6 +142,9 @@ file -> test.in,
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -130,13 +154,16 @@ Output:
 Execution Stack:
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 0, file -> test.in, 
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -150,6 +177,9 @@ a -> 0, file -> test.in,
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -158,13 +188,16 @@ Output:
 
 Execution Stack:
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -178,6 +211,9 @@ a -> 15, file -> test.in,
 
 Output:
 []
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -185,13 +221,16 @@ Output:
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
 Execution Stack:
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
 
 Output:
 [15]
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -199,12 +238,15 @@ Output:
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
 Execution Stack:
- model.statements.CloseRFile@34a245ab
+ model.statements.CloseRFile@7291c18f
 Symbol Table:
 a -> 15, file -> test.in, 
 
 Output:
 [15]
+FileTable:
+test.in -> java.io.BufferedReader@34c45dca, 
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -218,6 +260,9 @@ a -> 15, file -> test.in,
 
 Output:
 [15]
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -230,6 +275,9 @@ a -> 15, file -> test.in,
 
 Output:
 [15, test.in]
+FileTable:
+Empty
+
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 

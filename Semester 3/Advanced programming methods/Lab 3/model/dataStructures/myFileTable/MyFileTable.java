@@ -40,6 +40,15 @@ public class MyFileTable<K, V> implements MyIFileTable<K, V> {
     }
 
     @Override
+    public void delete(K key) throws MyException {
+        if (this.isDefined(key)) {
+            this.fileTable.remove(key);
+        } else {
+            throw new MyException("Cannot delete an element that is not in the table");
+        }
+    }
+
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (K key : this.fileTable.keySet()) {

@@ -43,24 +43,22 @@ public class ProgramState {
 
         logBuilder.append("\n+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n");
 
-        // Display Execution Stack
         logBuilder.append("Execution Stack:\n");
         if (!exeStack.isEmpty()) {
             IStatement statement = exeStack.peek();
 
-            // Unroll compound statements and add each to logBuilder
             while (statement instanceof CompoundStatement) {
                 CompoundStatement compound = (CompoundStatement) statement;
                 logBuilder.append(" ").append(compound.getFirst().toString()).append("\n");
                 statement = compound.getSecond();
             }
-            // Log the last non-compound statement
             logBuilder.append(" ").append(statement.toString()).append("\n");
         }
 
         // Log symbol table and output
         logBuilder.append("Symbol Table:\n").append(this.symbolTable).append("\n");
         logBuilder.append("Output:\n").append(this.out).append("\n");
+        logBuilder.append("FileTable:\n").append(this.fileTable).append("\n");
 
         logBuilder.append("+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n");
         return logBuilder.toString();

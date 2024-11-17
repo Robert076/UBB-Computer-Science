@@ -45,7 +45,7 @@ public class CloseRFile implements IStatement {
             throw new MyException("Error closing file: " + e.getMessage());
         }
 
-        state.getFileTable().put(stringValue, null);
+        state.getFileTable().delete(stringValue);
 
         return state;
     }
