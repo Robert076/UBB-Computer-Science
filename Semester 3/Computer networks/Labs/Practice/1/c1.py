@@ -5,7 +5,7 @@ import socket, struct, random, sys, time
 if __name__ == "__main__":
     try:
         s = socket.create_connection(('localhost', 1234))
-    except socket_error as msg:
+    except socket.error as msg:
         print("Error", msg.strerror)
         exit(-1)
 

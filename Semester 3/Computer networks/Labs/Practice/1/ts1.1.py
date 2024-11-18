@@ -55,7 +55,7 @@ if __name__ == "__main__":
         rs = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         rs.bind(('0.0.0.0', 1234))
         rs.listen(5)
-    except socket_error as se:
+    except socket.error as se:
         print(se.strerror)
         exit(-1)
     t = threading.Thread(target=resetSrv, daemon=True)

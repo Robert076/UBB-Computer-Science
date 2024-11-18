@@ -3,7 +3,7 @@ import socket, struct, time, random
 if __name__ == "__main__":
     try:
         s = socket.create_connection(('localhost', 1234))
-    except socket_error as se:
+    except socket.error as se:
         print(se.strerror)
         exit(-1)
 
