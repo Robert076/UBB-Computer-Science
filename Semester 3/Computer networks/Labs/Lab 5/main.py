@@ -51,30 +51,19 @@ def responseQuery():
             b = s.sendto(my_date, addr)
             if b != len(my_date):
                 print("failed to send response")
-        else:
-            if regexMatch(msg = msg, pattern = "TIME [0-9]{2}:[0-9]{2}:[0-9]{2}") is None:
-                malformed.append(msg)
-            # inca unu asa pt data
-            # si dupa inca un thread pt afisare
-                
-                
-        
-def regexMatch(msg, pattern):
-    pattern = re.compile(pattern)
-    return pattern.fullmatch(msg)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Specify the broadcast address")
         exit(1)
     broadcastAddress = sys.argv[1]
-    sndTimeThrd = threading.Thread(target=sendTimeQuery)
-    sndDateThrd = threading.Thread(target=sendDateQuery)
+    sendTimeThrd = threading.Thread(target=sendTimeQuery)
+    sendDateThrd = threading.Thread(target=sendDateQuery)
 
-    sndTimeThrd.start()
-    sndDateThrd.start()
+    sendTimeThrd.start()
+    sendDateThrd.start()
 
     responseQuery()
 
-    sndTimeThrd.join()
-    sndDateThrd.join()
+    sendTimeThrd.join()
+    sendDateThrd.join()
