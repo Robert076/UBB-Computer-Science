@@ -20,3 +20,11 @@ insert([H|T], [H,E|R], CurPos, E):-
 insert([H|T], [H|R], CurPos, E):-
     CurPos1 is CurPos + 1,
     insert(T, R, CurPos1, E).
+
+insertInSublists([], []).
+insertInSublists([H1,H2|T], [H1,Res|R]):-
+    is_list(H2),
+    insert(H2, H1, Res),
+    insertInSublists(T, R).
+insertInSublists([H|T], [H|R]):-
+    insertInSublists(T, R).
