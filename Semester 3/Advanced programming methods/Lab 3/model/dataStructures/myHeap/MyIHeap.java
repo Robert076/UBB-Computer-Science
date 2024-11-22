@@ -24,7 +24,7 @@ public interface MyIHeap<K, V> {
 
     void setHeap(Map<K, V> newHeap);
 
-    Map<Integer, Value> safeGarbageCollector(Set<Integer> unionSetOfUsedAddr, Map<Integer, Value> heap);
+    Map<Integer, Value> safeGarbageCollector(Set<Integer> usedAddresses, Map<Integer, Value> heap);
 
     Integer allocate();
 }
