@@ -93,7 +93,7 @@ public class Interpreter {
         }
 
         private static IStatement createExample4() {
-                // Ref int v; new(v,20); Ref Ref int a; new(a,v); print(v); print(a)
+                // Ref int v; writeHeap(v,20); Ref Ref int a; writeHeap(a,v); print(v); print(a)
                 return new CompoundStatement(
                                 new VarDeclStatement("v", new RefType(new IntType())),
                                 new CompoundStatement(
@@ -113,6 +113,26 @@ public class Interpreter {
                                                                                                 new PrintStatement(
                                                                                                                 new VariableExpression(
                                                                                                                                 "a")))))));
+        }
+
+        private static IStatement createExample5() {
+                return new CompoundStatement(new VarDeclStatement("v", new IntType()), new CompoundStatement(
+                                new AssignmentStatement("v", new ValueExpression(new IntValue(5))),
+                                new CompoundStatement(
+                                                new WhileStatement(new RelationalExpression(
+                                                                new VariableExpression("v"),
+                                                                new ValueExpression(new IntValue(0)),
+                                                                RelationalOperator.GE),
+                                                                new CompoundStatement(new PrintStatement(
+                                                                                new VariableExpression("v")),
+                                                                                new AssignmentStatement("v",
+                                                                                                new ArithmeticExpression(
+                                                                                                                new VariableExpression(
+                                                                                                                                "v"),
+                                                                                                                new ValueExpression(
+                                                                                                                                new IntValue(1)),
+                                                                                                                ArithmeticOperator.MINUS)))),
+                                                new PrintStatement(new VariableExpression("v")))));
         }
 
         private static ProgramState createProgramState(IStatement originalProgram) {
@@ -137,7 +157,7 @@ public class Interpreter {
                 menu.addCommand(new RunExample("2", createExample2(), createController(createExample2(), "log2.txt")));
                 menu.addCommand(new RunExample("3", createExample3(), createController(createExample3(), "log3.txt")));
                 menu.addCommand(new RunExample("4", createExample4(), createController(createExample4(), "log4.txt")));
-
+                menu.addCommand(new RunExample("5", createExample5(), createController(createExample5(), "log5.txt")));
                 menu.addCommand(new ExitCommand("0", "Exit"));
 
                 menu.show();

@@ -63,6 +63,7 @@ public class ProgramState {
         logBuilder.append("Symbol Table:\n").append(this.symbolTable).append("\n");
         logBuilder.append("Output:\n").append(this.out).append("\n");
         logBuilder.append("FileTable:\n").append(this.fileTable).append("\n");
+        logBuilder.append("Heap:\n").append(this.heap).append("\n");
 
         logBuilder.append("+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n");
         return logBuilder.toString();
