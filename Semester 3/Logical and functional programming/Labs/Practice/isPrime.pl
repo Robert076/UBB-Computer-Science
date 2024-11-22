@@ -14,3 +14,4 @@ divisorsCount(X, CurDiv, R):-
     CurDiv =< X,
     X mod CurDiv =\= 0,
     divisorsCount(X, CurDiv + 1, R).
+    
