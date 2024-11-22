@@ -4,6 +4,7 @@ import model.expressions.*;
 import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myDictionary.*;
+import model.dataStructures.myHeap.MyIHeap;
 import model.values.*;
 import model.types.*;
 import model.programState.*;
@@ -41,9 +42,9 @@ public class AssignmentStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
-
+        MyIHeap<Integer, Value> heap = state.getHeap();
         if (symTable.isDefined(id)) {
-            Value val = exp.eval(symTable);
+            Value val = exp.eval(symTable, heap);
             Type typeId = (symTable.lookup(id)).getType();
             if (val.getType().equals(typeId))
                 symTable.update(id, val);

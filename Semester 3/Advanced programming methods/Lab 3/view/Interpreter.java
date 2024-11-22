@@ -6,6 +6,8 @@ import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyFileTable;
 import model.dataStructures.myFileTable.MyIFileTable;
+import model.dataStructures.myHeap.MyHeap;
+import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
 import model.dataStructures.myList.MyList;
 import model.dataStructures.myStack.MyIStack;
@@ -95,8 +97,8 @@ public class Interpreter {
                 MyIDictionary<String, Value> symTable = new MyDictionary<>();
                 MyIList<Value> out = new MyList<>();
                 MyIFileTable<StringValue, BufferedReader> fileTable = new MyFileTable<>();
-
-                return new ProgramState(exeStack, symTable, out, originalProgram, fileTable);
+                MyIHeap<Integer, Value> heap = new MyHeap<>();
+                return new ProgramState(exeStack, symTable, out, originalProgram, fileTable, heap);
         }
 
         private static Controller createController(IStatement _statement, String _logFilePath) {

@@ -1,6 +1,7 @@
 package model.expressions;
 
 import model.dataStructures.myDictionary.*;
+import model.dataStructures.myHeap.MyIHeap;
 import model.values.*;
 import model.types.*;
 import MyException.InvalidOperation;
@@ -76,12 +77,13 @@ public class ArithmeticExpression implements Expression {
      * the enum.
      */
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException, InvalidOperation {
+    public Value eval(MyIDictionary<String, Value> table, MyIHeap<Integer, Value> heap)
+            throws MyException, InvalidOperation {
         Value v1, v2;
-        v1 = this.leftExp.eval(table);
+        v1 = this.leftExp.eval(table, heap);
 
         if (v1.getType().equals(new IntType())) {
-            v2 = this.rightExp.eval(table);
+            v2 = this.rightExp.eval(table, heap);
             if (v2.getType().equals(new IntType())) {
                 IntValue i1 = (IntValue) v1;
                 IntValue i2 = (IntValue) v2;

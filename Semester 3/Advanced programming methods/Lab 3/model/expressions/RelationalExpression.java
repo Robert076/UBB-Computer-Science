@@ -3,6 +3,7 @@ package model.expressions;
 import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myHeap.MyIHeap;
 import model.types.IntType;
 import model.values.BoolValue;
 import model.values.IntValue;
@@ -18,16 +19,17 @@ public class RelationalExpression implements Expression {
         this.op = _op;
     }
 
-    public Value eval(MyIDictionary<String, Value> symTable) throws MyException, InvalidOperation {
-        if (!this.first.eval(symTable).getType().equals(new IntType())) {
+    public Value eval(MyIDictionary<String, Value> symTable, MyIHeap<Integer, Value> heap)
+            throws MyException, InvalidOperation {
+        if (!this.first.eval(symTable, heap).getType().equals(new IntType())) {
             throw new MyException("First expression: " + this.first + " does not evaluate to an integer");
         }
-        if (!this.second.eval(symTable).getType().equals(new IntType())) {
+        if (!this.second.eval(symTable, heap).getType().equals(new IntType())) {
             throw new MyException("Second expression: " + this.second + " does not evaluate to an integer");
         }
 
-        IntValue val1 = (IntValue) this.first.eval(symTable);
-        IntValue val2 = (IntValue) this.second.eval(symTable);
+        IntValue val1 = (IntValue) this.first.eval(symTable, heap);
+        IntValue val2 = (IntValue) this.second.eval(symTable, heap);
 
         if (this.op == RelationalOperator.L) {
             if (val1.getVal() < val2.getVal())

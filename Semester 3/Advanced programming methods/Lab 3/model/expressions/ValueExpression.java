@@ -2,6 +2,7 @@ package model.expressions;
 
 import model.values.*;
 import model.dataStructures.myDictionary.*;
+import model.dataStructures.myHeap.MyIHeap;
 import MyException.MyException;
 
 public class ValueExpression implements Expression {
@@ -43,7 +44,7 @@ public class ValueExpression implements Expression {
      * Remember this is a wrapper so we can assign various types of values
      */
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table, MyIHeap<Integer, Value> heap) throws MyException {
         return this.val;
     }
 

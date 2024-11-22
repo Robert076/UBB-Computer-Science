@@ -7,6 +7,7 @@ import java.io.IOException;
 import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
 import model.programState.ProgramState;
 import model.types.StringType;
@@ -23,7 +24,8 @@ public class OpenRFile implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
-        Value val = exp.eval(symTable);
+        MyIHeap<Integer, Value> heap = state.getHeap();
+        Value val = exp.eval(symTable, heap);
 
         if (!val.getType().equals(new StringType())) {
             throw new MyException("OpenRFile must be given a string!");

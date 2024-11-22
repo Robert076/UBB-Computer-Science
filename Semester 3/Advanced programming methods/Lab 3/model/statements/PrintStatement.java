@@ -1,6 +1,7 @@
 package model.statements;
 
 import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
 import model.expressions.*;
 import model.programState.*;
@@ -49,8 +50,8 @@ public class PrintStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIList<Value> out = state.getOut();
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
-
-        out.add(exp.eval(symTable));
+        MyIHeap<Integer, Value> heap = state.getHeap();
+        out.add(exp.eval(symTable, heap));
         return state;
     }
 

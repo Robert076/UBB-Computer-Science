@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myFileTable.MyIFileTable;
+import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.*;
 import model.values.*;
 import model.statements.*;
@@ -16,16 +17,19 @@ public class ProgramState {
     MyIDictionary<String, Value> symbolTable;
     MyIList<Value> out;
     MyIFileTable<StringValue, BufferedReader> fileTable;
+    MyIHeap<Integer, Value> heap;
 
     IStatement originalProgram; // optional but good
 
     public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
-            IStatement _originalProgram, MyIFileTable<StringValue, BufferedReader> _fileTable) {
+            IStatement _originalProgram, MyIFileTable<StringValue, BufferedReader> _fileTable,
+            MyIHeap<Integer, Value> _heap) {
         this.exeStack = _exeStack;
         this.symbolTable = _symbolTable;
         this.out = _out;
         this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
         this.fileTable = _fileTable;
+        this.heap = _heap;
         this.exeStack.push(_originalProgram);
     }
 
@@ -78,6 +82,10 @@ public class ProgramState {
 
     public MyIFileTable<StringValue, BufferedReader> getFileTable() {
         return this.fileTable;
+    }
+
+    public MyIHeap<Integer, Value> getHeap() {
+        return this.heap;
     }
 
     public void setExeStack(MyIStack<IStatement> _exeStack) {

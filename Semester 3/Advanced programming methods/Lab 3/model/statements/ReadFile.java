@@ -34,7 +34,7 @@ public class ReadFile implements IStatement {
         }
         Value fileNameVal;
         try {
-            fileNameVal = this.exp.eval(state.getSymbolTable());
+            fileNameVal = this.exp.eval(state.getSymbolTable(), state.getHeap());
         } catch (InvalidOperation e) {
             throw new MyException(e.getMessage());
         }

@@ -1,6 +1,7 @@
 package model.statements;
 
 import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
 import model.programState.*;
 import model.types.BoolType;
@@ -41,7 +42,8 @@ public class IfStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIDictionary<String, Value> dict = state.getSymbolTable();
-        Value val = exp.eval(dict);
+        MyIHeap<Integer, Value> heap = state.getHeap();
+        Value val = exp.eval(dict, heap);
 
         if (!val.getType().equals(new BoolType())) {
             throw new MyException("Type mismatch");

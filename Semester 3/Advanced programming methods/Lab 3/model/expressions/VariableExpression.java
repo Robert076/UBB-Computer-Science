@@ -2,6 +2,7 @@ package model.expressions;
 
 import model.values.*;
 import model.dataStructures.myDictionary.*;
+import model.dataStructures.myHeap.MyIHeap;
 import MyException.MyException;
 
 public class VariableExpression implements Expression {
@@ -37,7 +38,7 @@ public class VariableExpression implements Expression {
      * Simply returning the value of what is stored with our id in the symbol table
      */
     @Override
-    public Value eval(MyIDictionary<String, Value> symTable) throws MyException {
+    public Value eval(MyIDictionary<String, Value> symTable, MyIHeap<Integer, Value> heap) throws MyException {
         return symTable.lookup(id);
     }
 
