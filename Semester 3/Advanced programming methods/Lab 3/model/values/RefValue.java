@@ -29,6 +29,11 @@ public class RefValue implements Value {
     }
 
     @Override
+    public String toString() {
+        return "RefValue(" + this.address + ", " + this.locationType + ")";
+    }
+
+    @Override
     public RefValue deepCopy() {
         return new RefValue(this.address, this.locationType);
     }
