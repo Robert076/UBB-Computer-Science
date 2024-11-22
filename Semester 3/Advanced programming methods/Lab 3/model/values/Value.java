@@ -8,4 +8,6 @@ public interface Value {
     Boolean equals(Value another);
 
     Type getType();
+
+    Value deepCopy();
 }

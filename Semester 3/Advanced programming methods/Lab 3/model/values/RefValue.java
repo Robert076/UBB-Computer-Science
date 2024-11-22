@@ -21,6 +21,15 @@ public class RefValue implements Value {
     }
 
     public Boolean equals(Value another) {
-        return true;
+        if (another instanceof RefValue) {
+            return this.address == ((RefValue) another).getAddr()
+                    && this.locationType.equals(((RefValue) another).getType());
+        }
+        return false;
+    }
+
+    @Override
+    public RefValue deepCopy() {
+        return new RefValue(this.address, this.locationType);
     }
 }

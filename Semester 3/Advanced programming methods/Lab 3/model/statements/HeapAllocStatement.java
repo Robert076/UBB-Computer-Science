@@ -17,7 +17,7 @@ public class HeapAllocStatement implements IStatement {
         return state;
     }
 
-    public HeapAllocStatement deepCopy() {
+    public IStatement deepCopy() {
         return new HeapAllocStatement(this.varName, this.exp.deepCopy());
     }
 }

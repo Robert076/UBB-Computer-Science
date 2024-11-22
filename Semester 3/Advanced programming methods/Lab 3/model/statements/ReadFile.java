@@ -77,7 +77,7 @@ public class ReadFile implements IStatement {
     }
 
     @Override
-    public ReadFile deepCopy() {
+    public IStatement deepCopy() {
         return new ReadFile(exp.deepCopy(), varName);
     }
 }

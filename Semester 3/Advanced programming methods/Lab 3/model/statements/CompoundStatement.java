@@ -47,7 +47,7 @@ public class CompoundStatement implements IStatement {
     }
 
     @Override
-    public CompoundStatement deepCopy() {
+    public IStatement deepCopy() {
         return new CompoundStatement(this.first, this.second);
     }
 }

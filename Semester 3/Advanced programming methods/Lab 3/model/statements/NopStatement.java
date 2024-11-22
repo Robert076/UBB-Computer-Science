@@ -31,7 +31,7 @@ public class NopStatement implements IStatement {
     }
 
     @Override
-    public NopStatement deepCopy() {
+    public IStatement deepCopy() {
         return new NopStatement();
     }
 }

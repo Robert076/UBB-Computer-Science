@@ -73,7 +73,7 @@ public class VarDeclStatement implements IStatement {
     }
 
     @Override
-    public VarDeclStatement deepCopy() {
+    public IStatement deepCopy() {
         return new VarDeclStatement(this.name, this.type);
     }
 }

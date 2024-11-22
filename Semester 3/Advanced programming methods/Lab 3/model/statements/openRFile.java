@@ -42,7 +42,7 @@ public class OpenRFile implements IStatement {
     }
 
     @Override
-    public OpenRFile deepCopy() {
+    public IStatement deepCopy() {
         return new OpenRFile(exp.deepCopy());
     }
 

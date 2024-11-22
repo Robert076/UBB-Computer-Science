@@ -51,7 +51,7 @@ public class CloseRFile implements IStatement {
     }
 
     @Override
-    public CloseRFile deepCopy() {
+    public IStatement deepCopy() {
         return new CloseRFile(this.exp.deepCopy());
     }
 }
