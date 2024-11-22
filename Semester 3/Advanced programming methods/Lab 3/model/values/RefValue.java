@@ -20,6 +20,10 @@ public class RefValue implements Value {
         return new RefType(this.locationType);
     }
 
+    public Type getLocationType() {
+        return this.locationType;
+    }
+
     public Boolean equals(Value another) {
         if (another instanceof RefValue) {
             return this.address == ((RefValue) another).getAddr()

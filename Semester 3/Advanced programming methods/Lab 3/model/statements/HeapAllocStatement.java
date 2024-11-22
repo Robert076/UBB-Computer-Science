@@ -38,7 +38,7 @@ public class HeapAllocStatement implements IStatement {
         } catch (InvalidOperation e) {
             throw new MyException(e.getMessage());
         }
-        if (!refValue.getType().equals(val.getType())) {
+        if (!refValue.getLocationType().equals(val.getType())) {
             throw new MyException("The type of the expression does not match the type of the inner");
         }
 

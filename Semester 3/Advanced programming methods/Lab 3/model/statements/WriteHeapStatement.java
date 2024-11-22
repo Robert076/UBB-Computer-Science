@@ -6,7 +6,6 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.Expression;
 import model.programState.ProgramState;
-import model.types.RefType;
 import model.values.RefValue;
 import model.values.Value;
 

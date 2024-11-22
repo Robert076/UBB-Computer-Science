@@ -92,6 +92,29 @@ public class Interpreter {
                                                                                                                                                                 "file")))))))));
         }
 
+        private static IStatement createExample4() {
+                // Ref int v; new(v,20); Ref Ref int a; new(a,v); print(v); print(a)
+                return new CompoundStatement(
+                                new VarDeclStatement("v", new RefType(new IntType())),
+                                new CompoundStatement(
+                                                new HeapAllocStatement("v", new ValueExpression(new IntValue(20))),
+                                                new CompoundStatement(
+                                                                new VarDeclStatement("a",
+                                                                                new RefType(new RefType(
+                                                                                                new IntType()))),
+                                                                new CompoundStatement(
+                                                                                new HeapAllocStatement("a",
+                                                                                                new VariableExpression(
+                                                                                                                "v")),
+                                                                                new CompoundStatement(
+                                                                                                new PrintStatement(
+                                                                                                                new VariableExpression(
+                                                                                                                                "v")),
+                                                                                                new PrintStatement(
+                                                                                                                new VariableExpression(
+                                                                                                                                "a")))))));
+        }
+
         private static ProgramState createProgramState(IStatement originalProgram) {
                 MyIStack<IStatement> exeStack = new MyStack<>();
                 MyIDictionary<String, Value> symTable = new MyDictionary<>();
@@ -113,6 +136,8 @@ public class Interpreter {
                 menu.addCommand(new RunExample("1", createExample1(), createController(createExample1(), "log1.txt")));
                 menu.addCommand(new RunExample("2", createExample2(), createController(createExample2(), "log2.txt")));
                 menu.addCommand(new RunExample("3", createExample3(), createController(createExample3(), "log3.txt")));
+                menu.addCommand(new RunExample("4", createExample4(), createController(createExample4(), "log4.txt")));
+
                 menu.addCommand(new ExitCommand("0", "Exit"));
 
                 menu.show();
