@@ -1,5 +1,7 @@
 package model.dataStructures.myDictionary;
 
+import java.util.List;
+
 import MyException.MyException;
 
 public interface MyIDictionary<K, V> {
@@ -10,4 +12,6 @@ public interface MyIDictionary<K, V> {
     void put(K key, V value);
 
     void update(K key, V val) throws MyException;
+
+    List<V> getValues();
 }

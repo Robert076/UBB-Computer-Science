@@ -2,6 +2,9 @@ package model.dataStructures.myDictionary;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 import MyException.MyException;
 
 public class MyDictionary<K, V> implements MyIDictionary<K, V> {
@@ -37,6 +40,11 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
         } else {
             throw new MyException("Key provided for update doesn't exist");
         }
+    }
+
+    @Override
+    public List<V> getValues() {
+        return new LinkedList<V>(this.dictionary.values());
     }
 
     @Override

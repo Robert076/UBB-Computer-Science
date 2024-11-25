@@ -4,9 +4,11 @@ import java.io.IOException;
 
 import MyException.InvalidOperation;
 import MyException.MyException;
+import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myStack.MyIStack;
 import model.programState.ProgramState;
 import model.statements.IStatement;
+import model.values.Value;
 import repository.*;
 
 public class Controller {
@@ -38,6 +40,8 @@ public class Controller {
         }
         if (this.displayFlag == true)
             System.out.println(prgState);
+        MyIHeap<Integer, Value> heap = prgState.getHeap();
+        heap.setHeap(heap.safeGarbageCollector(prgState.getUsedAddresses(), heap.getHeap()));
 
     }
 

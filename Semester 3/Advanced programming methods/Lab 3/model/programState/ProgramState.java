@@ -3,6 +3,8 @@ package model.programState;
 import model.dataStructures.myStack.*;
 
 import java.io.BufferedReader;
+import java.util.HashSet;
+import java.util.Set;
 
 import MyException.MyException;
 import model.dataStructures.myDictionary.*;
@@ -103,6 +105,16 @@ public class ProgramState {
 
     public IStatement deepCopy(IStatement stmt) {
         return stmt; // todo
+    }
+
+    public Set<Integer> getUsedAddresses() {
+        Set<Integer> usedAddresses = new HashSet<>();
+        for (Value val : this.symbolTable.getValues()) {
+            if (val instanceof RefValue) {
+                usedAddresses.add(((RefValue) val).getAddr());
+            }
+        }
+        return usedAddresses;
     }
 
     public void init() {
