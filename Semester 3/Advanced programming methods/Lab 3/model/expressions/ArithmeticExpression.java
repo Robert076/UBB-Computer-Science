@@ -80,35 +80,37 @@ public class ArithmeticExpression implements Expression {
     public Value eval(MyIDictionary<String, Value> table, MyIHeap<Integer, Value> heap)
             throws MyException, InvalidOperation {
         Value v1, v2;
+
         v1 = this.leftExp.eval(table, heap);
-
-        if (v1.getType().equals(new IntType())) {
-            v2 = this.rightExp.eval(table, heap);
-            if (v2.getType().equals(new IntType())) {
-                IntValue i1 = (IntValue) v1;
-                IntValue i2 = (IntValue) v2;
-
-                int n1, n2;
-                n1 = i1.getVal();
-                n2 = i2.getVal();
-
-                if (op == ArithmeticOperator.PLUS)
-                    return new IntValue(n1 + n2);
-                else if (op == ArithmeticOperator.MINUS)
-                    return new IntValue(n1 - n2);
-                else if (op == ArithmeticOperator.MULTIPLY)
-                    return new IntValue(n1 * n2);
-                else if (op == ArithmeticOperator.DIVIDE)
-                    if (n2 == 0)
-                        throw new InvalidOperation("Divison by zero");
-                    else
-                        return new IntValue(n1 / n2);
-                else
-                    throw new MyException("Invalid operand. Operand must be between 1-4 inclusive.");
-            } else
-                throw new MyException("Second operand is not an integer");
-        } else
+        if (!v1.getType().equals(new IntType())) {
             throw new MyException("First operand is not an integer");
+        }
+
+        v2 = this.rightExp.eval(table, heap);
+        if (!v2.getType().equals(new IntType())) {
+            throw new MyException("Second operand is not an integer");
+        }
+
+        IntValue i1 = (IntValue) v1;
+        IntValue i2 = (IntValue) v2;
+
+        int n1, n2;
+        n1 = i1.getVal();
+        n2 = i2.getVal();
+
+        if (op == ArithmeticOperator.PLUS)
+            return new IntValue(n1 + n2);
+        else if (op == ArithmeticOperator.MINUS)
+            return new IntValue(n1 - n2);
+        else if (op == ArithmeticOperator.MULTIPLY)
+            return new IntValue(n1 * n2);
+        else if (op == ArithmeticOperator.DIVIDE)
+            if (n2 == 0)
+                throw new InvalidOperation("Divison by zero");
+            else
+                return new IntValue(n1 / n2);
+        else
+            throw new MyException("Invalid arithmetic operator.");
     }
 
     /*

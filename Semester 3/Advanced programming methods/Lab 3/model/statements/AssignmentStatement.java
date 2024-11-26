@@ -43,16 +43,20 @@ public class AssignmentStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
         MyIHeap<Integer, Value> heap = state.getHeap();
-        if (symTable.isDefined(id)) {
-            Value val = exp.eval(symTable, heap);
-            Type typeId = (symTable.lookup(id)).getType();
-            if (val.getType().equals(typeId))
-                symTable.update(id, val);
-            else
-                throw new MyException(
-                        "Declared type of variable " + id + " and type of the assigned expression do not match");
-        } else
+
+        if (!symTable.isDefined(id)) {
             throw new MyException("The used variable " + id + " was not declared before");
+        }
+
+        Value val = exp.eval(symTable, heap);
+        Type typeId = (symTable.lookup(id)).getType();
+
+        if (!val.getType().equals(typeId)) {
+            throw new MyException(
+                    "Declared type of variable " + id + " and type of the assigned expression do not match");
+        }
+
+        symTable.update(id, val);
         return state;
     }
 

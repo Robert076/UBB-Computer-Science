@@ -57,10 +57,9 @@ public class VarDeclStatement implements IStatement {
 
         if (dict.isDefined(this.name)) {
             throw new MyException("Variable is already defined!");
-        } else {
-            dict.put(this.name, this.type.defaultValue());
         }
 
+        dict.put(this.name, this.type.defaultValue());
         return state;
     }
 

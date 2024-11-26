@@ -15,6 +15,11 @@ Empty
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -28,6 +33,11 @@ Empty
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -47,6 +57,11 @@ a -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -60,6 +75,11 @@ a -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -78,6 +98,11 @@ a -> 0, b -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -91,6 +116,11 @@ a -> 0, b -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -108,6 +138,11 @@ a -> 5, b -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -121,6 +156,11 @@ a -> 5, b -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -137,6 +177,11 @@ a -> 5, b -> 2,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -150,6 +195,11 @@ a -> 5, b -> 2,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -165,6 +215,11 @@ a -> 5, b -> 2, c -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -178,6 +233,11 @@ a -> 5, b -> 2, c -> 0,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -192,6 +252,11 @@ a -> 5, b -> 2, c -> 2,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -205,6 +270,11 @@ a -> 5, b -> 2, c -> 2,
 
 Output:
 []
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -218,6 +288,11 @@ a -> 5, b -> 2, c -> 2,
 
 Output:
 [2]
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
@@ -230,6 +305,11 @@ a -> 5, b -> 2, c -> 2,
 
 Output:
 [2, 2]
+FileTable:
+Empty
+
+Heap:
+Empty heap
 + - - - - - - - - - - - - - - - - - - - - - - - +
 
 
