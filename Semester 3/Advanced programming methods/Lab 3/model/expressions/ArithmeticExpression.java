@@ -104,12 +104,12 @@ public class ArithmeticExpression implements Expression {
             return new IntValue(n1 - n2);
         else if (op == ArithmeticOperator.MULTIPLY)
             return new IntValue(n1 * n2);
-        else if (op == ArithmeticOperator.DIVIDE)
-            if (n2 == 0)
+        else if (op == ArithmeticOperator.DIVIDE) {
+            if (n2 == 0) {
                 throw new InvalidOperation("Divison by zero");
-            else
-                return new IntValue(n1 / n2);
-        else
+            }
+            return new IntValue(n1 / n2);
+        } else
             throw new MyException("Invalid arithmetic operator.");
     }
 
