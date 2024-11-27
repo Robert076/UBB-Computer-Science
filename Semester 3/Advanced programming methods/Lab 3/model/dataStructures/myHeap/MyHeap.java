@@ -1,10 +1,10 @@
 package model.dataStructures.myHeap;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import MyException.MyException;
@@ -15,7 +15,7 @@ public class MyHeap<K, V> implements MyIHeap<K, V> {
     Integer firstFreeAddress;
 
     public MyHeap() {
-        this.heap = new HashMap<K, V>();
+        this.heap = new ConcurrentHashMap<K, V>();
         this.firstFreeAddress = 1;
     }
 

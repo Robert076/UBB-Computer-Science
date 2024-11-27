@@ -53,4 +53,8 @@ public class RelationalExpression implements Expression {
     public RelationalExpression deepCopy() {
         return new RelationalExpression(this.first.deepCopy(), this.second.deepCopy(), this.op);
     }
+
+    public String toString() {
+        return "RelationalExpression(" + this.first + " " + this.op + " " + this.second + ")";
+    }
 }
