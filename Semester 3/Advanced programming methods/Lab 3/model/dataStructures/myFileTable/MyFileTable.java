@@ -1,6 +1,7 @@
 package model.dataStructures.myFileTable;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.HashMap;
 import MyException.MyException;
 
@@ -50,13 +51,10 @@ public class MyFileTable<K, V> implements MyIFileTable<K, V> {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        for (K key : this.fileTable.keySet()) {
-            s.append(key).append(" -> ").append(this.fileTable.get(key)).append(", ");
-        }
-        if (s.isEmpty())
-            return "Empty\n";
-        s.append('\n');
-        return s.toString();
+        return this.fileTable.isEmpty()
+                ? "Empty\n"
+                : this.fileTable.entrySet().stream()
+                        .map(entry -> entry.getKey() + " -> " + entry.getValue())
+                        .collect(Collectors.joining(", ", "", "\n"));
     }
 }
