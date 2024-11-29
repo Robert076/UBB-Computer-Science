@@ -1,18 +1,16 @@
 package model.programState;
 
-import model.dataStructures.myStack.*;
-
+import MyException.MyException;
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Set;
-
-import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.*;
-import model.values.*;
+import model.dataStructures.myStack.*;
 import model.statements.*;
+import model.values.*;
 
 public class ProgramState {
     MyIStack<IStatement> exeStack;
@@ -33,6 +31,10 @@ public class ProgramState {
         this.fileTable = _fileTable;
         this.heap = _heap;
         this.exeStack.push(_originalProgram);
+    }
+
+    public Boolean isNotCompleted() {
+        return !(this.exeStack.isEmpty());
     }
 
     @Override
