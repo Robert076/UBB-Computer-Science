@@ -1,44 +1,35 @@
 package repository;
 
+import MyException.MyException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import MyException.MyException;
+import java.util.ArrayList;
+import java.util.List;
 import model.programState.ProgramState;
 
 public class Repository implements IRepository {
-    String logFilePath;
-    /*
-     * The program state (it's an abstract syntax tree)
-     */
-    private ProgramState programState;
+    private String logFilePath;
+    private List<ProgramState> programStates;
 
-    public Repository(ProgramState _programState, String _logfilePath) {
-        this.programState = _programState;
+    public Repository(String _logfilePath) {
+        this.programStates = new ArrayList<>();
         this.logFilePath = _logfilePath;
     }
 
-    /*
-     * Setter for program state
-     */
-    public void setCurrentProgram(ProgramState _programState) {
-        this.programState = _programState;
-    }
-
-    /*
-     * Getter for program state
-     */
-    public ProgramState getCurrentProgram() {
-        return this.programState;
-    }
-
-    /*
-     * Logging all states of the program in a file
-     */
     @Override
-    public void logProgramStateExecution() throws MyException, IOException {
+    public void setPrgList(List<ProgramState> prgList) {
+        this.programStates = prgList;
+    }
+
+    @Override
+    public List<ProgramState> getPrgList() {
+        return this.programStates;
+    }
+
+    @Override
+    public void logProgramStateExecution(ProgramState state) throws MyException, IOException {
         if (this.logFilePath == null) {
             throw new MyException("You must provide a path for the log file!");
         }
@@ -49,7 +40,7 @@ public class Repository implements IRepository {
         } catch (IOException e) {
             throw new MyException("Error opening log file!");
         }
-        logFile.println(this.programState.toStringLog());
+        logFile.println(state.toStringLog());
         logFile.close();
     }
 
@@ -57,6 +48,7 @@ public class Repository implements IRepository {
      * Pay attention to the fact that the path starts from the root folder and not
      * from the folder we are in
      */
+    @Override
     public void setLogFile(String _logFilePath) {
         this.logFilePath = _logFilePath;
     }
