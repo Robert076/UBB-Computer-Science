@@ -20,15 +20,6 @@ public class Controller {
         this.displayFlag = false;
     }
 
-    public ProgramState oneStepExecution(ProgramState state) throws MyException, InvalidOperation {
-        MyIStack<IStatement> stk = state.getExeStack();
-        if (stk.isEmpty()) {
-            throw new MyException("Execution stack is empty!");
-        }
-        IStatement currentStatement = stk.pop();
-        return currentStatement.execute(state);
-    }
-
     public void fullExecution() throws MyException, InvalidOperation, IOException {
         ProgramState prgState = this.repo.getCurrentProgram();
         this.repo.logProgramStateExecution();

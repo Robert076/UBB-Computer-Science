@@ -1,5 +1,6 @@
 package model.programState;
 
+import MyException.InvalidOperation;
 import MyException.MyException;
 import java.io.BufferedReader;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ public class ProgramState {
     MyIList<Value> out;
     MyIFileTable<StringValue, BufferedReader> fileTable;
     MyIHeap<Integer, Value> heap;
+    int id;
 
     IStatement originalProgram; // optional but good
 
@@ -36,6 +38,16 @@ public class ProgramState {
     public Boolean isNotCompleted() {
         return !(this.exeStack.isEmpty());
     }
+
+    public ProgramState oneStepExecution() throws MyException, InvalidOperation {
+        if (this.exeStack.isEmpty()) {
+            throw new MyException("Execution stack is empty!");
+        }
+        IStatement currentStatement = this.exeStack.pop();
+        return currentStatement.execute(this);
+    }
+
+    
 
     @Override
     public String toString() {
