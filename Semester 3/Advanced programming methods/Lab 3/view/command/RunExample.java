@@ -1,9 +1,5 @@
 package view.command;
 
-import java.io.IOException;
-
-import MyException.InvalidOperation;
-import MyException.MyException;
 import controller.Controller;
 import model.statements.IStatement;
 
@@ -17,10 +13,6 @@ public class RunExample extends Command {
 
     @Override
     public void execute() {
-        try {
-            controller.fullExecution();
-        } catch (MyException | InvalidOperation | IOException e) {
-            System.out.println(e.getMessage());
-        }
+        this.controller.allStep();
     }
 }

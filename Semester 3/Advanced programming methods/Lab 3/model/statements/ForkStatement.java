@@ -24,11 +24,12 @@ public class ForkStatement implements IStatement {
         MyIDictionary<String, Value> symTableOriginal = state.getSymbolTable();
         HashMap<String, Value> symTableOriginalContent = symTableOriginal.getContent();
         MyIDictionary<String, Value> symTableClone = new MyDictionary<>();
-        for(Map.Entry<String, Value> i : symTableOriginalContent.entrySet()) {
+        for (Map.Entry<String, Value> i : symTableOriginalContent.entrySet()) {
             Map.Entry<String, Value> newEntry = i;
-            symTableClone.put(newEntry.getKey(), newEntry.getValue());
+            symTableClone.put(newEntry.getKey(), newEntry.getValue().deepCopy());
         }
-        ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.stmt, state.getFileTable(), state.getHeap());
+        ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.stmt,
+                state.getFileTable(), state.getHeap());
         return forked;
     }
 

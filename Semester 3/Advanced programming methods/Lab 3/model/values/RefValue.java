@@ -1,7 +1,7 @@
 package model.values;
 
-import model.types.Type;
 import model.types.RefType;
+import model.types.Type;
 
 public class RefValue implements Value {
     int address;
@@ -16,6 +16,7 @@ public class RefValue implements Value {
         return this.address;
     }
 
+    @Override
     public Type getType() {
         return new RefType(this.locationType);
     }
@@ -24,6 +25,7 @@ public class RefValue implements Value {
         return this.locationType;
     }
 
+    @Override
     public Boolean equals(Value another) {
         if (another instanceof RefValue) {
             return this.address == ((RefValue) another).getAddr()

@@ -1,6 +1,7 @@
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  VarDeclStatement{name = 'b', type = IntType}
@@ -26,6 +27,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
 Symbol Table:
@@ -44,6 +46,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ VarDeclStatement{name = 'a', type = IntType}
+Symbol Table:
+Empty
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'b', type = IntType}
  AssignmentStatement{a = ValueExp{val = 5}}
@@ -68,6 +90,32 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ VarDeclStatement{name = 'b', type = IntType}
+ AssignmentStatement{a = ValueExp{val = 5}}
+ AssignmentStatement{b = ValueExp{val = 2}}
+ VarDeclStatement{name = 'c', type = IntType}
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'b', type = IntType}
 Symbol Table:
@@ -86,6 +134,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ VarDeclStatement{name = 'b', type = IntType}
+Symbol Table:
+a -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{a = ValueExp{val = 5}}
  AssignmentStatement{b = ValueExp{val = 2}}
@@ -109,6 +177,31 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{a = ValueExp{val = 5}}
+ AssignmentStatement{b = ValueExp{val = 2}}
+ VarDeclStatement{name = 'c', type = IntType}
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 0, b -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{a = ValueExp{val = 5}}
 Symbol Table:
@@ -127,6 +220,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{a = ValueExp{val = 5}}
+Symbol Table:
+a -> 0, b -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{b = ValueExp{val = 2}}
  VarDeclStatement{name = 'c', type = IntType}
@@ -149,6 +262,30 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{b = ValueExp{val = 2}}
+ VarDeclStatement{name = 'c', type = IntType}
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 5, b -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{b = ValueExp{val = 2}}
 Symbol Table:
@@ -167,6 +304,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{b = ValueExp{val = 2}}
+Symbol Table:
+a -> 5, b -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'c', type = IntType}
  AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
@@ -188,6 +345,29 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ VarDeclStatement{name = 'c', type = IntType}
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 5, b -> 2, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  VarDeclStatement{name = 'c', type = IntType}
 Symbol Table:
@@ -206,6 +386,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ VarDeclStatement{name = 'c', type = IntType}
+Symbol Table:
+a -> 5, b -> 2, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
  PrintStatement{VariableExpression{id = c}}
@@ -226,6 +426,28 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 5, b -> 2, c -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
 Symbol Table:
@@ -244,6 +466,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
+Symbol Table:
+a -> 5, b -> 2, c -> 0, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  PrintStatement{VariableExpression{id = c}}
  PrintStatement{VariableExpression{id = b}}
@@ -263,6 +505,27 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ PrintStatement{VariableExpression{id = c}}
+ PrintStatement{VariableExpression{id = b}}
+Symbol Table:
+a -> 5, b -> 2, c -> 2, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  PrintStatement{VariableExpression{id = c}}
 Symbol Table:
@@ -281,6 +544,26 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
+ID: 7
+Execution Stack:
+ PrintStatement{VariableExpression{id = c}}
+Symbol Table:
+a -> 5, b -> 2, c -> 2, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 7
 Execution Stack:
  PrintStatement{VariableExpression{id = b}}
 Symbol Table:
@@ -299,303 +582,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-Execution Stack:
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[2, 2]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
+ID: 7
 Execution Stack:
  PrintStatement{VariableExpression{id = b}}
 Symbol Table:
@@ -614,636 +601,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-Execution Stack:
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[2, 2]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[2]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[2, 2]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'a', type = IntType}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'b', type = IntType}
-Symbol Table:
-a -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{a = ValueExp{val = 5}}
-Symbol Table:
-a -> 0, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{b = ValueExp{val = 2}}
-Symbol Table:
-a -> 5, b -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- VarDeclStatement{name = 'c', type = IntType}
-Symbol Table:
-a -> 5, b -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- AssignmentStatement{c = ArithmeticExpression{leftExp = VariableExpression{id = a} , op = DIVIDE , rightExp = VariableExpression{id = b}}}
-Symbol Table:
-a -> 5, b -> 2, c -> 0, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = c}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-Execution Stack:
- PrintStatement{VariableExpression{id = b}}
-Symbol Table:
-a -> 5, b -> 2, c -> 2, 
-
-Output:
-[2]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
+ID: 7
 Execution Stack:
 Symbol Table:
 a -> 5, b -> 2, c -> 2, 
