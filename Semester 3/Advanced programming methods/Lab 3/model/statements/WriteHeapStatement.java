@@ -51,7 +51,7 @@ public class WriteHeapStatement implements IStatement {
         }
 
         heap.put(addr, val);
-        return state;
+        return null;
     }
 
     @Override

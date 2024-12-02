@@ -1,5 +1,7 @@
 package model.statements;
 
+import MyException.InvalidOperation;
+import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
@@ -7,8 +9,6 @@ import model.programState.*;
 import model.types.BoolType;
 import model.values.BoolValue;
 import model.values.Value;
-import MyException.InvalidOperation;
-import MyException.MyException;
 
 public class IfStatement implements IStatement {
     Expression exp;
@@ -54,7 +54,7 @@ public class IfStatement implements IStatement {
             state.getExeStack().push(thenS);
         else
             state.getExeStack().push(elseS);
-        return state;
+        return null;
     }
 
     @Override

@@ -33,6 +33,7 @@ public class ProgramState {
         this.fileTable = _fileTable;
         this.heap = _heap;
         this.exeStack.push(_originalProgram);
+        id = generateId();
     }
 
     public Boolean isNotCompleted() {
@@ -47,8 +48,8 @@ public class ProgramState {
         return currentStatement.execute(this);
     }
 
-    public synchronized int generateId() {
-        return ++this.id;
+    public final synchronized int generateId() {
+        return ++id;
     }
 
     @Override

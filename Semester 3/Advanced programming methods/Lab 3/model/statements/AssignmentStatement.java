@@ -1,13 +1,13 @@
 package model.statements;
 
-import model.expressions.*;
 import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myHeap.MyIHeap;
-import model.values.*;
-import model.types.*;
+import model.expressions.*;
 import model.programState.*;
+import model.types.*;
+import model.values.*;
 
 public class AssignmentStatement implements IStatement {
     String id;
@@ -57,7 +57,7 @@ public class AssignmentStatement implements IStatement {
         }
 
         symTable.update(id, val);
-        return state;
+        return null;
     }
 
     @Override

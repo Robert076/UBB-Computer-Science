@@ -45,7 +45,7 @@ public class HeapAllocStatement implements IStatement {
         Integer nextFreeAddress = heap.allocate();
         symTable.put(varName, new RefValue(nextFreeAddress, val.getType()));
         heap.put(nextFreeAddress, val);
-        return state;
+        return null;
     }
 
     @Override
