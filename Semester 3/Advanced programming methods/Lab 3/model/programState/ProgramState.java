@@ -14,12 +14,12 @@ import model.statements.*;
 import model.values.*;
 
 public class ProgramState {
-    MyIStack<IStatement> exeStack;
-    MyIDictionary<String, Value> symbolTable;
-    MyIList<Value> out;
-    MyIFileTable<StringValue, BufferedReader> fileTable;
-    MyIHeap<Integer, Value> heap;
-    int id;
+    private MyIStack<IStatement> exeStack;
+    private MyIDictionary<String, Value> symbolTable;
+    private MyIList<Value> out;
+    private MyIFileTable<StringValue, BufferedReader> fileTable;
+    private MyIHeap<Integer, Value> heap;
+    private static int id;
 
     IStatement originalProgram; // optional but good
 
@@ -47,11 +47,14 @@ public class ProgramState {
         return currentStatement.execute(this);
     }
 
-    
+    public synchronized int generateId() {
+        return ++this.id;
+    }
 
     @Override
     public String toString() {
         return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n" +
+                " ID = " + id +
                 " exeStack = " + this.exeStack +
                 "\n\n symTable = " + this.symbolTable +
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
@@ -62,7 +65,7 @@ public class ProgramState {
         StringBuilder logBuilder = new StringBuilder();
 
         logBuilder.append("\n+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n");
-
+        logBuilder.append("ID: ").append(id).append("\n");
         logBuilder.append("Execution Stack:\n");
         if (!exeStack.isEmpty()) {
             IStatement statement = exeStack.peek();

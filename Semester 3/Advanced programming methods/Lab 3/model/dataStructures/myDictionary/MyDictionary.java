@@ -1,6 +1,5 @@
 package model.dataStructures.myDictionary;
 
-import java.util.Map;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 import MyException.MyException;
 
 public class MyDictionary<K, V> implements MyIDictionary<K, V> {
-    private Map<K, V> dictionary;
+    private HashMap<K, V> dictionary;
 
     public MyDictionary() {
         this.dictionary = new HashMap<K, V>();
@@ -22,6 +21,11 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
     @Override
     public void put(K key, V value) {
         this.dictionary.put(key, value);
+    }
+
+    @Override
+    public HashMap<K, V> getContent() {
+        return this.dictionary;
     }
 
     @Override
@@ -58,4 +62,5 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
         s.append('\n');
         return s.toString();
     }
+
 }
