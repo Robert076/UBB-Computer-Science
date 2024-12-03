@@ -20,7 +20,6 @@ public class ForkStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> forkedStack = new MyStack<>();
-        forkedStack.push(this.stmt);
         MyIDictionary<String, Value> symTableOriginal = state.getSymbolTable();
         HashMap<String, Value> symTableOriginalContent = symTableOriginal.getContent();
         MyIDictionary<String, Value> symTableClone = new MyDictionary<>();

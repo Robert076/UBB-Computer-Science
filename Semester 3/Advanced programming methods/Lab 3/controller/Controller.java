@@ -65,8 +65,8 @@ public class Controller {
                         return future.get();
                     } catch (InterruptedException | ExecutionException e) {
                         System.out.println(e.getMessage());
-                        return null;
                     }
+                    return null;
                 }).filter(p -> p != null).collect(Collectors.toList());
 
         prgList.addAll(newPrgList); // toate statementurile returneaza null inafara de forkuri
@@ -86,6 +86,7 @@ public class Controller {
         this.executor = Executors.newFixedThreadPool(2);
         List<ProgramState> prgList = this.removeCompletedPrg(this.repo.getPrgList());
         while (!prgList.isEmpty()) {
+            System.out.println("Number of active threads: " + Integer.toString(prgList.size()));
             try {
                 this.oneStepForAllPrg(prgList);
                 prgList = this.removeCompletedPrg(prgList);
