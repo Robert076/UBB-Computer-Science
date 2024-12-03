@@ -5,6 +5,7 @@ import MyException.MyException;
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
@@ -19,7 +20,8 @@ public class ProgramState {
     private MyIList<Value> out;
     private MyIFileTable<StringValue, BufferedReader> fileTable;
     private MyIHeap<Integer, Value> heap;
-    private static int id;
+    private final Integer id;
+    private static final AtomicInteger idInc = new AtomicInteger(0);
 
     IStatement originalProgram; // optional but good
 
@@ -33,7 +35,7 @@ public class ProgramState {
         this.fileTable = _fileTable;
         this.heap = _heap;
         this.exeStack.push(_originalProgram);
-        id = generateId();
+        this.id = idInc.getAndIncrement();
     }
 
     public Boolean isNotCompleted() {
@@ -48,14 +50,10 @@ public class ProgramState {
         return currentStatement.execute(this);
     }
 
-    public final synchronized int generateId() {
-        return ++id;
-    }
-
     @Override
     public String toString() {
         return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n" +
-                " ID = " + id +
+                " ID = " + this.id +
                 " exeStack = " + this.exeStack +
                 "\n\n symTable = " + this.symbolTable +
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
