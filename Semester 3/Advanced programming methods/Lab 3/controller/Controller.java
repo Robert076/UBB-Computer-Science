@@ -2,13 +2,18 @@ package controller;
 
 import MyException.MyException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import model.dataStructures.myHeap.MyIHeap;
 import model.programState.ProgramState;
+import model.values.RefValue;
+import model.values.Value;
 import repository.*;
 
 public class Controller {
@@ -86,6 +91,9 @@ public class Controller {
         this.executor = Executors.newFixedThreadPool(2);
         List<ProgramState> prgList = this.removeCompletedPrg(this.repo.getPrgList());
         while (!prgList.isEmpty()) {
+            ProgramState prg = prgList.get(0);
+            MyIHeap<Integer, Value> heap = prg.getHeap();
+            heap.setHeap(heap.safeGarbageCollector(this.getUsedAddresses(), heap.getHeap()));
             System.out.println("Number of active threads: " + Integer.toString(prgList.size()));
             try {
                 this.oneStepForAllPrg(prgList);
@@ -111,5 +119,23 @@ public class Controller {
 
     public void setLogFile(String logFile) {
         this.repo.setLogFile(logFile);
+    }
+
+    public Set<Integer> getUsedAddresses() {
+        List<ProgramState> prgList = this.repo.getPrgList();
+        Set<Integer> usedAddresses = new HashSet<>();
+        for (ProgramState prg : prgList) {
+            for (Value val : prg.getSymbolTable().getValues()) {
+                if (val instanceof RefValue refValue) {
+                    usedAddresses.add(refValue.getAddr());
+                }
+            }
+        }
+        for (Value val : prgList.get(0).getHeap().getValues()) {
+            if (val instanceof RefValue refValue) {
+                usedAddresses.add(refValue.getAddr());
+            }
+        }
+        return usedAddresses;
     }
 }

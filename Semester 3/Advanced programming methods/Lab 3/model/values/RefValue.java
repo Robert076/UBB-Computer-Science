@@ -27,9 +27,9 @@ public class RefValue implements Value {
 
     @Override
     public Boolean equals(Value another) {
-        if (another instanceof RefValue) {
-            return this.address == ((RefValue) another).getAddr()
-                    && this.locationType.equals(((RefValue) another).getType());
+        if (another instanceof RefValue refValue) {
+            return this.address == refValue.getAddr()
+                    && this.locationType.equals(refValue.getType());
         }
         return false;
     }

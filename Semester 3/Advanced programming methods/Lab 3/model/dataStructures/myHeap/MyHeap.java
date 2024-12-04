@@ -1,13 +1,12 @@
 package model.dataStructures.myHeap;
 
+import MyException.MyException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-
-import MyException.MyException;
 import model.values.Value;
 
 public class MyHeap<K, V> implements MyIHeap<K, V> {
@@ -15,7 +14,7 @@ public class MyHeap<K, V> implements MyIHeap<K, V> {
     Integer firstFreeAddress;
 
     public MyHeap() {
-        this.heap = new ConcurrentHashMap<K, V>();
+        this.heap = new ConcurrentHashMap<>();
         this.firstFreeAddress = 1;
     }
 
@@ -57,7 +56,7 @@ public class MyHeap<K, V> implements MyIHeap<K, V> {
 
     @Override
     public List<V> getValues() {
-        return new LinkedList<V>(this.heap.values());
+        return new LinkedList<>(this.heap.values());
     }
 
     @Override

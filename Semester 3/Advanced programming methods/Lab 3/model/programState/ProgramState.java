@@ -3,8 +3,6 @@ package model.programState;
 import MyException.InvalidOperation;
 import MyException.MyException;
 import java.io.BufferedReader;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myFileTable.MyIFileTable;
@@ -121,21 +119,6 @@ public class ProgramState {
 
     public IStatement deepCopy(IStatement stmt) {
         return stmt; // todo
-    }
-
-    public Set<Integer> getUsedAddresses() {
-        Set<Integer> usedAddresses = new HashSet<>();
-        for (Value val : this.symbolTable.getValues()) {
-            if (val instanceof RefValue) {
-                usedAddresses.add(((RefValue) val).getAddr());
-            }
-        }
-        for (Value val : this.heap.getValues()) {
-            if (val instanceof RefValue) {
-                usedAddresses.add(((RefValue) val).getAddr());
-            }
-        }
-        return usedAddresses;
     }
 
     public void init() {

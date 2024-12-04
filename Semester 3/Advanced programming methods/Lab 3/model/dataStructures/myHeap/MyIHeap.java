@@ -1,10 +1,9 @@
 package model.dataStructures.myHeap;
 
+import MyException.MyException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import MyException.MyException;
 import model.values.Value;
 
 public interface MyIHeap<K, V> {
@@ -16,6 +15,7 @@ public interface MyIHeap<K, V> {
 
     boolean contains(K key);
 
+    @Override
     String toString();
 
     Map<K, V> getHeap();
