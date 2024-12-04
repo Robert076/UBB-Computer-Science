@@ -46,12 +46,12 @@ public class WriteHeapStatement implements IStatement {
             throw new MyException(e.getMessage());
         }
 
-        if (!refValue.getType().equals(val.getType())) {
+        if (!refValue.getLocationType().equals(val.getType())) {
             throw new MyException("The type of the expression doesn't match");
         }
 
         heap.put(addr, val);
-        return state;
+        return null;
     }
 
     @Override

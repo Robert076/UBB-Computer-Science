@@ -1,7 +1,9 @@
 package view;
 
-import java.io.BufferedReader;
 import controller.Controller;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyFileTable;
@@ -161,6 +163,43 @@ public class Interpreter {
                                                                                                                                                                 "a")))))))));
         }
 
+        private static IStatement createExample7() {
+                return new CompoundStatement(new VarDeclStatement("v", new IntType()), new CompoundStatement(
+                                new VarDeclStatement("a", new RefType(new IntType())),
+                                new CompoundStatement(
+                                                new AssignmentStatement("v", new ValueExpression(new IntValue(10))),
+                                                new CompoundStatement(
+                                                                new HeapAllocStatement("a",
+                                                                                new ValueExpression(new IntValue(22))),
+                                                                new CompoundStatement(
+                                                                                new ForkStatement(new CompoundStatement(
+                                                                                                new WriteHeapStatement(
+                                                                                                                "a",
+                                                                                                                new ValueExpression(
+                                                                                                                                new IntValue(30))),
+                                                                                                new CompoundStatement(
+                                                                                                                new AssignmentStatement(
+                                                                                                                                "v",
+                                                                                                                                new ValueExpression(
+                                                                                                                                                new IntValue(32))),
+                                                                                                                new CompoundStatement(
+                                                                                                                                new PrintStatement(
+                                                                                                                                                new VariableExpression(
+                                                                                                                                                                "v")),
+                                                                                                                                new PrintStatement(
+                                                                                                                                                new ReadHeapExpression(
+                                                                                                                                                                new VariableExpression(
+                                                                                                                                                                                "a"))))))),
+                                                                                new CompoundStatement(
+                                                                                                new PrintStatement(
+                                                                                                                new VariableExpression(
+                                                                                                                                "v")),
+                                                                                                new PrintStatement(
+                                                                                                                new ReadHeapExpression(
+                                                                                                                                new VariableExpression(
+                                                                                                                                                "a")))))))));
+        }
+
         private static ProgramState createProgramState(IStatement originalProgram) {
                 MyIStack<IStatement> exeStack = new MyStack<>();
                 MyIDictionary<String, Value> symTable = new MyDictionary<>();
@@ -172,19 +211,30 @@ public class Interpreter {
 
         private static Controller createController(IStatement _statement, String _logFilePath) {
                 ProgramState prgState = createProgramState(_statement);
-                IRepository repo = new Repository(prgState, _logFilePath);
+                List<ProgramState> originalList = new ArrayList<>();
+                originalList.add(prgState);
+                IRepository repo = new Repository(_logFilePath);
+                repo.setPrgList(originalList);
                 return new Controller(repo);
         }
 
         public static void main(String[] args) {
                 TextMenu menu = new TextMenu();
 
-                menu.addCommand(new RunExample("1", createExample1(), createController(createExample1(), "log1.txt")));
-                menu.addCommand(new RunExample("2", createExample2(), createController(createExample2(), "log2.txt")));
-                menu.addCommand(new RunExample("3", createExample3(), createController(createExample3(), "log3.txt")));
-                menu.addCommand(new RunExample("4", createExample4(), createController(createExample4(), "log4.txt")));
-                menu.addCommand(new RunExample("5", createExample5(), createController(createExample5(), "log5.txt")));
-                menu.addCommand(new RunExample("6", createExample5(), createController(createExample6(), "log6.txt")));
+                menu.addCommand(new RunExample("1", createExample1(),
+                                createController(createExample1(), "log1.txt")));
+                menu.addCommand(new RunExample("2", createExample2(),
+                                createController(createExample2(), "log2.txt")));
+                menu.addCommand(new RunExample("3", createExample3(),
+                                createController(createExample3(), "log3.txt")));
+                menu.addCommand(new RunExample("4", createExample4(),
+                                createController(createExample4(), "log4.txt")));
+                menu.addCommand(new RunExample("5", createExample5(),
+                                createController(createExample5(), "log5.txt")));
+                menu.addCommand(new RunExample("6", createExample6(),
+                                createController(createExample6(), "log6.txt")));
+                menu.addCommand(new RunExample("7", createExample7(), createController(createExample7(), "log7.txt")));
+
                 menu.addCommand(new ExitCommand("0", "Exit"));
 
                 menu.show();

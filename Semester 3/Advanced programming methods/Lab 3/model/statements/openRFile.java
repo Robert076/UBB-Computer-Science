@@ -1,11 +1,10 @@
 package model.statements;
 
+import MyException.InvalidOperation;
+import MyException.MyException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-import MyException.InvalidOperation;
-import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
@@ -40,7 +39,7 @@ public class OpenRFile implements IStatement {
         } catch (IOException e) {
             throw new MyException(e.getMessage());
         }
-        return state;
+        return null;
     }
 
     @Override

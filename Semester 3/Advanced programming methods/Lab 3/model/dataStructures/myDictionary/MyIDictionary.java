@@ -1,8 +1,8 @@
 package model.dataStructures.myDictionary;
 
-import java.util.List;
-
 import MyException.MyException;
+import java.util.HashMap;
+import java.util.List;
 
 public interface MyIDictionary<K, V> {
     boolean isDefined(K key);
@@ -14,4 +14,7 @@ public interface MyIDictionary<K, V> {
     void update(K key, V val) throws MyException;
 
     List<V> getValues();
+
+    HashMap<K, V> getContent();
+
 }

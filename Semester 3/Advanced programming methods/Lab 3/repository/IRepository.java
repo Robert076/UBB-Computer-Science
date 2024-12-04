@@ -1,16 +1,16 @@
 package repository;
 
-import java.io.IOException;
-
 import MyException.MyException;
+import java.io.IOException;
+import java.util.List;
 import model.programState.ProgramState;
 
 public interface IRepository {
-    void setCurrentProgram(ProgramState currentProgram);
+    void setPrgList(List<ProgramState> prgList);
 
-    ProgramState getCurrentProgram();
+    List<ProgramState> getPrgList();
 
-    void logProgramStateExecution() throws MyException, IOException;
+    void logProgramStateExecution(ProgramState state) throws MyException, IOException;
 
     void setLogFile(String _logFile);
 }

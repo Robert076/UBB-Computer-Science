@@ -1,14 +1,13 @@
 package model.statements;
 
+import MyException.InvalidOperation;
+import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
 import model.expressions.*;
 import model.programState.*;
 import model.values.Value;
-
-import MyException.InvalidOperation;
-import MyException.MyException;
 
 public class PrintStatement implements IStatement {
     Expression exp;
@@ -52,7 +51,7 @@ public class PrintStatement implements IStatement {
         MyIDictionary<String, Value> symTable = state.getSymbolTable();
         MyIHeap<Integer, Value> heap = state.getHeap();
         out.add(exp.eval(symTable, heap));
-        return state;
+        return null;
     }
 
     @Override

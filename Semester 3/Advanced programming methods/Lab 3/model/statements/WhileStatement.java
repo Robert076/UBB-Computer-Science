@@ -35,7 +35,7 @@ public class WhileStatement implements IStatement {
             state.getExeStack().push(this.statement);
         }
 
-        return state;
+        return null;
     }
 
     @Override

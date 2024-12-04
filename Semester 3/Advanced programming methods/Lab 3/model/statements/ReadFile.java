@@ -1,10 +1,9 @@
 package model.statements;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 import MyException.InvalidOperation;
 import MyException.MyException;
+import java.io.BufferedReader;
+import java.io.IOException;
 import model.expressions.Expression;
 import model.programState.ProgramState;
 import model.types.IntType;
@@ -68,7 +67,7 @@ public class ReadFile implements IStatement {
             throw new MyException("Error reading from file " + e.getMessage());
         }
 
-        return state;
+        return null;
     }
 
     @Override

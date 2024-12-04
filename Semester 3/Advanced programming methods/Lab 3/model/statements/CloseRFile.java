@@ -1,10 +1,9 @@
 package model.statements;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 import MyException.InvalidOperation;
 import MyException.MyException;
+import java.io.BufferedReader;
+import java.io.IOException;
 import model.expressions.Expression;
 import model.programState.ProgramState;
 import model.types.StringType;
@@ -47,7 +46,7 @@ public class CloseRFile implements IStatement {
 
         state.getFileTable().delete(stringValue);
 
-        return state;
+        return null;
     }
 
     @Override

@@ -1,10 +1,10 @@
 package model.statements;
 
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.programState.*;
-import model.values.*;
 import model.types.*;
-import MyException.MyException;
+import model.values.*;
 
 public class VarDeclStatement implements IStatement {
     String name;
@@ -60,7 +60,7 @@ public class VarDeclStatement implements IStatement {
         }
 
         dict.put(this.name, this.type.defaultValue());
-        return state;
+        return null;
     }
 
     /*

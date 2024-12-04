@@ -1,8 +1,8 @@
 package model.statements;
 
+import MyException.MyException;
 import model.dataStructures.myStack.*;
 import model.programState.*;
-import MyException.MyException;
 
 public class CompoundStatement implements IStatement {
     private IStatement first;
@@ -43,7 +43,7 @@ public class CompoundStatement implements IStatement {
         MyIStack<IStatement> stack = state.getExeStack();
         stack.push(second);
         stack.push(first);
-        return state;
+        return null;
     }
 
     @Override
