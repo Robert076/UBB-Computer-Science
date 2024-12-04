@@ -1,7 +1,7 @@
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'file', type = String}
  AssignmentStatement{file = ValueExp{val = test.in}}
@@ -9,7 +9,7 @@ Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 Empty
@@ -27,26 +27,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
-Execution Stack:
- VarDeclStatement{name = 'file', type = String}
-Symbol Table:
-Empty
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-ID: 7
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'file', type = String}
 Symbol Table:
@@ -65,14 +46,33 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
+Execution Stack:
+ VarDeclStatement{name = 'file', type = String}
+Symbol Table:
+Empty
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 2
 Execution Stack:
  AssignmentStatement{file = ValueExp{val = test.in}}
  openRFile{VariableExpression{id = file}}
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> , 
@@ -90,14 +90,14 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  AssignmentStatement{file = ValueExp{val = test.in}}
  openRFile{VariableExpression{id = file}}
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> , 
@@ -115,26 +115,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
-Execution Stack:
- AssignmentStatement{file = ValueExp{val = test.in}}
-Symbol Table:
-file -> , 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-ID: 7
+ID: 2
 Execution Stack:
  AssignmentStatement{file = ValueExp{val = test.in}}
 Symbol Table:
@@ -153,13 +134,32 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
+Execution Stack:
+ AssignmentStatement{file = ValueExp{val = test.in}}
+Symbol Table:
+file -> , 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 2
 Execution Stack:
  openRFile{VariableExpression{id = file}}
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -177,13 +177,13 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  openRFile{VariableExpression{id = file}}
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -201,26 +201,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
-Execution Stack:
- openRFile{VariableExpression{id = file}}
-Symbol Table:
-file -> test.in, 
-
-Output:
-[]
-FileTable:
-Empty
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-ID: 7
+ID: 2
 Execution Stack:
  openRFile{VariableExpression{id = file}}
 Symbol Table:
@@ -239,12 +220,31 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
+Execution Stack:
+ openRFile{VariableExpression{id = file}}
+Symbol Table:
+file -> test.in, 
+
+Output:
+[]
+FileTable:
+Empty
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -252,7 +252,7 @@ file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -262,12 +262,12 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 file -> test.in, 
@@ -275,7 +275,7 @@ file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -285,7 +285,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
 Symbol Table:
@@ -294,7 +294,7 @@ file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -304,7 +304,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  VarDeclStatement{name = 'a', type = IntType}
 Symbol Table:
@@ -313,7 +313,7 @@ file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -323,11 +323,11 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 0, file -> test.in, 
@@ -335,7 +335,7 @@ a -> 0, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -345,11 +345,11 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  ReadFile{VariableExpression{id = file}, a}
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 0, file -> test.in, 
@@ -357,7 +357,7 @@ a -> 0, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -367,26 +367,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
-Execution Stack:
- ReadFile{VariableExpression{id = file}, a}
-Symbol Table:
-a -> 0, file -> test.in, 
-
-Output:
-[]
-FileTable:
-test.in -> java.io.BufferedReader@728938a9
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-ID: 7
+ID: 2
 Execution Stack:
  ReadFile{VariableExpression{id = file}, a}
 Symbol Table:
@@ -395,7 +376,7 @@ a -> 0, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -405,10 +386,29 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
+Execution Stack:
+ ReadFile{VariableExpression{id = file}, a}
+Symbol Table:
+a -> 0, file -> test.in, 
+
+Output:
+[]
+FileTable:
+test.in -> java.io.BufferedReader@21b8d17c
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 2
 Execution Stack:
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -416,7 +416,7 @@ a -> 15, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -426,10 +426,10 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  PrintStatement{VariableExpression{id = a}}
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -437,7 +437,7 @@ a -> 15, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -447,26 +447,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
-Execution Stack:
- PrintStatement{VariableExpression{id = a}}
-Symbol Table:
-a -> 15, file -> test.in, 
-
-Output:
-[]
-FileTable:
-test.in -> java.io.BufferedReader@728938a9
-
-Heap:
-Empty heap
-+ - - - - - - - - - - - - - - - - - - - - - - - +
-
-
-
-+ - - - - - - - - PROGRAM STATE - - - - - - - - +
-
-ID: 7
+ID: 2
 Execution Stack:
  PrintStatement{VariableExpression{id = a}}
 Symbol Table:
@@ -475,7 +456,7 @@ a -> 15, file -> test.in,
 Output:
 []
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -485,9 +466,28 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
- model.statements.CloseRFile@439f5b3d
+ PrintStatement{VariableExpression{id = a}}
+Symbol Table:
+a -> 15, file -> test.in, 
+
+Output:
+[]
+FileTable:
+test.in -> java.io.BufferedReader@21b8d17c
+
+Heap:
+Empty heap
++ - - - - - - - - - - - - - - - - - - - - - - - +
+
+
+
++ - - - - - - - - PROGRAM STATE - - - - - - - - +
+
+ID: 2
+Execution Stack:
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -495,7 +495,7 @@ a -> 15, file -> test.in,
 Output:
 [15]
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -505,9 +505,9 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
 a -> 15, file -> test.in, 
@@ -515,7 +515,7 @@ a -> 15, file -> test.in,
 Output:
 [15]
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -525,16 +525,16 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
 Symbol Table:
 a -> 15, file -> test.in, 
 
 Output:
 [15]
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -544,16 +544,16 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
- model.statements.CloseRFile@439f5b3d
+ model.statements.CloseRFile@1d56ce6a
 Symbol Table:
 a -> 15, file -> test.in, 
 
 Output:
 [15]
 FileTable:
-test.in -> java.io.BufferedReader@728938a9
+test.in -> java.io.BufferedReader@21b8d17c
 
 Heap:
 Empty heap
@@ -563,7 +563,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
@@ -582,7 +582,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
  PrintStatement{VariableExpression{id = file}}
 Symbol Table:
@@ -601,7 +601,7 @@ Empty heap
 
 + - - - - - - - - PROGRAM STATE - - - - - - - - +
 
-ID: 7
+ID: 2
 Execution Stack:
 Symbol Table:
 a -> 15, file -> test.in, 

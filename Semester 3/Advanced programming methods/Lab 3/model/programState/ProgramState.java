@@ -130,6 +130,11 @@ public class ProgramState {
                 usedAddresses.add(((RefValue) val).getAddr());
             }
         }
+        for (Value val : this.heap.getValues()) {
+            if (val instanceof RefValue) {
+                usedAddresses.add(((RefValue) val).getAddr());
+            }
+        }
         return usedAddresses;
     }
 

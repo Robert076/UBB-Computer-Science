@@ -221,18 +221,18 @@ public class Interpreter {
         public static void main(String[] args) {
                 TextMenu menu = new TextMenu();
 
-                // menu.addCommand(new RunExample("1", createExample1(),
-                // createController(createExample1(), "log1.txt")));
-                // menu.addCommand(new RunExample("2", createExample2(),
-                // createController(createExample2(), "log2.txt")));
-                // menu.addCommand(new RunExample("3", createExample3(),
-                // createController(createExample3(), "log3.txt")));
-                // menu.addCommand(new RunExample("4", createExample4(),
-                // createController(createExample4(), "log4.txt")));
-                // menu.addCommand(new RunExample("5", createExample5(),
-                // createController(createExample5(), "log5.txt")));
-                // menu.addCommand(new RunExample("6", createExample6(),
-                // createController(createExample6(), "log6.txt")));
+                menu.addCommand(new RunExample("1", createExample1(),
+                                createController(createExample1(), "log1.txt")));
+                menu.addCommand(new RunExample("2", createExample2(),
+                                createController(createExample2(), "log2.txt")));
+                menu.addCommand(new RunExample("3", createExample3(),
+                                createController(createExample3(), "log3.txt")));
+                menu.addCommand(new RunExample("4", createExample4(),
+                                createController(createExample4(), "log4.txt")));
+                menu.addCommand(new RunExample("5", createExample5(),
+                                createController(createExample5(), "log5.txt")));
+                menu.addCommand(new RunExample("6", createExample6(),
+                                createController(createExample6(), "log6.txt")));
                 menu.addCommand(new RunExample("7", createExample7(), createController(createExample7(), "log7.txt")));
 
                 menu.addCommand(new ExitCommand("0", "Exit"));
