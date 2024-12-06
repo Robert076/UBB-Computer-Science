@@ -8,8 +8,8 @@
 (print (listDepth '((1 (2 3)) (4 (5 6)))))  
 
 
-listDepth(l1..ln) = 1, n = 0
-                    1 + listDepth(l1), l1 list
-                    listDepth(l2..ln)
+; listDepth(l1..ln) = 1, n = 0
+;                     1 + listDepth(l1), l1 list
+;                     listDepth(l2..ln)
 
                     

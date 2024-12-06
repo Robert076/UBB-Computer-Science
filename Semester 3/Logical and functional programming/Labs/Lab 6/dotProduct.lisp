@@ -11,6 +11,6 @@
 
 
 
-dotProduct(l1l2..ln, p1p2..pm) = 0, n = 0
-                                 0, m = 0
-                                 l1 * p1 + dotProduct(l2..ln, p2..pm), n != 0, m != 0
+; dotProduct(l1l2..ln, p1p2..pm) = 0, n = 0
+;                                  0, m = 0
+;                                  l1 * p1 + dotProduct(l2..ln, p2..pm), n != 0, m != 0
