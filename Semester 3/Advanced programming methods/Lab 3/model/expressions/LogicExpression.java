@@ -1,11 +1,12 @@
 package model.expressions;
 
-import model.values.*;
+import MyException.InvalidOperation;
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myHeap.MyIHeap;
 import model.types.BoolType;
-import MyException.InvalidOperation;
-import MyException.MyException;
+import model.types.Type;
+import model.values.*;
 
 public class LogicExpression implements Expression {
     /*
@@ -109,5 +110,22 @@ public class LogicExpression implements Expression {
     @Override
     public LogicExpression deepCopy() {
         return new LogicExpression(this.leftExp, this.rightExp, this.op);
+    }
+
+    @Override
+    public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type1, type2;
+        type1 = this.leftExp.typecheck(typeEnv);
+        type2 = this.rightExp.typecheck(typeEnv);
+
+        if (!type1.equals(new BoolType())) {
+            throw new MyException("First operand is not boolean");
+        }
+
+        if (!type2.equals(new BoolType())) {
+            throw new MyException("Second operand is not boolean");
+        }
+
+        return new BoolType();
     }
 }

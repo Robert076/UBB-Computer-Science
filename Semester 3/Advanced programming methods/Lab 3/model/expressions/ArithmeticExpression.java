@@ -1,11 +1,11 @@
 package model.expressions;
 
-import model.dataStructures.myDictionary.*;
-import model.dataStructures.myHeap.MyIHeap;
-import model.values.*;
-import model.types.*;
 import MyException.InvalidOperation;
 import MyException.MyException;
+import model.dataStructures.myDictionary.*;
+import model.dataStructures.myHeap.MyIHeap;
+import model.types.*;
+import model.values.*;
 
 public class ArithmeticExpression implements Expression {
     /*
@@ -125,5 +125,21 @@ public class ArithmeticExpression implements Expression {
     @Override
     public ArithmeticExpression deepCopy() {
         return new ArithmeticExpression(this.leftExp, this.rightExp, this.op);
+    }
+
+    @Override
+    public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type1, type2;
+        type1 = this.leftExp.typecheck(typeEnv);
+        type2 = this.rightExp.typecheck(typeEnv);
+        if (!type1.equals(new IntType())) {
+            throw new MyException("First operand is not integer");
+        }
+
+        if (!type2.equals(new IntType())) {
+            throw new MyException("Second operand is not integer");
+        }
+
+        return new IntType();
     }
 }

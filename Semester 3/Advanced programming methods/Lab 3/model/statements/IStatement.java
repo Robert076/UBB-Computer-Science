@@ -7,6 +7,7 @@ import model.programState.*;
 public interface IStatement {
     ProgramState execute(ProgramState state) throws MyException, InvalidOperation;
 
+    @Override
     String toString();
 
     IStatement deepCopy();

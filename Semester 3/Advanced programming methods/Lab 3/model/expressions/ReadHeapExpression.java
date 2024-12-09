@@ -4,6 +4,8 @@ import MyException.InvalidOperation;
 import MyException.MyException;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
+import model.types.RefType;
+import model.types.Type;
 import model.values.RefValue;
 import model.values.Value;
 
@@ -44,5 +46,16 @@ public class ReadHeapExpression implements Expression {
     @Override
     public String toString() {
         return "readHeap(" + this.exp + ")";
+    }
+
+    @Override
+    public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type = this.exp.typecheck(typeEnv);
+        if (type instanceof RefType) {
+            RefType rft = (RefType) type;
+            return rft.getInner();
+        } else {
+            throw new MyException("ReadHeap: Argument not a RefType");
+        }
     }
 }

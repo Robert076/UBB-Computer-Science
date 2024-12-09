@@ -64,4 +64,15 @@ public class AssignmentStatement implements IStatement {
     public IStatement deepCopy() {
         return new AssignmentStatement(this.id, this.exp);
     }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type typeVar = typeEnv.lookup(id);
+        Type typeExp = this.exp.typecheck(typeEnv);
+        if (typeVar.equals(typeExp)) {
+            return typeEnv;
+        } else {
+            throw new MyException("Assignment: RHS and LHS diff types!");
+        }
+    }
 }

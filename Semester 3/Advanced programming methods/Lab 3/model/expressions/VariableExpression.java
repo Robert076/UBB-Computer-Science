@@ -1,9 +1,10 @@
 package model.expressions;
 
-import model.values.*;
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myHeap.MyIHeap;
-import MyException.MyException;
+import model.types.Type;
+import model.values.*;
 
 public class VariableExpression implements Expression {
     /*
@@ -53,5 +54,10 @@ public class VariableExpression implements Expression {
     @Override
     public VariableExpression deepCopy() {
         return new VariableExpression(this.id);
+    }
+
+    @Override
+    public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        return typeEnv.lookup(id);
     }
 }

@@ -1,9 +1,10 @@
 package model.expressions;
 
-import model.values.*;
+import MyException.MyException;
 import model.dataStructures.myDictionary.*;
 import model.dataStructures.myHeap.MyIHeap;
-import MyException.MyException;
+import model.types.Type;
+import model.values.*;
 
 public class ValueExpression implements Expression {
     /*
@@ -59,5 +60,10 @@ public class ValueExpression implements Expression {
     @Override
     public ValueExpression deepCopy() {
         return new ValueExpression(this.val);
+    }
+
+    @Override
+    public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        return this.val.getType();
     }
 }
