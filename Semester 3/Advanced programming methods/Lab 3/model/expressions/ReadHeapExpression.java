@@ -51,8 +51,7 @@ public class ReadHeapExpression implements Expression {
     @Override
     public Type typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
         Type type = this.exp.typecheck(typeEnv);
-        if (type instanceof RefType) {
-            RefType rft = (RefType) type;
+        if (type instanceof RefType rft) {
             return rft.getInner();
         } else {
             throw new MyException("ReadHeap: Argument not a RefType");

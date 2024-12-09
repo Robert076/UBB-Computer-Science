@@ -7,6 +7,7 @@ import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
 import model.programState.*;
 import model.types.BoolType;
+import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
 
@@ -60,5 +61,16 @@ public class IfStatement implements IStatement {
     @Override
     public IStatement deepCopy() {
         return new IfStatement(this.exp.deepCopy(), this.thenS.deepCopy(), this.elseS.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type expType = this.exp.typecheck(typeEnv);
+        if (!expType.equals(new BoolType())) {
+            throw new MyException("IfStmt: Exp doesn't evaluate to bool");
+        }
+        this.thenS.typecheck(typeEnv.deepCopy());
+        this.elseS.typecheck(typeEnv.deepCopy());
+        return typeEnv;
     }
 }

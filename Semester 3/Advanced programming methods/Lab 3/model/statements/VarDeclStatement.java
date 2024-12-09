@@ -75,4 +75,10 @@ public class VarDeclStatement implements IStatement {
     public IStatement deepCopy() {
         return new VarDeclStatement(this.name, this.type);
     }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        typeEnv.put(this.name, this.type);
+        return typeEnv;
+    }
 }

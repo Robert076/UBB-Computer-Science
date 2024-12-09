@@ -10,6 +10,7 @@ import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.*;
 import model.programState.ProgramState;
 import model.types.StringType;
+import model.types.Type;
 import model.values.StringValue;
 import model.values.Value;
 
@@ -50,5 +51,14 @@ public class OpenRFile implements IStatement {
     @Override
     public String toString() {
         return "openRFile{" + exp.toString() + "}";
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type typeExp = this.exp.typecheck(typeEnv);
+        if (!typeExp.equals(new StringType())) {
+            throw new MyException("OpenRFileStmt: expression must evaluate to a string");
+        }
+        return typeEnv;
     }
 }

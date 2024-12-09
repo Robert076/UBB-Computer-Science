@@ -7,6 +7,7 @@ import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.Expression;
 import model.programState.ProgramState;
 import model.types.BoolType;
+import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
 
@@ -46,5 +47,16 @@ public class WhileStatement implements IStatement {
     @Override
     public String toString() {
         return "while(" + this.exp.toString() + ") {" + this.statement.toString() + "}";
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type expType = this.exp.typecheck(typeEnv);
+        if (!expType.equals(new BoolType())) {
+            throw new MyException("WhileStmt: Exp doesn't evaluate to bool");
+        }
+        this.statement.typecheck(typeEnv.deepCopy());
+        return typeEnv;
+
     }
 }

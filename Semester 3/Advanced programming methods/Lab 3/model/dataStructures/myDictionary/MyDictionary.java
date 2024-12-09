@@ -3,6 +3,7 @@ package model.dataStructures.myDictionary;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import MyException.MyException;
 
@@ -61,6 +62,15 @@ public class MyDictionary<K, V> implements MyIDictionary<K, V> {
             return "Empty\n";
         s.append('\n');
         return s.toString();
+    }
+
+    @Override
+    public MyIDictionary<K, V> deepCopy() {
+        MyIDictionary<K, V> newDict = new MyDictionary<K, V>();
+        for (Map.Entry<K, V> entry : dictionary.entrySet()) {
+            newDict.put(entry.getKey(), entry.getValue());
+        }
+        return newDict;
     }
 
 }

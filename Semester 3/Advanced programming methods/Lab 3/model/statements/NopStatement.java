@@ -1,7 +1,9 @@
 package model.statements;
 
 import MyException.MyException;
+import model.dataStructures.myDictionary.MyIDictionary;
 import model.programState.*;
+import model.types.Type;
 
 public class NopStatement implements IStatement {
 
@@ -33,5 +35,10 @@ public class NopStatement implements IStatement {
     @Override
     public IStatement deepCopy() {
         return new NopStatement();
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        return typeEnv;
     }
 }

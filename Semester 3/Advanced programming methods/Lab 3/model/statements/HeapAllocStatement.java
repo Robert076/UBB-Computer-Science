@@ -6,6 +6,8 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myHeap.MyIHeap;
 import model.expressions.Expression;
 import model.programState.ProgramState;
+import model.types.RefType;
+import model.types.Type;
 import model.values.RefValue;
 import model.values.Value;
 
@@ -56,5 +58,15 @@ public class HeapAllocStatement implements IStatement {
     @Override
     public String toString() {
         return "HeapAlloc(" + this.varName + ", " + this.exp + ")";
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type typeVar = typeEnv.lookup(this.varName);
+        Type typeExp = this.exp.typecheck(typeEnv);
+        if (!typeVar.equals(new RefType(typeExp))) {
+            throw new MyException("HeapAlloc: RHS and LHS have diff types");
+        }
+        return typeEnv;
     }
 }

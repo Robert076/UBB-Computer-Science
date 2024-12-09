@@ -1,5 +1,6 @@
 package view;
 
+import MyException.MyException;
 import controller.Controller;
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class Interpreter {
                                                                 new CompoundStatement(
                                                                                 new AssignmentStatement("b",
                                                                                                 new ValueExpression(
-                                                                                                                new IntValue(2))),
+                                                                                                                new IntValue(5))),
                                                                                 new CompoundStatement(
                                                                                                 new VarDeclStatement(
                                                                                                                 "c",
@@ -221,19 +222,68 @@ public class Interpreter {
         public static void main(String[] args) {
                 TextMenu menu = new TextMenu();
 
-                menu.addCommand(new RunExample("1", createExample1(),
-                                createController(createExample1(), "log1.txt")));
-                menu.addCommand(new RunExample("2", createExample2(),
-                                createController(createExample2(), "log2.txt")));
-                menu.addCommand(new RunExample("3", createExample3(),
-                                createController(createExample3(), "log3.txt")));
-                menu.addCommand(new RunExample("4", createExample4(),
-                                createController(createExample4(), "log4.txt")));
-                menu.addCommand(new RunExample("5", createExample5(),
-                                createController(createExample5(), "log5.txt")));
-                menu.addCommand(new RunExample("6", createExample6(),
-                                createController(createExample6(), "log6.txt")));
-                menu.addCommand(new RunExample("7", createExample7(), createController(createExample7(), "log7.txt")));
+                IStatement IStmt1 = createExample1();
+                try {
+                        IStmt1.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("1", IStmt1, createController(IStmt1, "log1.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt1 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt2 = createExample2();
+                try {
+                        IStmt2.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("2", IStmt2, createController(IStmt2, "log2.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt2 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt3 = createExample3();
+                try {
+                        IStmt3.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("3", IStmt3, createController(IStmt3, "log3.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt3 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt4 = createExample4();
+                try {
+                        IStmt4.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("4", IStmt4, createController(IStmt4, "log4.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt4 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt5 = createExample5();
+                try {
+                        IStmt5.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("5", IStmt5, createController(IStmt5, "log5.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt5 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt6 = createExample6();
+                try {
+                        IStmt6.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("6", IStmt6, createController(IStmt6, "log6.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt6 - " + e.getMessage());
+                        return;
+                }
+
+                IStatement IStmt7 = createExample7();
+                try {
+                        IStmt7.typecheck(new MyDictionary<String, Type>());
+                        menu.addCommand(new RunExample("7", IStmt7, createController(IStmt7, "log7.txt")));
+                } catch (MyException e) {
+                        System.out.println("TYPECHECK_ERR: Error in IStmt7 - " + e.getMessage());
+                        return;
+                }
 
                 menu.addCommand(new ExitCommand("0", "Exit"));
 

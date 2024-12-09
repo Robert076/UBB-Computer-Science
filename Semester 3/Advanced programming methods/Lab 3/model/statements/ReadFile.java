@@ -4,10 +4,12 @@ import MyException.InvalidOperation;
 import MyException.MyException;
 import java.io.BufferedReader;
 import java.io.IOException;
+import model.dataStructures.myDictionary.MyIDictionary;
 import model.expressions.Expression;
 import model.programState.ProgramState;
 import model.types.IntType;
 import model.types.StringType;
+import model.types.Type;
 import model.values.IntValue;
 import model.values.StringValue;
 import model.values.Value;
@@ -78,5 +80,19 @@ public class ReadFile implements IStatement {
     @Override
     public IStatement deepCopy() {
         return new ReadFile(exp.deepCopy(), varName);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type typeVar = typeEnv.lookup(this.varName);
+        Type typeExp = this.exp.typecheck(typeEnv);
+
+        if (!typeExp.equals(new StringType())) {
+            throw new MyException("ReadFileStmt: expression must be a string");
+        }
+        if (!typeVar.equals(new IntType())) {
+            throw new MyException("ReadFileStmt: variable type must be integer");
+        }
+        return typeEnv;
     }
 }

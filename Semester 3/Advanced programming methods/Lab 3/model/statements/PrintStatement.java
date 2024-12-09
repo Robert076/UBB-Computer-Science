@@ -7,6 +7,7 @@ import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
 import model.expressions.*;
 import model.programState.*;
+import model.types.Type;
 import model.values.Value;
 
 public class PrintStatement implements IStatement {
@@ -57,5 +58,11 @@ public class PrintStatement implements IStatement {
     @Override
     public IStatement deepCopy() {
         return new PrintStatement(this.exp.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        this.exp.typecheck(typeEnv);
+        return typeEnv;
     }
 }

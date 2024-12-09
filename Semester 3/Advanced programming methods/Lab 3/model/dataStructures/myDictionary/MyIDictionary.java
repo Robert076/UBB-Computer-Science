@@ -17,4 +17,5 @@ public interface MyIDictionary<K, V> {
 
     HashMap<K, V> getContent();
 
+    MyIDictionary<K, V> deepCopy();
 }

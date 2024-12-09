@@ -8,13 +8,14 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myStack.MyIStack;
 import model.dataStructures.myStack.MyStack;
 import model.programState.ProgramState;
+import model.types.Type;
 import model.values.Value;
 
 public class ForkStatement implements IStatement {
-    IStatement stmt;
+    IStatement statement;
 
-    public ForkStatement(IStatement _stmt) {
-        this.stmt = _stmt;
+    public ForkStatement(IStatement _statement) {
+        this.statement = _statement;
     }
 
     @Override
@@ -27,18 +28,24 @@ public class ForkStatement implements IStatement {
             Map.Entry<String, Value> newEntry = i;
             symTableClone.put(newEntry.getKey(), newEntry.getValue().deepCopy());
         }
-        ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.stmt,
+        ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.statement,
                 state.getFileTable(), state.getHeap());
         return forked;
     }
 
     @Override
     public String toString() {
-        return "ForkStatement(" + this.stmt + ")";
+        return "ForkStatement(" + this.statement + ")";
     }
 
     @Override
     public ForkStatement deepCopy() {
-        return new ForkStatement(this.stmt.deepCopy());
+        return new ForkStatement(this.statement.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        this.statement.typecheck(typeEnv.deepCopy());
+        return typeEnv;
     }
 }

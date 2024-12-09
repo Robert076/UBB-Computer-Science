@@ -1,8 +1,10 @@
 package model.statements;
 
 import MyException.MyException;
+import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myStack.*;
 import model.programState.*;
+import model.types.Type;
 
 public class CompoundStatement implements IStatement {
     private IStatement first;
@@ -49,5 +51,10 @@ public class CompoundStatement implements IStatement {
     @Override
     public IStatement deepCopy() {
         return new CompoundStatement(this.first, this.second);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typecheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        return this.second.typecheck(first.typecheck(typeEnv));
     }
 }
