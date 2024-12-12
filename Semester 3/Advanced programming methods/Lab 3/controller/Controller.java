@@ -94,7 +94,6 @@ public class Controller {
             ProgramState prg = prgList.get(0);
             MyIHeap<Integer, Value> heap = prg.getHeap();
             heap.setHeap(heap.safeGarbageCollector(this.getUsedAddresses(), heap.getHeap()));
-            System.out.println("Number of active threads: " + Integer.toString(prgList.size()));
             try {
                 this.oneStepForAllPrg(prgList);
                 prgList = this.removeCompletedPrg(prgList);
