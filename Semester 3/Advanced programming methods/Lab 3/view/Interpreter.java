@@ -26,6 +26,7 @@ import view.command.ExitCommand;
 import view.command.RunExample;
 
 public class Interpreter {
+
         private static IStatement createExample1() {
                 // int v; v = 2; Print(v)
                 return new CompoundStatement(

@@ -3,7 +3,6 @@ package view;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 import view.command.Command;
 
 public class TextMenu {
