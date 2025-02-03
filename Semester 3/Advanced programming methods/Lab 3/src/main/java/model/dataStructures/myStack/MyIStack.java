@@ -1,5 +1,7 @@
 package model.dataStructures.myStack;
 
+import java.util.List;
+
 import MyException.MyException;
 
 public interface MyIStack<T> {
@@ -12,4 +14,6 @@ public interface MyIStack<T> {
     String toString();
 
     T peek() throws MyException;
+
+    public List<T> toList();
 }

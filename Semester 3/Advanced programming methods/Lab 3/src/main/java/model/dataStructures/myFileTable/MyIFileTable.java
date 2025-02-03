@@ -1,5 +1,7 @@
 package model.dataStructures.myFileTable;
 
+import java.util.List;
+
 import MyException.MyException;
 
 public interface MyIFileTable<K, V> {
@@ -12,4 +14,6 @@ public interface MyIFileTable<K, V> {
     void update(K key, V val) throws MyException;
 
     void delete(K key) throws MyException;
+
+    List<K> getKeys();
 }

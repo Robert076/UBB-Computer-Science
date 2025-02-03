@@ -1,5 +1,6 @@
 package model.dataStructures.myStack;
 
+import java.util.List;
 import java.util.Stack;
 
 import MyException.MyException;
@@ -9,6 +10,11 @@ public class MyStack<T> implements MyIStack<T> {
 
     public MyStack() {
         this.stack = new Stack<>();
+    }
+
+    @Override
+    public List<T> toList() {
+        return this.stack.stream().toList();
     }
 
     @Override

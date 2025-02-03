@@ -1,6 +1,8 @@
 package model.dataStructures.myFileTable;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -48,6 +50,11 @@ public class MyFileTable<K, V> implements MyIFileTable<K, V> {
         } else {
             throw new MyException("Cannot delete an element that is not in the table");
         }
+    }
+
+    @Override
+    public List<K> getKeys() {
+        return new LinkedList<K>(this.fileTable.keySet());
     }
 
     @Override

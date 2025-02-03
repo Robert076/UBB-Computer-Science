@@ -25,9 +25,14 @@ public class Controller {
     public Controller(IRepository _repo) {
         this.repo = _repo;
         this.displayFlag = false;
+        this.executor = Executors.newFixedThreadPool(2);
     }
 
-    List<ProgramState> removeCompletedPrg(List<ProgramState> prgList) {
+    public IRepository getRepo() {
+        return this.repo;
+    }
+
+    public List<ProgramState> removeCompletedPrg(List<ProgramState> prgList) {
         return prgList.stream().filter(p -> p.isNotCompleted()).collect(Collectors.toList());
     }
 
@@ -65,7 +70,7 @@ public class Controller {
                 }))
                 .collect(Collectors.toList());
 
-        List<ProgramState> newPrgList = executor.invokeAll(callList).stream()
+        List<ProgramState> newPrgList = this.executor.invokeAll(callList).stream()
                 .map(future -> {
                     try {
                         return future.get();
@@ -89,7 +94,6 @@ public class Controller {
     }
 
     public void allStep() {
-        this.executor = Executors.newFixedThreadPool(2);
         List<ProgramState> prgList = this.removeCompletedPrg(this.repo.getPrgList());
         while (!prgList.isEmpty()) {
             ProgramState prg = prgList.get(0);

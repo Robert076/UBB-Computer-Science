@@ -39,6 +39,10 @@ public class ProgramState {
         this.id = idInc.getAndIncrement();
     }
 
+    public int getId() {
+        return this.id;
+    }
+
     public Boolean isNotCompleted() {
         return !(this.exeStack.isEmpty());
     }
@@ -86,6 +90,10 @@ public class ProgramState {
 
         logBuilder.append("+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n");
         return logBuilder.toString();
+    }
+
+    public IStatement getOriginalProgram() {
+        return this.originalProgram;
     }
 
     public MyIStack<IStatement> getExeStack() {

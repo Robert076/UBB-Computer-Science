@@ -3,6 +3,7 @@ package view;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
 import view.command.Command;
 
 public class TextMenu {
@@ -21,6 +22,10 @@ public class TextMenu {
             String line = String.format("%4s : %s", c.getKey(), c.getDescription());
             System.out.println(line);
         }
+    }
+
+    public Map<String, Command> getCommands() {
+        return this.commands;
     }
 
     public void show() {
