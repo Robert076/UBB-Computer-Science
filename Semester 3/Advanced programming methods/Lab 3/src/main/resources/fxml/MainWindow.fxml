@@ -47,6 +47,14 @@
             <Label text="ExeStack"/>
             <ListView fx:id="exeStackListView" VBox.vgrow="ALWAYS"/>
 
+            <Label text="LockTable"/>
+            <TableView fx:id="lockTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="lockTableNameColumn" text="Variable Name"/>
+                    <TableColumn fx:id="lockTableLocationColumn" text="Value"/>
+                </columns>
+            </TableView>
+
             <Button fx:id="runOneStepButton" text="Run one step" onAction="#runOneStep" 
                     maxWidth="Infinity"/>
         </VBox>

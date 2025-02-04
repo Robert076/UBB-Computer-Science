@@ -10,6 +10,8 @@
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myHeap/MyIHeap.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myList/MyIList.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myList/MyList.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myLockTable/MyILockTable.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myLockTable/MyLockTable.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myStack/MyIStack.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/dataStructures/myStack/MyStack.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/expressions/ArithmeticExpression.java
@@ -30,10 +32,13 @@
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/HeapAllocStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/IStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/IfStatement.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/LockStatement.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/NewLockStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/NopStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/OpenRFile.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/PrintStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/ReadFile.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/UnlockStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/VarDeclStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/WhileStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/WriteHeapStatement.java

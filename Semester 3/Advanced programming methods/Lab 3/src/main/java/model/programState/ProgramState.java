@@ -9,6 +9,7 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
+import model.dataStructures.myLockTable.MyILockTable;
 import model.dataStructures.myStack.MyIStack;
 import model.statements.CompoundStatement;
 import model.statements.IStatement;
@@ -21,6 +22,9 @@ public class ProgramState {
     private MyIList<Value> out;
     private MyIFileTable<StringValue, BufferedReader> fileTable;
     private MyIHeap<Integer, Value> heap;
+
+    private MyILockTable<Integer, Integer> lockTable;
+
     private final Integer id;
     private static final AtomicInteger idInc = new AtomicInteger(0);
 
@@ -28,7 +32,7 @@ public class ProgramState {
 
     public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
             IStatement _originalProgram, MyIFileTable<StringValue, BufferedReader> _fileTable,
-            MyIHeap<Integer, Value> _heap) {
+            MyIHeap<Integer, Value> _heap, MyILockTable<Integer, Integer> _lockTable) {
         this.exeStack = _exeStack;
         this.symbolTable = _symbolTable;
         this.out = _out;
@@ -36,7 +40,16 @@ public class ProgramState {
         this.fileTable = _fileTable;
         this.heap = _heap;
         this.exeStack.push(_originalProgram);
+        this.lockTable = _lockTable;
         this.id = idInc.getAndIncrement();
+    }
+
+    public MyILockTable<Integer, Integer> getLockTable() {
+        return this.lockTable;
+    }
+
+    public void setLockTable(MyILockTable<Integer, Integer> _lockTable) {
+        this.lockTable = _lockTable;
     }
 
     public int getId() {

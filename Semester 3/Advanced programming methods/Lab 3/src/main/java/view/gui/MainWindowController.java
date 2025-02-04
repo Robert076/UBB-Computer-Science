@@ -21,6 +21,7 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
+import model.dataStructures.myLockTable.MyILockTable;
 import model.dataStructures.myStack.MyIStack;
 import model.programState.ProgramState;
 import model.statements.IStatement;
@@ -59,6 +60,49 @@ public class MainWindowController {
     private TableColumn<Map.Entry<String, Value>, String> symTableVarNameColumn;
     @FXML
     private TableColumn<Map.Entry<String, Value>, String> symTableValueColumn;
+    // lockTableView lockTableNameColumn lockTableLocationColumn
+    @FXML
+    private TableView<Map.Entry<Integer, Integer>> lockTableView;
+    @FXML
+    private TableColumn<Map.Entry<Integer, Integer>, String> lockTableNameColumn;
+    @FXML
+    private TableColumn<Map.Entry<Integer, Integer>, String> lockTableLocationColumn;
+
+    public void populateLockTable() {
+        ObservableList<Map.Entry<Integer, Integer>> lockTableEntries = FXCollections.observableArrayList();
+
+        if (!this.controller.getRepo().getPrgList().isEmpty()) {
+            try {
+                // Retrieve the lock table from the first program state
+                MyILockTable<Integer, Integer> lockTable = this.controller.getRepo().getPrgList().get(0).getLockTable();
+                lockTableEntries.addAll(lockTable.getContent().entrySet());
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Error accessing lock table: " + e.getMessage());
+                alert.showAndWait();
+            }
+        }
+
+        this.lockTableView.setItems(lockTableEntries);
+
+        // Configure the table columns
+        this.lockTableNameColumn
+                .setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey().toString()));
+        this.lockTableLocationColumn
+                .setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().toString()));
+
+        // Add a listener to refresh the table whenever its items change
+        this.lockTableView.getItems().addListener(
+                (javafx.collections.ListChangeListener.Change<? extends Map.Entry<Integer, Integer>> change) -> {
+                    while (change.next()) {
+                        if (change.wasUpdated()) {
+                            this.lockTableView.refresh();
+                        }
+                    }
+                });
+    }
 
     @FXML
     private Button runOneStepButton;
@@ -108,6 +152,7 @@ public class MainWindowController {
         populateFileTable();
         populateProgramStateIdentifiers();
         populateNumberOfProgramStates();
+        populateLockTable();
 
         // select the first prg in the list if none are selected
         if (this.selectedProgram == null && !controller.getRepo().getPrgList().isEmpty()) {

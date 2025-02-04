@@ -30,7 +30,7 @@ public class ForkStatement implements IStatement {
             symTableClone.put(newEntry.getKey(), newEntry.getValue().deepCopy());
         }
         ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.statement,
-                state.getFileTable(), state.getHeap());
+                state.getFileTable(), state.getHeap(), state.getLockTable());
         return forked;
     }
 
