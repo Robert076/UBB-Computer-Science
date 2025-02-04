@@ -1,5 +1,6 @@
 package model.statements;
 
+import java.io.BufferedReader;
 import java.util.Map;
 
 import MyException.MyException;
@@ -13,6 +14,7 @@ import model.dataStructures.myStack.MyIStack;
 import model.dataStructures.myStack.MyStack;
 import model.programState.ProgramState;
 import model.types.Type;
+import model.values.StringValue;
 import model.values.Value;
 
 public class ForkStatement implements IStatement {
@@ -39,8 +41,8 @@ public class ForkStatement implements IStatement {
             symTableStackCopy.push(symTableCopy);
         }
 
-        MyIHeap heap = state.getHeap();
-        MyIFileTable fileTable = state.getFileTable();
+        MyIHeap<Integer, Value> heap = state.getHeap();
+        MyIFileTable<StringValue, BufferedReader> fileTable = state.getFileTable();
         MyIList<Value> out = state.getOut();
         MyIProcedureTable procTable = state.getProcedureTable();
 
