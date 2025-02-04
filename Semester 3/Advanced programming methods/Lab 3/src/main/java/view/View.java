@@ -97,50 +97,46 @@ public class View {
                                                                                                                 "v"),
                                                                                                 new VariableExpression(
                                                                                                                 "w"))))))));
-                // return new CompoundStatement(
-                // new VarDeclStatement("v", new IntType()),
-                // new CompoundStatement(
-                // new VarDeclStatement("w", new IntType()),
-                // new CompoundStatement(
-                // new AssignmentStatement("v",
-                // new ValueExpression(new IntValue(2))),
-                // new CompoundStatement(
-                // new AssignmentStatement("w",
-                // new ValueExpression(
-                // new IntValue(5))),
-                // new CompoundStatement(
-                // new CallProcedureStatement(
-                // "sum",
-                // new ArrayList<>(Arrays
-                // .asList(new ArithmeticExpression(
-                // new VariableExpression(
-                // "v"),
-                // new ValueExpression(
-                // new IntValue(10)),
-                // ArithmeticOperator.MULTIPLY),
-                // new VariableExpression(
-                // "w")))),
-                // new CompoundStatement(
-                // new PrintStatement(
-                // new VariableExpression(
-                // "v")),
-                // new ForkStatement(
-                // new CompoundStatement(
-                // new CallProcedureStatement(
-                // "product",
-                // new ArrayList<>(Arrays
-                // .asList(new VariableExpression(
-                // "v"),
-                // new VariableExpression(
-                // "w")))),
-                // new ForkStatement(
-                // new CallProcedureStatement(
-                // "sum",
-                // new ArrayList<>(Arrays
-                // .asList(new VariableExpression(
-                // "v"),
-                // new VariableExpression(
-                // "w")))))))))))));
+        }
+
+        public static IStatement createExample9() {
+                return new CompoundStatement(new VarDeclStatement("v", new IntType()),
+                                new CompoundStatement(new VarDeclStatement("w", new IntType()), new CompoundStatement(
+                                                new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
+                                                new CompoundStatement(
+                                                                new AssignmentStatement("w",
+                                                                                new ValueExpression(new IntValue(5))),
+                                                                new CompoundStatement(new CallProcedureStatement("sum",
+                                                                                new ArrayList<>(Arrays.asList(
+                                                                                                new ArithmeticExpression(
+                                                                                                                new VariableExpression(
+                                                                                                                                "v"),
+                                                                                                                new ValueExpression(
+                                                                                                                                new IntValue(10)),
+                                                                                                                ArithmeticOperator.MULTIPLY),
+                                                                                                new VariableExpression(
+                                                                                                                "w")))),
+                                                                                new CompoundStatement(
+                                                                                                new PrintStatement(
+                                                                                                                new VariableExpression(
+                                                                                                                                "v")),
+                                                                                                new CompoundStatement(
+                                                                                                                new ForkStatement(
+                                                                                                                                new CallProcedureStatement(
+                                                                                                                                                "product",
+                                                                                                                                                new ArrayList<>(Arrays
+                                                                                                                                                                .asList(new VariableExpression(
+                                                                                                                                                                                "v"),
+                                                                                                                                                                                new VariableExpression(
+                                                                                                                                                                                                "w"))))),
+                                                                                                                new ForkStatement(
+                                                                                                                                new CallProcedureStatement(
+                                                                                                                                                "sum",
+                                                                                                                                                new ArrayList<>(Arrays
+                                                                                                                                                                .asList(new VariableExpression(
+                                                                                                                                                                                "v"),
+                                                                                                                                                                                new VariableExpression(
+                                                                                                                                                                                                "w"))))))))))));
         }
 
         private static IStatement createExample1() {
@@ -352,6 +348,7 @@ public class View {
                 Controller ctr6 = createController(createExample6(), "log6.txt");
                 Controller ctr7 = createController(createExample7(), "log7.txt");
                 Controller ctr8 = createController(createExample8(), "log8.txt");
+                Controller ctr9 = createController(createExample9(), "log9.txt");
 
                 Command cmm1 = new RunExample("1", createExample1(), ctr1);
                 Command cmm2 = new RunExample("2", createExample2(), ctr2);
@@ -361,6 +358,7 @@ public class View {
                 Command cmm6 = new RunExample("6", createExample6(), ctr6);
                 Command cmm7 = new RunExample("7", createExample7(), ctr7);
                 Command cmm8 = new RunExample("8", createExample8(), ctr8);
+                Command cmm9 = new RunExample("9", createExample9(), ctr9);
 
                 TextMenu textMenu = new TextMenu();
                 textMenu.addCommand(cmm1);
@@ -371,6 +369,7 @@ public class View {
                 textMenu.addCommand(cmm6);
                 textMenu.addCommand(cmm7);
                 textMenu.addCommand(cmm8);
+                textMenu.addCommand(cmm9);
                 textMenu.addCommand(new ExitCommand("0", "Exit"));
 
                 return textMenu;
@@ -386,6 +385,7 @@ public class View {
                         case "6" -> createController(createExample6(), "log6.txt");
                         case "7" -> createController(createExample7(), "log7.txt");
                         case "8" -> createController(createExample8(), "log8.txt");
+                        case "9" -> createController(createExample9(), "log9.txt");
                         default -> null;
                 };
 

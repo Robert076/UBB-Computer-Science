@@ -1,11 +1,19 @@
 package model.statements;
 
+import java.util.Map;
+
 import MyException.MyException;
+import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
+import model.dataStructures.myFileTable.MyIFileTable;
+import model.dataStructures.myHeap.MyIHeap;
+import model.dataStructures.myList.MyIList;
+import model.dataStructures.myProcedureTable.MyIProcedureTable;
 import model.dataStructures.myStack.MyIStack;
 import model.dataStructures.myStack.MyStack;
 import model.programState.ProgramState;
 import model.types.Type;
+import model.values.Value;
 
 public class ForkStatement implements IStatement {
     IStatement statement;
@@ -16,10 +24,29 @@ public class ForkStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIStack<IStatement> newThreadStack = new MyStack<>();
-        newThreadStack.push(this.statement);
-        return new ProgramState(newThreadStack, state.getSymbolTable(), state.getOut(), state.getOriginalProgram(),
-                state.getFileTable(), state.getHeap(), state.getProcedureTable());
+        MyIStack<IStatement> exeStack = new MyStack<>();
+
+        MyIStack<MyIDictionary<String, Value>> symTableStack = state.getSymbolTable();
+        MyIStack<MyIDictionary<String, Value>> symTableStackCopy = new MyStack<MyIDictionary<String, Value>>();
+
+        for (MyIDictionary<String, Value> symTable : symTableStack.toList()) {
+            MyIDictionary<String, Value> symTableCopy = new MyDictionary<String, Value>();
+            Map<String, Value> originalSymContent = symTable.getContent();
+            for (Map.Entry<String, Value> entry : originalSymContent.entrySet()) {
+                Value aux = entry.getValue().deepCopy();
+                symTableCopy.put(entry.getKey(), entry.getValue().deepCopy());
+            }
+            symTableStackCopy.push(symTableCopy);
+        }
+
+        MyIHeap heap = state.getHeap();
+        MyIFileTable fileTable = state.getFileTable();
+        MyIList<Value> out = state.getOut();
+        MyIProcedureTable procTable = state.getProcedureTable();
+
+        ProgramState newPrg = new ProgramState(exeStack, symTableStackCopy, out, this.statement, fileTable, heap,
+                procTable);
+        return newPrg;
     }
 
     @Override
