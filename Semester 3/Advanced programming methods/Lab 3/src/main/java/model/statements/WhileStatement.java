@@ -22,7 +22,7 @@ public class WhileStatement implements IStatement {
     }
 
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
-        MyIDictionary<String, Value> symTable = state.getSymbolTable();
+        MyIDictionary<String, Value> symTable = state.getSymbolTableTop();
         MyIHeap<Integer, Value> heap = state.getHeap();
         Value val = this.exp.eval(symTable, heap);
 

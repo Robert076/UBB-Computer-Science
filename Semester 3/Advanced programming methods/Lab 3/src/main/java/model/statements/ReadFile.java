@@ -26,17 +26,17 @@ public class ReadFile implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        if (!state.getSymbolTable().isDefined(this.varName)) {
+        if (!state.getSymbolTableTop().isDefined(this.varName)) {
             throw new MyException("Variable " + this.varName + " is not defined");
         }
         Value val;
-        val = state.getSymbolTable().lookup(this.varName);
+        val = state.getSymbolTableTop().lookup(this.varName);
         if (!val.getType().equals(new IntType())) {
             throw new MyException("Variable " + varName + " is not of type integer");
         }
         Value fileNameVal;
         try {
-            fileNameVal = this.exp.eval(state.getSymbolTable(), state.getHeap());
+            fileNameVal = this.exp.eval(state.getSymbolTableTop(), state.getHeap());
         } catch (InvalidOperation e) {
             throw new MyException(e.getMessage());
         }
@@ -65,7 +65,7 @@ public class ReadFile implements IStatement {
                     throw new MyException("Invalid integer format in file");
                 }
             }
-            state.getSymbolTable().update(this.varName, value);
+            state.getSymbolTableTop().update(this.varName, value);
         } catch (IOException e) {
             throw new MyException("Error reading from file " + e.getMessage());
         }

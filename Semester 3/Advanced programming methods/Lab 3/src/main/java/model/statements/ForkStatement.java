@@ -1,16 +1,11 @@
 package model.statements;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import MyException.MyException;
-import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myStack.MyIStack;
 import model.dataStructures.myStack.MyStack;
 import model.programState.ProgramState;
 import model.types.Type;
-import model.values.Value;
 
 public class ForkStatement implements IStatement {
     IStatement statement;
@@ -21,17 +16,10 @@ public class ForkStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIStack<IStatement> forkedStack = new MyStack<>();
-        MyIDictionary<String, Value> symTableOriginal = state.getSymbolTable();
-        HashMap<String, Value> symTableOriginalContent = symTableOriginal.getContent();
-        MyIDictionary<String, Value> symTableClone = new MyDictionary<>();
-        for (Map.Entry<String, Value> i : symTableOriginalContent.entrySet()) {
-            Map.Entry<String, Value> newEntry = i;
-            symTableClone.put(newEntry.getKey(), newEntry.getValue().deepCopy());
-        }
-        ProgramState forked = new ProgramState(forkedStack, symTableClone, state.getOut(), this.statement,
-                state.getFileTable(), state.getHeap());
-        return forked;
+        MyIStack<IStatement> newThreadStack = new MyStack<>();
+        newThreadStack.push(this.statement);
+        return new ProgramState(newThreadStack, state.getSymbolTable(), state.getOut(), state.getOriginalProgram(),
+                state.getFileTable(), state.getHeap(), state.getProcedureTable());
     }
 
     @Override

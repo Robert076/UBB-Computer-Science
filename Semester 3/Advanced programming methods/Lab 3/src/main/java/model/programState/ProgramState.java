@@ -5,11 +5,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import MyException.InvalidOperation;
 import MyException.MyException;
+import model.dataStructures.myDictionary.MyDictionary;
 import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
+import model.dataStructures.myProcedureTable.MyIProcedureTable;
 import model.dataStructures.myStack.MyIStack;
+import model.dataStructures.myStack.MyStack;
 import model.statements.CompoundStatement;
 import model.statements.IStatement;
 import model.values.StringValue;
@@ -17,26 +20,45 @@ import model.values.Value;
 
 public class ProgramState {
     private MyIStack<IStatement> exeStack;
-    private MyIDictionary<String, Value> symbolTable;
+    private MyIStack<MyIDictionary<String, Value>> symbolTable;
     private MyIList<Value> out;
     private MyIFileTable<StringValue, BufferedReader> fileTable;
     private MyIHeap<Integer, Value> heap;
     private final Integer id;
     private static final AtomicInteger idInc = new AtomicInteger(0);
-
+    MyIProcedureTable procedureTable;
     IStatement originalProgram; // optional but good
 
-    public ProgramState(MyIStack<IStatement> _exeStack, MyIDictionary<String, Value> _symbolTable, MyIList<Value> _out,
+    public ProgramState(MyIStack<IStatement> _exeStack, MyIStack<MyIDictionary<String, Value>> _symbolTable,
+            MyIList<Value> _out,
             IStatement _originalProgram, MyIFileTable<StringValue, BufferedReader> _fileTable,
-            MyIHeap<Integer, Value> _heap) {
+            MyIHeap<Integer, Value> _heap,
+            MyIProcedureTable _procedureTable) {
         this.exeStack = _exeStack;
         this.symbolTable = _symbolTable;
         this.out = _out;
         this.originalProgram = deepCopy(_originalProgram); // recreate the entire original prg
         this.fileTable = _fileTable;
         this.heap = _heap;
+        this.procedureTable = _procedureTable;
         this.exeStack.push(_originalProgram);
         this.id = idInc.getAndIncrement();
+    }
+
+    public MyIStack<MyIDictionary<String, Value>> getSymbolTable() {
+        return this.symbolTable;
+    }
+
+    public MyIDictionary<String, Value> getSymbolTableTop() {
+        try {
+            return symbolTable.peek();
+        } catch (MyException e) {
+            return new MyDictionary<>();
+        }
+    }
+
+    public void setSymbolTable(MyStack<MyIDictionary<String, Value>> newSymbolTable) {
+        this.symbolTable = newSymbolTable;
     }
 
     public int getId() {
@@ -60,7 +82,7 @@ public class ProgramState {
         return "+ - - - - - - - - PROGRAM STATE - - - - - - - - +\n\n" +
                 " ID = " + this.id +
                 " exeStack = " + this.exeStack +
-                "\n\n symTable = " + this.symbolTable +
+                "\n\n symTableStack = " + this.symbolTable +
                 "\n out = " + out + "\n\n+ - - - - - - - - - - - - - - - - - - - - - - - +\n\n";
     }
 
@@ -83,7 +105,7 @@ public class ProgramState {
         }
 
         // Log symbol table and output
-        logBuilder.append("Symbol Table:\n").append(this.symbolTable).append("\n");
+        logBuilder.append("Symbol Table Stack:\n").append(this.symbolTable).append("\n");
         logBuilder.append("Output:\n").append(this.out).append("\n");
         logBuilder.append("FileTable:\n").append(this.fileTable).append("\n");
         logBuilder.append("Heap:\n").append(this.heap).append("\n");
@@ -100,9 +122,9 @@ public class ProgramState {
         return this.exeStack;
     }
 
-    public MyIDictionary<String, Value> getSymbolTable() {
-        return this.symbolTable;
-    }
+    // public MyIDictionary<String, Value> getSymbolTable() {
+    // return this.symbolTable;
+    // }
 
     public MyIList<Value> getOut() {
         return this.out;
@@ -120,9 +142,13 @@ public class ProgramState {
         this.exeStack = _exeStack;
     }
 
-    public void setSymbolTable(MyIDictionary<String, Value> _symbolTable) {
-        this.symbolTable = _symbolTable;
+    public MyIProcedureTable getProcedureTable() {
+        return this.procedureTable;
     }
+
+    // public void setSymbolTable(MyIDictionary<String, Value> _symbolTable) {
+    // this.symbolTable = _symbolTable;
+    // }
 
     public void setOut(MyIList<Value> _out) {
         this.out = _out;

@@ -47,8 +47,11 @@
             <Label text="ExeStack"/>
             <ListView fx:id="exeStackListView" VBox.vgrow="ALWAYS"/>
 
+            <Label text="ProcedureTable"/>
+            <ListView fx:id="proceduresTableView" VBox.vgrow="ALWAYS"/>
+
             <Button fx:id="runOneStepButton" text="Run one step" onAction="#runOneStep" 
                     maxWidth="Infinity"/>
         </VBox>
     </HBox>
-</VBox> 
+</VBox>

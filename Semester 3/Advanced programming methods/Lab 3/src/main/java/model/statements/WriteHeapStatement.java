@@ -22,7 +22,7 @@ public class WriteHeapStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIDictionary<String, Value> symTable = state.getSymbolTable();
+        MyIDictionary<String, Value> symTable = state.getSymbolTableTop();
         MyIHeap<Integer, Value> heap = state.getHeap();
 
         if (!symTable.isDefined(this.varName)) {

@@ -21,11 +21,15 @@ import model.dataStructures.myDictionary.MyIDictionary;
 import model.dataStructures.myFileTable.MyIFileTable;
 import model.dataStructures.myHeap.MyIHeap;
 import model.dataStructures.myList.MyIList;
+import model.dataStructures.myProcedureTable.MyIProcedureTable;
 import model.dataStructures.myStack.MyIStack;
 import model.programState.ProgramState;
 import model.statements.IStatement;
 import model.values.StringValue;
 import model.values.Value;
+
+// facut: procedure table, program state, modificat in statementuri sa ia topu din prgstate care acum e stack, adaugat proceduri in view
+// callprocedure mai trb, si gui sa vedem care e faza
 
 public class MainWindowController {
     private Controller controller;
@@ -59,6 +63,9 @@ public class MainWindowController {
     private TableColumn<Map.Entry<String, Value>, String> symTableVarNameColumn;
     @FXML
     private TableColumn<Map.Entry<String, Value>, String> symTableValueColumn;
+
+    @FXML
+    private ListView<String> proceduresTableView;
 
     @FXML
     private Button runOneStepButton;
@@ -108,6 +115,7 @@ public class MainWindowController {
         populateFileTable();
         populateProgramStateIdentifiers();
         populateNumberOfProgramStates();
+        populateProcedures();
 
         // select the first prg in the list if none are selected
         if (this.selectedProgram == null && !controller.getRepo().getPrgList().isEmpty()) {
@@ -124,6 +132,28 @@ public class MainWindowController {
 
     public void populateNumberOfProgramStates() {
         this.numberOfProgramStatesTextField.setText(String.valueOf(controller.getRepo().getPrgList().size()));
+    }
+
+    public void populateProcedures() {
+        MyIProcedureTable procTable = this.controller.getRepo().getPrgList().get(0).getProcedureTable();
+
+        ObservableList<String> procedureNames = FXCollections.observableArrayList();
+        try {
+            // Iterate over the procedure table and extract the procedure names
+            for (Map.Entry<String, javafx.util.Pair<List<String>, IStatement>> entry : procTable.entrySet()) {
+                // Get the List<String> from the Pair and take the first element
+                String procedureName = entry.getKey();
+                procedureNames.add(procedureName);
+            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error accessing procedure table: " + e.getMessage());
+            alert.showAndWait();
+        }
+
+        this.proceduresTableView.setItems(procedureNames);
     }
 
     private void populateHeapTable() {
@@ -198,7 +228,7 @@ public class MainWindowController {
     private void populateSymTable() {
         ObservableList<Map.Entry<String, Value>> symTableEntries = FXCollections.observableArrayList();
         if (this.selectedProgram != null) {
-            MyIDictionary<String, Value> symTable = this.selectedProgram.getSymbolTable();
+            MyIDictionary<String, Value> symTable = this.selectedProgram.getSymbolTableTop();
             try {
                 symTableEntries.addAll(symTable.getContent().entrySet());
             } catch (Exception e) {

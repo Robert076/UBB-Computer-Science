@@ -53,7 +53,7 @@ public class VarDeclStatement implements IStatement {
      */
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIDictionary<String, Value> dict = state.getSymbolTable();
+        MyIDictionary<String, Value> dict = state.getSymbolTableTop();
 
         if (dict.isDefined(this.name)) {
             throw new MyException("Variable is already defined!");

@@ -24,7 +24,7 @@ public class CloseRFile implements IStatement {
     public ProgramState execute(ProgramState state) throws MyException {
         Value val;
         try {
-            val = this.exp.eval(state.getSymbolTable(), state.getHeap());
+            val = this.exp.eval(state.getSymbolTableTop(), state.getHeap());
         } catch (MyException | InvalidOperation e) {
             throw new MyException(e.getMessage());
         }

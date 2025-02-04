@@ -129,7 +129,7 @@ public class Controller {
         List<ProgramState> prgList = this.repo.getPrgList();
         Set<Integer> usedAddresses = new HashSet<>();
         for (ProgramState prg : prgList) {
-            for (Value val : prg.getSymbolTable().getValues()) {
+            for (Value val : prg.getSymbolTableTop().getValues()) {
                 if (val instanceof RefValue refValue) {
                     usedAddresses.add(refValue.getAddr());
                 }

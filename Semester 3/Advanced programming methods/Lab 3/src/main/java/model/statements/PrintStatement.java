@@ -49,7 +49,7 @@ public class PrintStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
         MyIList<Value> out = state.getOut();
-        MyIDictionary<String, Value> symTable = state.getSymbolTable();
+        MyIDictionary<String, Value> symTable = state.getSymbolTableTop();
         MyIHeap<Integer, Value> heap = state.getHeap();
         out.add(exp.eval(symTable, heap));
         return null;

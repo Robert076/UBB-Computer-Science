@@ -42,7 +42,7 @@ public class IfStatement implements IStatement {
      */
     @Override
     public ProgramState execute(ProgramState state) throws MyException, InvalidOperation {
-        MyIDictionary<String, Value> dict = state.getSymbolTable();
+        MyIDictionary<String, Value> dict = state.getSymbolTableTop();
         MyIHeap<Integer, Value> heap = state.getHeap();
         Value val = exp.eval(dict, heap);
 
