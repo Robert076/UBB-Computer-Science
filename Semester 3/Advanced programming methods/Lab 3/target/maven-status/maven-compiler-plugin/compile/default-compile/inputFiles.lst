@@ -26,6 +26,7 @@
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/AssignmentStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/CloseRFile.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/CompoundStatement.java
+/Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/ForStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/ForkStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/HeapAllocStatement.java
 /Users/robert/UBB/Repo/UBB-Computer-Science/Semester 3/Advanced programming methods/Lab 3/src/main/java/model/statements/IStatement.java
