@@ -87,6 +87,7 @@ public class Controller {
                 this.repo.logProgramStateExecution(prg);
             } catch (MyException | IOException e) {
                 System.out.println(e.getMessage());
+                // System.exit(-1);
             }
         });
 
