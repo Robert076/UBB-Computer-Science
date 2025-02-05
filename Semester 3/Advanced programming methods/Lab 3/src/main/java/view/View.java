@@ -54,7 +54,7 @@ import view.command.ExitCommand;
 import view.command.RunExample;
 
 public class View {
-        private static IStatement createExample8() {
+        private static IStatement createExample9() {
                 return new CompoundStatement(new VarDeclStatement("v1", new RefType(new IntType())),
                                 new CompoundStatement(new VarDeclStatement("v2", new RefType(new IntType())),
                                                 new CompoundStatement(new VarDeclStatement("x", new IntType()),
@@ -173,7 +173,7 @@ public class View {
                                                                                                                                                                                                                                                                                                                                 "q")))))))))))))))))));
         }
 
-        private static IStatement createExample9() {
+        private static IStatement createExample8() {
                 return new CompoundStatement(new VarDeclStatement("v1", new RefType(new IntType())),
                                 new CompoundStatement(new VarDeclStatement("v2", new RefType(new IntType())),
                                                 new CompoundStatement(new VarDeclStatement("x", new IntType()),
