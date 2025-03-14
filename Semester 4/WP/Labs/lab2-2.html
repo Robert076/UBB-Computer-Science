@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .rainbow {
+            position: absolute;
+            top: 15px;
+            left: 10%;
+            width: 40vw;
+            height: 120px;
+            transform: rotate(-20deg);
+        }
+        .rainbow div {
+            height: 17px;
+            margin-bottom: 2px;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 5vw;
+        }
+        .red { background: red; width: 30vw; }
+        .orange { background: orange; width: 35vw; top: 17px; }
+        .yellow { background: yellow; width: 40vw; top: 34px; }
+        .green { background: green; width: 45vw; top: 51px; }
+        .blue { background: blue; width: 50vw; top: 68px; }
+        .indigo { background: indigo; width: 55vw; top: 85px; }
+        .violet { background: violet; width: 60vw; top: 102px; }
+    </style>
+</head>
+<body>
+    <div class="rainbow">
+        <div class="red"></div>
+        <div class="orange"></div>
+        <div class="yellow"></div>
+        <div class="green"></div>
+        <div class="blue"></div>
+        <div class="indigo"></div>
+        <div class="violet"></div>
+    </div>
+</body>
+</html>
