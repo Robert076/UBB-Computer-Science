@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="sortableTable">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Banana</td>
+                <td>2</td>
+                <td>5.5</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>4</td>
+                <td>3.5</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>1</td>
+                <td>7.0</td>
+            </tr>
+            <tr>
+                <td>Grape</td>
+                <td>3</td>
+                <td>4.5</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let sortDirection = [true, true, true]; 
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("sortableTable");
+            const rows = Array.from(table.rows).slice(1); 
+            const isAscending = sortDirection[columnIndex]; 
+
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.cells[columnIndex].innerText;
+                const cellB = rowB.cells[columnIndex].innerText;
+
+
+                let comparison = 0;
+                if (!isNaN(cellA) && !isNaN(cellB)) {
+                    comparison = parseFloat(cellA) - parseFloat(cellB); 
+                } else {
+                    comparison = cellA.localeCompare(cellB); 
+                }
+
+                return isAscending ? comparison : -comparison;
+            });
+
+            rows.forEach(row => table.tBodies[0].appendChild(row));
+
+            sortDirection[columnIndex] = !isAscending;
+        }
+
+        const headers = document.querySelectorAll("#sortableTable th");
+        headers.forEach((header, index) => {
+            header.addEventListener("click", () => sortTable(index));
+        });
+    </script>
+
+</body>
+</html>
+
