@@ -11,7 +11,7 @@ Some of my personal favourites include Computer Networks, OS, Algebra, FP, DSA, 
 │   ├── 📈 Analysis
 │   ├── 🤖 Computational Logic
 │   ├── 🖥️ Computer Systems Architecture
-│   └── 🧠 FP
+│   └── 🧠 Fundamentals of Programming
 ├── Semester 2
 │   ├── 📊 DSA
 │   ├── 🌪️ Dynamical Systems
