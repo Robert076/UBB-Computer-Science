@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Image Slider</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    #slider-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    #slider {
+      display: inline-block;
+      position: relative;
+      height: 200px;
+    }
+
+    #slider img {
+      height: 100%;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #lightbox img {
+      max-width: 80vw;
+      max-height: 80vh;
+      box-shadow: 0 0 20px white;
+    }
+  </style>
+</head>
+<body>
+
+<div id="slider-wrapper">
+  <div id="slider">
+    <img src="https://images.unsplash.com/photo-1658172665896-36e4d4974f13?q=80&w=600" data-full="https://images.unsplash.com/photo-1658172665896-36e4d4974f13?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1636452089599-56a0dc26b4f2?q=80&w=600" data-full="https://images.unsplash.com/photo-1636452089599-56a0dc26b4f2?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1534371020656-6b85825f2b1a?q=80&w=600" data-full="https://images.unsplash.com/photo-1534371020656-6b85825f2b1a?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1563480022576-120c8505cf9b?q=80&w=600" data-full="https://images.unsplash.com/photo-1563480022576-120c8505cf9b?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1600120834153-6700a1a3399b?q=80&w=600" data-full="https://images.unsplash.com/photo-1600120834153-6700a1a3399b?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1595138320174-a64d168e9970?q=80&w=600" data-full="https://images.unsplash.com/photo-1595138320174-a64d168e9970?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1663344640875-6b82fd4636c8?q=80&w=600" data-full="https://images.unsplash.com/photo-1663344640875-6b82fd4636c8?q=80&w=1600">
+    <img src="https://images.unsplash.com/photo-1704810068162-2dbb85ded86d?q=80&w=600" data-full="https://images.unsplash.com/photo-1704810068162-2dbb85ded86d?q=80&w=1600">
+  </div>
+</div>
+
+<div id="lightbox">
+  <img src="" alt="Large preview">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function() {
+    var $slider = $('#slider');
+    var speed = 1;
+    var animation;
+
+    // Duplicate slider content for seamless loop
+    $slider.append($slider.html());
+
+    function animateSlider() {
+      animation = requestAnimationFrame(function step() {
+        let left = parseFloat($slider.css('left')) || 0;
+        left -= speed;
+
+        if (Math.abs(left) >= $slider[0].scrollWidth / 2) {
+          left = 0;
+        }
+
+        $slider.css('left', left + 'px');
+        animation = requestAnimationFrame(step);
+      });
+    }
+
+    animateSlider();
+
+    // Pause and show large image
+    $('#slider img').on('click', function() {
+      cancelAnimationFrame(animation);
+      $('#lightbox img').attr('src', $(this).data('full'));
+      $('#lightbox').fadeIn();
+    });
+
+    // Resume animation on lightbox click
+    $('#lightbox').on('click', function() {
+      $(this).fadeOut();
+      animateSlider();
+    });
+  });
+</script>
+
+</body>
+</html>
