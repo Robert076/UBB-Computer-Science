@@ -81,7 +81,6 @@
     var speed = 1;
     var animation;
 
-    // Duplicate slider content for seamless loop
     $slider.append($slider.html());
 
     function animateSlider() {
@@ -100,14 +99,12 @@
 
     animateSlider();
 
-    // Pause and show large image
     $('#slider img').on('click', function() {
       cancelAnimationFrame(animation);
       $('#lightbox img').attr('src', $(this).data('full'));
       $('#lightbox').fadeIn();
     });
 
-    // Resume animation on lightbox click
     $('#lightbox').on('click', function() {
       $(this).fadeOut();
       animateSlider();
