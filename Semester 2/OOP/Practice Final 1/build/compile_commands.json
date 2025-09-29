@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/mocs_compilation.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/app/main.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/app/main.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/app/main.cpp",
+  "output": "CMakeFiles/main.dir/app/main.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/department.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/department.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/department.cpp",
+  "output": "CMakeFiles/main.dir/src/department.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/departmentWindow.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/departmentWindow.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/departmentWindow.cpp",
+  "output": "CMakeFiles/main.dir/src/departmentWindow.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/gui.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/gui.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/gui.cpp",
+  "output": "CMakeFiles/main.dir/src/gui.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/observer.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/observer.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/observer.cpp",
+  "output": "CMakeFiles/main.dir/src/observer.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/observerManager.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/observerManager.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/observerManager.cpp",
+  "output": "CMakeFiles/main.dir/src/observerManager.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/repository.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/repository.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/repository.cpp",
+  "output": "CMakeFiles/main.dir/src/repository.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/services.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/services.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/services.cpp",
+  "output": "CMakeFiles/main.dir/src/services.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Practice Final 1/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/robert/UBB/OOP/Practice Final 1/build/main_autogen/include\" -I\"/Users/robert/UBB/OOP/Practice Final 1/.\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/volunteer.cpp.o -c \"/Users/robert/UBB/OOP/Practice Final 1/src/volunteer.cpp\"",
+  "file": "/Users/robert/UBB/OOP/Practice Final 1/src/volunteer.cpp",
+  "output": "CMakeFiles/main.dir/src/volunteer.cpp.o"
+}
+]

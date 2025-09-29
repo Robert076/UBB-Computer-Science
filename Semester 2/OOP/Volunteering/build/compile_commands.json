@@ -1,0 +1,56 @@
+[
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o -c /Users/robert/UBB/OOP/Volunteering/build/main_autogen/mocs_compilation.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/build/main_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/app/main.cpp.o -c /Users/robert/UBB/OOP/Volunteering/app/main.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/app/main.cpp",
+  "output": "CMakeFiles/main.dir/app/main.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/department.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/department.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/department.cpp",
+  "output": "CMakeFiles/main.dir/src/department.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/observer.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/observer.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/observer.cpp",
+  "output": "CMakeFiles/main.dir/src/observer.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/observerManager.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/observerManager.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/observerManager.cpp",
+  "output": "CMakeFiles/main.dir/src/observerManager.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/repo.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/repo.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/repo.cpp",
+  "output": "CMakeFiles/main.dir/src/repo.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/services.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/services.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/services.cpp",
+  "output": "CMakeFiles/main.dir/src/services.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/volunteer.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/volunteer.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/volunteer.cpp",
+  "output": "CMakeFiles/main.dir/src/volunteer.cpp.o"
+},
+{
+  "directory": "/Users/robert/UBB/OOP/Volunteering/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/robert/UBB/OOP/Volunteering/build/main_autogen/include -I/Users/robert/UBB/OOP/Volunteering/. -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -mmacosx-version-min=14.1 -o CMakeFiles/main.dir/src/window.cpp.o -c /Users/robert/UBB/OOP/Volunteering/src/window.cpp",
+  "file": "/Users/robert/UBB/OOP/Volunteering/src/window.cpp",
+  "output": "CMakeFiles/main.dir/src/window.cpp.o"
+}
+]

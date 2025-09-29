@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "qwidget": "cpp",
+        "vector": "cpp",
+        "string": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp"
+    }
+}

@@ -1,0 +1,5 @@
+/Users/robert/UBB/OOP/Seminar/build/CMakeFiles/main.dir
+/Users/robert/UBB/OOP/Seminar/build/CMakeFiles/edit_cache.dir
+/Users/robert/UBB/OOP/Seminar/build/CMakeFiles/rebuild_cache.dir
+/Users/robert/UBB/OOP/Seminar/build/CMakeFiles/main_autogen_timestamp_deps.dir
+/Users/robert/UBB/OOP/Seminar/build/CMakeFiles/main_autogen.dir

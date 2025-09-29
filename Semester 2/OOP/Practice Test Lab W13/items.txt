@@ -1,0 +1,4 @@
+Drink|Jack Daniel's|23
+Chocolate|Milka oreo|23
+Book|Harry Potter|1
+Drink|Jagermeister|23

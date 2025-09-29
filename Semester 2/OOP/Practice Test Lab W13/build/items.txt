@@ -1,0 +1,2 @@
+Fanta|Drink|1
+Cola|Drink|2
