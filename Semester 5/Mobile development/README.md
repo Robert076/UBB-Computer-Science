@@ -11,6 +11,7 @@ Each note has an:
 - id, int, primary key
 - name, text, not null
 - description, text, not null
+- priority, int, not null (higher number higher priority)
 - category, text, not null (defaults to "other")
 - deadline, datetime, nullable
 
