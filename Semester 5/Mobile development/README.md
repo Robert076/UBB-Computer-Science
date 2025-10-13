@@ -1,19 +1,21 @@
 # TODO app
 
-Simple TODO app that lets users write the stuff they need to do to replace the manual notebooks. It will help you write stuff down on the fly without having to stop and pick up your notebook and start writing. It lets you customize your todos in categories, how urgent they are, sorting, filtering etc.
-
+The TODO mobile app helps people stay organized by keeping track of all the things they need to do in one simple place. Instead of writing tasks in a notebook or forgetting them, users can quickly add reminders, categorize their tasks (like work, personal, or shopping), and mark them as done when completed. The app also lets users set priorities and deadlines, making it easier to focus on what matters most. Even when users are offline, they can still access and manage their notes — everything will sync automatically once they reconnect to the internet.
 ---
 
 ### Entities
 
-Notes:
-Each note has an:
-- id, int, primary key
-- name, text, not null
-- description, text, not null
-- priority, int, not null (higher number higher priority)
-- category, text, not null (defaults to "other")
-- deadline, datetime, nullable
+The app stores information about Notes. Each note represents a single task or reminder that the user creates.
+
+| Field           | Type     | Description                                                                      |
+| --------------- | -------- | -------------------------------------------------------------------------------- |
+| **id**          | Integer  | A unique number used internally to identify each note.                           |
+| **name**        | Text     | The title of the note — a short phrase describing what the task is about.        |
+| **description** | Text     | Additional details or context about the task.                                    |
+| **priority**    | Integer  | Indicates how urgent or important the task is (1 = low priority, 5 = very high). |
+| **category**    | Text     | Helps group notes into categories like "Work", "Personal", or "Shopping".        |
+| **deadline**    | DateTime | Optional field showing when the task should be completed.                        |
+
 
 ### CRUD operations
 
