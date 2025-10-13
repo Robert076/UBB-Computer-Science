@@ -28,7 +28,7 @@ DELETE -> a user can tap his finger on a note and more details will be shown, wh
 
 ### Persistence
 
-Every CRUD operation will be persisted on the server as well. Local storage will only come into play if the device is offline (there will be a cache for that).
+Every CRUD operation will be persisted on the server. Local storage will only come into play if the device is offline (there will be a cache for that).
 
 ### Offline access
 
