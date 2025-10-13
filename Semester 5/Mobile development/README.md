@@ -17,8 +17,11 @@ Each note has an:
 ### CRUD operations
 
 READ -> a user can read his notes
+
 CREATE -> a user can create notes by filling in a form with all its required fields
+
 UPDATE -> a user can tap his finger on a note and more details will be shown, where the option to update details of it (except id) will be.
+
 DELETE -> a user can tap his finger on a note and more details will be shown, where there will be a delete button next to the update one.
 
 
