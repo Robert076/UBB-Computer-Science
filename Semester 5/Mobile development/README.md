@@ -12,9 +12,9 @@ The app stores information about Notes. Each note represents a single task or re
 | --------------- | -------- | -------------------------------------------------------------------------------- |
 | **id**          | Integer  | A unique number used internally to identify each note.                           |
 | **name**        | Text     | The title of the note — a short phrase describing what the task is about.        |
-| **description** | Text     | Additional details or context about the task.                                    |
-| **priority**    | Integer  | Indicates how urgent or important the task is (1 = low priority, 5 = very high). |
-| **category**    | Text     | Helps group notes into categories like "Work", "Personal", or "Shopping".        |
+| **description** | Text     | Optional details or context about the task.                                    |
+| **priority**    | Integer  | Optional indicator on how urgent or important the task is (1 = low priority, 5 = very high). |
+| **category**    | Text     | Optional help for grouping notes into categories like "Work", "Personal", or "Shopping".        |
 | **deadline**    | DateTime | Optional field showing when the task should be completed.                        |
 
 
