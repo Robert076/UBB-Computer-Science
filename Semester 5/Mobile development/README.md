@@ -47,6 +47,7 @@ The app uses both a local database (on the phone) and a remote server (cloud) to
 ### Offline access scenarios
 
 When the device is offline, the app continues to function normally using the local cache. The actions are stored locally and synchronized automatically once the device reconnects.
+
 Create (Offline): <br>
 A user adds a new note while traveling with no internet. The note is saved in the local cache and marked as “Pending Sync.” Once internet is restored, the app uploads the new note to the server.
 
