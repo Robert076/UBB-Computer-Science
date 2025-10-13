@@ -34,4 +34,4 @@ If I create a note it is saved locally in the cache, the same for update. For de
 
 ### Design
 
-[link](link)
+[Link will be here soon](link)
