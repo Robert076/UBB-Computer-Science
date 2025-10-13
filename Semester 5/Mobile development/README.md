@@ -1,6 +1,7 @@
 # TODO app
 
 The TODO mobile app helps people stay organized by keeping track of all the things they need to do in one simple place. Instead of writing tasks in a notebook or forgetting them, users can quickly add reminders, categorize their tasks (like work, personal, or shopping), and mark them as done when completed. The app also lets users set priorities and deadlines, making it easier to focus on what matters most. Even when users are offline, they can still access and manage their notes — everything will sync automatically once they reconnect to the internet.
+
 ---
 
 ### Entities
