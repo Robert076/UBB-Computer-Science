@@ -1,0 +1,11 @@
+'#' will be an identifier for digits
+'?' will be an identifier for letters
+
+find("some_random_text", "abc###") will return all abc's with 3 digits after it in the text provided
+find("some_random_text", "abc???") will return all abc's with 3 letters after it in the text provided
+
+replace("some_random_text", "abc123", "xyz321") will replace all instances of "abc123" with "xyz321" in "some_random_text"
+
+split("some_random_text", " ") will return all the words in the text (separates text by whitespaces)
+
+count("some_random_text", "abc12") will return the number of "abc12" instances in "some_random_text"

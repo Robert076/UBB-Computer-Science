@@ -1,6 +1,6 @@
 <program> ::= <statement_list>
 <statement_list> ::= <statement> <statement_list> | epsilon
-<statement> ::= <assignment> | <output_stmt>
+<statement> ::= <assignment> | <operation> | <output_stmt>
 
 <assignment> ::= <identifier> "=" <expression>
 <output_stmt> ::= "print" "(" <expression> ")"
@@ -8,6 +8,7 @@
 <expression> ::= <function_call> | <string> | <identifier>
 
 <function_call> ::= <function_name> "(" <argument_list> ")"
+<operation> ::= <function_call>
 <function_name> ::= "match" | "find" | "replace" | "split" | "count"
 <argument_list> ::= <expression> <argument_list_tail> | epsilon
 <argument_list_tail> ::= "," <expression> <argument_list_tail> | epsilon
