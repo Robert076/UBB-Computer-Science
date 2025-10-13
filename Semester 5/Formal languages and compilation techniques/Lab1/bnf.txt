@@ -1,0 +1,24 @@
+<program> ::= <statement_list>
+<statement_list> ::= <statement> <statement_list> | epsilon
+<statement> ::= <assignment> | <output_stmt>
+
+<assignment> ::= <identifier> "=" <expression>
+<output_stmt> ::= "print" "(" <expression> ")"
+
+<expression> ::= <function_call> | <string> | <identifier>
+
+<function_call> ::= <function_name> "(" <argument_list> ")"
+<function_name> ::= "match" | "find" | "replace" | "split" | "count"
+<argument_list> ::= <expression> <argument_list_tail> | epsilon
+<argument_list_tail> ::= "," <expression> <argument_list_tail> | epsilon
+
+<string> ::= '"' <string_characters> '"'
+<string_characters> ::= <string_character> <string_characters> | epsilon
+<string_character> ::= <letter> | <digit> | <symbol>
+<symbol> ::= "." | "?" | "#" | "*" | "+" | "^" | "$" | " " | "," 
+
+<identifier> ::= <letter> <identifier_tail>
+<identifier_tail> ::= <letter_or_digit_or_underscore> <identifier_tail> | epsilon
+<letter_or_digit_or_underscore> ::= <letter> | <digit> | "_"
+<letter> ::= "A" | … | "Z" | "a" | … | "z"
+<digit> ::= "0" | … | "9"
