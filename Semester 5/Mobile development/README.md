@@ -62,4 +62,4 @@ A user deletes a note while offline. The note’s ID is stored locally in a “t
 
 ### Design
 
-[Link will be here soon](link)
+[https://www.figma.com/design/88XHfOLD0gHGZ2qC3kMv0F/MA?node-id=3-256&t=QYFUPj1pHI2bVZle-0](https://www.figma.com/design/88XHfOLD0gHGZ2qC3kMv0F/MA?node-id=3-256&t=QYFUPj1pHI2bVZle-0)
