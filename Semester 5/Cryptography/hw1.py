@@ -1,3 +1,4 @@
+# next time: p10
 import time
 
 def gcd_subtraction(a, b):
