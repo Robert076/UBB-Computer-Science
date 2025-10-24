@@ -4,6 +4,9 @@ public class Bank {
     private final Map<Integer, Account> accountMap;
     private final Integer startingTotal;
 
+    // coordination flags
+    private boolean paused = false;
+
     public Bank() {
         this.accountMap = new HashMap<>();
         this.startingTotal = 0;
@@ -11,15 +14,35 @@ public class Bank {
 
     public Bank(Map<Integer, Integer> initialData) {
         this.accountMap = new HashMap<>();
-        Integer total = 0;
-
+        int total = 0;
         for (Map.Entry<Integer, Integer> e : initialData.entrySet()) {
             accountMap.put(e.getKey(), new Account(e.getKey(), e.getValue()));
             total += e.getValue();
         }
-
         this.startingTotal = total;
     }
+
+    // ---- transfer pause control ----
+    public synchronized void pauseTransfers() {
+        paused = true;
+    }
+
+    public synchronized void resumeTransfers() {
+        paused = false;
+        notifyAll();
+    }
+
+    public synchronized void waitIfPaused() {
+        while (paused) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+    }
+    // --------------------------------
 
     public void registerAccount(Integer id, Integer balance) {
         synchronized (accountMap) {
@@ -41,9 +64,11 @@ public class Bank {
         if (fromId.equals(toId))
             throw new IllegalArgumentException("Source and destination must differ");
 
+        // wait if paused by auditor
+        waitIfPaused();
+
         Account src = fetchAccount(fromId);
         Account dest = fetchAccount(toId);
-
         if (src == null || dest == null)
             return false;
 
@@ -63,7 +88,7 @@ public class Bank {
     }
 
     public Integer getOverallBalance() {
-        Integer sum = 0;
+        int sum = 0;
         synchronized (accountMap) {
             for (Account a : accountMap.values()) {
                 sum += a.getBalance();
@@ -73,14 +98,16 @@ public class Bank {
     }
 
     public void verifyIntegrity() {
-        Integer current = getOverallBalance();
-        boolean valid = current.equals(startingTotal);
+        int current = getOverallBalance();
+        boolean valid = current == startingTotal;
 
-        System.out.printf("Integrity Check: Original=%d, Current=%d%n", startingTotal, current);
+        System.out.printf("Integrity Check: Original=%d, Current=%d%n",
+                startingTotal, current);
 
         if (!valid) {
             throw new AssertionError(
-                    String.format("Balance mismatch! Expected %d, got %d", startingTotal, current));
+                    String.format("Balance mismatch! Expected %d, got %d",
+                            startingTotal, current));
         }
     }
 
@@ -88,7 +115,7 @@ public class Bank {
         synchronized (accountMap) {
             System.out.println("Accounts Overview:");
             for (Account a : accountMap.values()) {
-                System.out.printf("Account %d: $%d%n", a.getId(), a.getBalance());
+                System.out.printf("  Account %d: $%d%n", a.getId(), a.getBalance());
             }
         }
     }

@@ -7,14 +7,13 @@ public class TransferThread extends Thread {
     private int successCount;
     private int failureCount;
 
-    public TransferThread(Bank bank, Integer fromId, Integer toId, Integer transferValue, Integer attempts) {
+    public TransferThread(Bank bank, Integer fromId, Integer toId,
+            Integer transferValue, int attempts) {
         this.bank = bank;
         this.fromId = fromId;
         this.toId = toId;
         this.transferValue = transferValue;
         this.attempts = attempts;
-        this.successCount = 0;
-        this.failureCount = 0;
     }
 
     @Override
