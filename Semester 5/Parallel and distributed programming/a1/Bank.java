@@ -1,19 +1,19 @@
 import java.util.*;
 
 public class Bank {
-    private final Map<Long, Account> accountMap;
-    private final long startingTotal;
+    private final Map<Integer, Account> accountMap;
+    private final Integer startingTotal;
 
     public Bank() {
         this.accountMap = new HashMap<>();
         this.startingTotal = 0;
     }
 
-    public Bank(Map<Long, Long> initialData) {
+    public Bank(Map<Integer, Integer> initialData) {
         this.accountMap = new HashMap<>();
-        long total = 0;
+        Integer total = 0;
 
-        for (Map.Entry<Long, Long> e : initialData.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : initialData.entrySet()) {
             accountMap.put(e.getKey(), new Account(e.getKey(), e.getValue()));
             total += e.getValue();
         }
@@ -21,7 +21,7 @@ public class Bank {
         this.startingTotal = total;
     }
 
-    public void registerAccount(long id, long balance) {
+    public void registerAccount(Integer id, Integer balance) {
         synchronized (accountMap) {
             if (!accountMap.containsKey(id)) {
                 accountMap.put(id, new Account(id, balance));
@@ -29,16 +29,16 @@ public class Bank {
         }
     }
 
-    public Account fetchAccount(long id) {
+    public Account fetchAccount(Integer id) {
         synchronized (accountMap) {
             return accountMap.get(id);
         }
     }
 
-    public boolean performTransfer(long fromId, long toId, long value) {
+    public boolean performTransfer(Integer fromId, Integer toId, Integer value) {
         if (value <= 0)
             throw new IllegalArgumentException("Transfer amount must be positive");
-        if (fromId == toId)
+        if (fromId.equals(toId))
             throw new IllegalArgumentException("Source and destination must differ");
 
         Account src = fetchAccount(fromId);
@@ -62,8 +62,8 @@ public class Bank {
         }
     }
 
-    public long getOverallBalance() {
-        long sum = 0;
+    public Integer getOverallBalance() {
+        Integer sum = 0;
         synchronized (accountMap) {
             for (Account a : accountMap.values()) {
                 sum += a.getBalance();
@@ -73,8 +73,8 @@ public class Bank {
     }
 
     public void verifyIntegrity() {
-        long current = getOverallBalance();
-        boolean valid = current == startingTotal;
+        Integer current = getOverallBalance();
+        boolean valid = current.equals(startingTotal);
 
         System.out.printf("Integrity Check: Original=%d, Current=%d%n", startingTotal, current);
 

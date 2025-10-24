@@ -1,25 +1,25 @@
 public class Account {
-    private final long id;
-    private long balance;
+    private final Integer id;
+    private Integer balance;
     private final Object lockObj;
 
-    public Account(long id, long startingBalance) {
+    public Account(Integer id, Integer startingBalance) {
         this.id = id;
         this.balance = startingBalance;
         this.lockObj = new Object();
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public long getBalance() {
+    public Integer getBalance() {
         synchronized (lockObj) {
             return balance;
         }
     }
 
-    public void setBalance(long newBalance) {
+    public void setBalance(Integer newBalance) {
         synchronized (lockObj) {
             this.balance = newBalance;
         }

@@ -3,11 +3,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Map<Long, Long> setupBalances = new LinkedHashMap<>();
-        setupBalances.put(1L, 10000L);
-        setupBalances.put(2L, 20000L);
-        setupBalances.put(3L, 15000L);
-        setupBalances.put(4L, 25000L);
+        Map<Integer, Integer> setupBalances = new LinkedHashMap<>();
+        setupBalances.put(1, 10000);
+        setupBalances.put(2, 20000);
+        setupBalances.put(3, 15000);
+        setupBalances.put(4, 25000);
 
         Bank bankSystem = new Bank(setupBalances);
 
@@ -20,22 +20,22 @@ public class Main {
 
         List<TransferThread> workers = new ArrayList<>();
 
-        TransferThread w1 = new TransferThread(bankSystem, 1L, 2L, 100L, 25);
+        TransferThread w1 = new TransferThread(bankSystem, 1, 2, 100, 25);
         workers.add(w1);
 
-        TransferThread w2 = new TransferThread(bankSystem, 2L, 3L, 200L, 20);
+        TransferThread w2 = new TransferThread(bankSystem, 2, 3, 200, 20);
         workers.add(w2);
 
-        TransferThread w3 = new TransferThread(bankSystem, 3L, 4L, 150L, 30);
+        TransferThread w3 = new TransferThread(bankSystem, 3, 4, 150, 30);
         workers.add(w3);
 
-        TransferThread w4 = new TransferThread(bankSystem, 4L, 1L, 250L, 15);
+        TransferThread w4 = new TransferThread(bankSystem, 4, 1, 250, 15);
         workers.add(w4);
 
-        TransferThread w5 = new TransferThread(bankSystem, 2L, 4L, 300L, 35);
+        TransferThread w5 = new TransferThread(bankSystem, 2, 4, 300, 35);
         workers.add(w5);
 
-        TransferThread w6 = new TransferThread(bankSystem, 4L, 3L, 275L, 50);
+        TransferThread w6 = new TransferThread(bankSystem, 4, 3, 275, 50);
         workers.add(w6);
 
         System.out.println("Transfers in progress...\n");

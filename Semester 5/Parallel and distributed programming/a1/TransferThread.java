@@ -1,13 +1,13 @@
 public class TransferThread extends Thread {
     private final Bank bank;
-    private final long fromId;
-    private final long toId;
-    private final long transferValue;
+    private final Integer fromId;
+    private final Integer toId;
+    private final Integer transferValue;
     private final int attempts;
     private int successCount;
     private int failureCount;
 
-    public TransferThread(Bank bank, long fromId, long toId, long transferValue, int attempts) {
+    public TransferThread(Bank bank, Integer fromId, Integer toId, Integer transferValue, Integer attempts) {
         this.bank = bank;
         this.fromId = fromId;
         this.toId = toId;
