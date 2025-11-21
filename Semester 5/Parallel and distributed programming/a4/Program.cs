@@ -183,9 +183,6 @@ class AsyncAwaitDownloader
     }
 }
 
-/// -------------------------------------------------------------
-///  MAIN: choose implementation + download N files
-/// -------------------------------------------------------------
 class Program
 {
     static async Task Main(string[] args)
