@@ -1,0 +1,74 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func multiplyPolynomials(poly1 []int, poly2 []int, result *[]int, mu *sync.Mutex, offset int) {
+	for i := 0; i < len(poly1); i++ {
+		for j := 0; j < len(poly2); j++ {
+			mu.Lock()
+			(*result)[i+j+offset] += poly1[i] * poly2[j]
+			mu.Unlock()
+		}
+	}
+}
+
+func readPolynomial() []int {
+	fmt.Print("\nPlease enter the degree of the polynomial: ")
+	var order int
+	fmt.Scanln(&order)
+
+	fmt.Println("\nPlease enter the coefficients, one by one")
+	coefficients := make([]int, order+1)
+	for i := 0; i <= order; i++ {
+		fmt.Printf("x^%d: ", i)
+		fmt.Scanln(&coefficients[i])
+	}
+
+	return coefficients
+}
+
+func getUserInput() (int, []int, []int) {
+	fmt.Print("Welcome to the naive, multithreaded implementation\n\n")
+	fmt.Printf("==========================\n\n")
+	fmt.Printf("STEP 0: Reading the number of threads\n")
+	fmt.Print("The number of threads will be: ")
+	var numThreads int
+	fmt.Scanln(&numThreads)
+	fmt.Printf("==========================\n\n")
+	fmt.Printf("STEP 2: Reading the first polynomial\n")
+	coefficientsFirst := readPolynomial()
+	fmt.Printf("\n==========================\n\n")
+	fmt.Print("STEP 3: Reading the second polynomial\n")
+	coefficientsSecond := readPolynomial()
+	fmt.Println("\n==========================")
+
+	return numThreads, coefficientsFirst, coefficientsSecond
+}
+
+func main() {
+	numThreads, poly1, poly2 := getUserInput()
+	var wg sync.WaitGroup
+	wg.Add(numThreads)
+	var mu sync.Mutex
+	result := make([]int, len(poly1)+len(poly2)-1)
+	for i := 0; i < numThreads; i++ {
+		curr := i
+		go func() {
+			defer wg.Done()
+			blockSize := (len(poly1) + numThreads - 1) / numThreads
+			start := curr * blockSize
+			end := (curr + 1) * blockSize
+			if end > len(poly1) {
+				end = len(poly1)
+			}
+			multiplyPolynomials(poly1[start:end], poly2, &result, &mu, start)
+		}()
+	}
+	wg.Wait()
+	fmt.Printf("\n==========================\n\n")
+	fmt.Print("RESULT: ")
+	fmt.Print(result)
+}
