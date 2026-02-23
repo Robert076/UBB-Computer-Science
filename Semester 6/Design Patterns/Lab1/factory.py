@@ -2,8 +2,7 @@ from abc import abstractmethod
 
 class MessageSender:
         def createMessage(self, text: str):
-                self.message = text
-                
+                self.message = text   
         @abstractmethod
         def sendMessage(self, message):
                 pass
@@ -29,3 +28,19 @@ class MessageSenderFactory:
 factory = MessageSenderFactory()
 sender = factory.create_sender("pigeon")
 sender.sendMessage("Test")
+
+
+# BEFORE
+# sender_type = "pigeon"
+#
+# if sender_type == "pigeon":
+#     sender = PigeonSender()
+# elif sender_type == "email":
+#     sender = EmailSender()
+#
+# sender.sendMessage("Test")
+#
+
+# AFTER
+# sender = MessageSenderFactory.create_sender("pigeon")
+# sender.sendMessage("Test")
