@@ -33,3 +33,7 @@ aws ec2 start-instances --instance-ids i-0d62923ad3d491e44 --region eu-west-1
 ### Stop instance
 
 aws ec2 stop-instances --instance-ids i-0d62923ad3d491e44 --region eu-west-1
+
+### Get private key
+
+aws ssm get-parameter --name /ec2/keypair/key-0864f039a93e02e31 --region eu-west-1 --with-decryption --query 'Parameter.Value' --output text > nsa-key.pem
