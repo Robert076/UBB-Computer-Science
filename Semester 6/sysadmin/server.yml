@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: The EC2 Linux instance required for the NSA project
+
+Parameters:
+  AvailabilityZoneName:
+    Description: "The AZ for the public subnet hosting the EC2 instance"
+    Type: AWS::EC2::AvailabilityZone::Name
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: 'true'
+      EnableDnsHostnames: 'true'
+
+  IGW:
+    Type: AWS::EC2::InternetGateway
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.0.0/18
+      AvailabilityZone: !Ref AvailabilityZoneName
+      MapPublicIpOnLaunch: 'true'
+  
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  RouteToInternet:
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref IGW
+      RouteTableId: !Ref RouteTable
+    DependsOn:
+      - AttachIgwToVPC
+  
+  AttachIgwToVPC:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref IGW
+
+  Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref RouteTable
+      SubnetId: !Ref PublicSubnet
+  
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: "The SG for the NSA instance."
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: icmp
+          FromPort: 8
+          ToPort: -1
+          CidrIp: 0.0.0.0/0
+
+  Server:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-047bb4163c506cd98
+      InstanceType: c6i.large
+      KeyName: !Ref SSHKey  
+      SubnetId: !Ref PublicSubnet
+      SecurityGroupIds: 
+        - !Ref SecurityGroup
+
+  SSHKey:
+    Type: AWS::EC2::KeyPair
+    Properties: 
+      KeyName: nsa-key
