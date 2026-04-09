@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  db-master:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: nsadb
+      MYSQL_USER: nsauser
+      MYSQL_PASSWORD: nsapass
+    volumes:
+      - db_master_data:/var/lib/mysql
+      - ./mysql-master/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  db-slave:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: nsadb
+      MYSQL_USER: nsauser
+      MYSQL_PASSWORD: nsapass
+    volumes:
+      - db_slave_data:/var/lib/mysql
+      - ./mysql-slave/my.cnf:/etc/mysql/conf.d/my.cnf
+    depends_on:
+      - db-master
+
+  web:
+    build: ./web
+    environment:
+      DB_HOST: db-master
+      DB_NAME: nsadb
+      DB_USER: nsauser
+      DB_PASS: nsapass
+      MAIL_HOST: mailserver
+      MAIL_PORT: 1025
+      REDIS_HOST: redis
+    depends_on:
+      - db-master
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db-master
+      MYSQL_ROOT_PASSWORD: rootpass
+    depends_on:
+      - db-master
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/certs:/etc/nginx/certs
+    depends_on:
+      - web
+
+  mailserver:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" 
+      - "8025:8025"
+
+  redis:
+    image: redis:latest
+
+  loki:
+    image: grafana/loki:2.9.0
+    ports:
+      - "3100:3100"
+
+  promtail:
+    image: grafana/promtail:2.9.0
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./promtail/config.yml:/etc/promtail/config.yml
+    depends_on:
+      - loki
+
+  grafana:
+    image: grafana/grafana:10.0.0
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - loki
+      - prometheus
+
+volumes:
+  db_master_data:
+  db_slave_data:
+  grafana_data:
