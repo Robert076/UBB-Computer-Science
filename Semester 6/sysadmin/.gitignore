@@ -1,1 +1,3 @@
 *.pem
+**/server.key
+**/certs/
