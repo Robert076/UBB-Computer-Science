@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func addPolynomials(a, b []int) []int {
@@ -93,12 +94,47 @@ func readPolynomial() []int {
 
 func main() {
 	fmt.Println("Karatsuba multiplication without multithreading")
+	fmt.Println("Please pick one of the following:")
+	fmt.Println(" 1. Test on custom input")
+	fmt.Println(" 2. Test on a huge, prebuilt input")
+	var userChoice int
+	fmt.Scanln(&userChoice)
+	switch userChoice {
+	case 1:
+		testNormalInput()
+	case 2:
+		testLargeInput()
+	default:
+		fmt.Println("Unexpected input. Exiting...")
+	}
+}
+
+func testLargeInput() {
+	LIM := 100000
+	poly1 := make([]int, LIM)
+	for i := 0; i < LIM; i++ {
+		poly1[i] = 1
+	}
+	poly2 := make([]int, LIM)
+	for i := 0; i < LIM; i++ {
+		poly2[i] = 1
+	}
+	tStart := time.Now()
+	karatsuba(poly1, poly2)
+	tEnd := time.Now()
+	fmt.Printf("Duration: %.6f seconds.", tEnd.Sub(tStart).Seconds())
+}
+
+func testNormalInput() {
 	fmt.Printf("==========================\n")
 	fmt.Println("STEP 1: Reading the first polynomial")
 	poly1 := readPolynomial()
 	fmt.Printf("\nSTEP 2: Reading the second polynomial\n")
 	poly2 := readPolynomial()
 	fmt.Printf("\n==========================\n")
-	result := karatsuba(poly1, poly2)
-	fmt.Println("RESULT:", result)
+	tStart := time.Now()
+	karatsuba(poly1, poly2)
+	tEnd := time.Now()
+	// fmt.Println("RESULT:", result)
+	fmt.Printf("Duration: %.6f seconds.\n", tEnd.Sub(tStart).Seconds())
 }

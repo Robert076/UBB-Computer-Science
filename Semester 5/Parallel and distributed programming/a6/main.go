@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
+	"time"
 )
 
 var (
@@ -12,7 +14,6 @@ var (
 )
 
 func solve(adj [][]int, path []int, visited []bool, threads int) {
-	// 1. Quick exit if solution already found
 	mtx.Lock()
 	if found {
 		mtx.Unlock()
@@ -22,7 +23,6 @@ func solve(adj [][]int, path []int, visited []bool, threads int) {
 
 	current := path[len(path)-1]
 
-	// 2. Base case: Path is complete
 	if len(path) == len(adj) {
 		for _, neighbor := range adj[current] {
 			if neighbor == path[0] {
@@ -38,7 +38,6 @@ func solve(adj [][]int, path []int, visited []bool, threads int) {
 		return
 	}
 
-	// 3. Find available neighbors
 	var neighbors []int
 	for _, n := range adj[current] {
 		if !visited[n] {
@@ -50,7 +49,6 @@ func solve(adj [][]int, path []int, visited []bool, threads int) {
 		return
 	}
 
-	// 4. Parallel vs Sequential Search
 	if threads > 1 {
 		tPerN := threads / len(neighbors)
 		extra := threads % len(neighbors)
@@ -64,7 +62,6 @@ func solve(adj [][]int, path []int, visited []bool, threads int) {
 			}
 
 			if assigned > 0 {
-				// Spawn parallel branch
 				wg.Add(1)
 				go func(node int, tCount int) {
 					defer wg.Done()
@@ -74,13 +71,11 @@ func solve(adj [][]int, path []int, visited []bool, threads int) {
 					solve(adj, newPath, newVisited, tCount)
 				}(next, assigned)
 			} else {
-				// No threads left? Run remaining neighbors sequentially
 				runSequential(adj, path, visited, next)
 			}
 		}
 		wg.Wait()
 	} else {
-		// Purely sequential search
 		for _, next := range neighbors {
 			runSequential(adj, path, visited, next)
 		}
@@ -101,19 +96,31 @@ func runSequential(adj [][]int, path []int, visited []bool, next int) {
 }
 
 func main() {
-	// Example: A small graph where 0-1-2-3-0 is a cycle
-	graph := [][]int{
-		{1, 2, 3},
-		{0, 2, 3},
-		{0, 1, 3},
-		{0, 1, 2},
+	// graph := [][]int{
+	// 	{1, 2, 3},
+	// 	{0, 2, 3},
+	// 	{0, 1, 3},
+	// 	{0, 1, 2},
+	// }
+
+	n := 200
+	graph := make([][]int, n)
+	for i := 0; i < n; i++ {
+		for j := 0; j < n; j++ {
+			if i != j && rand.Int()%10 == 0 {
+				graph[i] = append(graph[i], j)
+			}
+		}
 	}
 
 	visited := make([]bool, len(graph))
 	visited[0] = true
 
-	// Start the search with 8 threads
-	solve(graph, []int{0}, visited, 8)
+	time1 := time.Now()
+	solve(graph, []int{0}, visited, 2)
+	time2 := time.Now()
+
+	fmt.Printf("Execution time: %v\n", time2.Sub(time1))
 
 	if finalResult != nil {
 		fmt.Println("Found Hamiltonian Cycle:", finalResult)

@@ -4,7 +4,6 @@ public class Bank {
     private final Map<Integer, Account> accountMap;
     private final Integer startingTotal;
 
-    // coordination flags
     private boolean paused = false;
 
     public Bank() {
@@ -22,7 +21,6 @@ public class Bank {
         this.startingTotal = total;
     }
 
-    // ---- transfer pause control ----
     public synchronized void pauseTransfers() {
         paused = true;
     }
@@ -42,7 +40,6 @@ public class Bank {
             }
         }
     }
-    // --------------------------------
 
     public void registerAccount(Integer id, Integer balance) {
         synchronized (accountMap) {
@@ -64,7 +61,6 @@ public class Bank {
         if (fromId.equals(toId))
             throw new IllegalArgumentException("Source and destination must differ");
 
-        // wait if paused by auditor
         waitIfPaused();
 
         Account src = fetchAccount(fromId);

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func multiplyPolynomials(poly1 []int, poly2 []int) []int {
@@ -47,6 +48,21 @@ func main() {
 	poly1, poly2 := getUserInput()
 	result := multiplyPolynomials(poly1, poly2)
 	fmt.Printf("\n==========================\n\n")
-	fmt.Print("RESULT: ")
 	fmt.Print(result)
+	// testLargeInput()
+}
+
+func testLargeInput() {
+	LIM := 10000
+	poly1 := make([]int, LIM)
+	poly2 := make([]int, LIM)
+	for i := 0; i < LIM; i++ {
+		poly1[i] = 1
+		poly2[i] = 1
+	}
+
+	tStart := time.Now()
+	multiplyPolynomials(poly1, poly2)
+	tEnd := time.Now()
+	fmt.Printf("Duration: %.6f seconds.", tEnd.Sub(tStart).Seconds())
 }

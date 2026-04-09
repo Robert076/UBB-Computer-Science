@@ -6,13 +6,12 @@ public class HamiltonianCycle {
     private static final AtomicReference<List<Integer>> result = new AtomicReference<>(null);
 
     static class HamiltonianTask extends RecursiveTask<List<Integer>> {
-        private final int[][] adj;
         private final List<Integer> path;
+        public static int[][] adj;
         private final boolean[] visited;
         private final int threads;
 
-        HamiltonianTask(int[][] adj, List<Integer> path, boolean[] visited, int threads) {
-            this.adj = adj;
+        HamiltonianTask(List<Integer> path, boolean[] visited, int threads) {
             this.path = new ArrayList<>(path);
             this.visited = visited.clone();
             this.threads = threads;
@@ -25,10 +24,9 @@ public class HamiltonianCycle {
 
             int current = path.get(path.size() - 1);
 
-            // Base case: visited all vertices
             if (path.size() == adj.length) {
                 for (int neighbor : adj[current]) {
-                    if (neighbor == path.get(0)) { // Check if we can return to start
+                    if (neighbor == path.get(0)) {
                         result.compareAndSet(null, path);
                         return path;
                     }
@@ -36,7 +34,6 @@ public class HamiltonianCycle {
                 return null;
             }
 
-            // Find valid next vertices
             List<Integer> neighbors = new ArrayList<>();
             for (int neighbor : adj[current]) {
                 if (!visited[neighbor])
@@ -46,8 +43,7 @@ public class HamiltonianCycle {
             if (neighbors.isEmpty())
                 return null;
 
-            if (threads > 1) {
-                // Split threads according to requirements
+            if (path.size() < 2 && threads > 1) {
                 int threadsPerNeighbor = threads / neighbors.size();
                 int extraThreads = threads % neighbors.size();
                 List<HamiltonianTask> tasks = new ArrayList<>();
@@ -60,16 +56,13 @@ public class HamiltonianCycle {
                         int nextNode = neighbors.get(neighborIdx);
                         visited[nextNode] = true;
                         path.add(nextNode);
-                        HamiltonianTask task = new HamiltonianTask(adj, path, visited, assignedThreads);
+                        HamiltonianTask task = new HamiltonianTask(path, visited, assignedThreads);
                         tasks.add(task);
                         task.fork();
-                        // Reset for next iteration/sequential part
                         path.remove(path.size() - 1);
                         visited[nextNode] = false;
                         neighborIdx++;
                     } else {
-                        // If we run out of threads, the last thread takes all remaining neighbors
-                        // sequentially
                         for (int i = neighborIdx; i < neighbors.size(); i++) {
                             checkNodeSequentially(neighbors.get(i));
                         }
@@ -79,7 +72,6 @@ public class HamiltonianCycle {
                 for (HamiltonianTask t : tasks)
                     t.join();
             } else {
-                // Sequential search
                 for (int neighbor : neighbors)
                     checkNodeSequentially(neighbor);
             }
@@ -91,25 +83,38 @@ public class HamiltonianCycle {
                 return;
             visited[nextNode] = true;
             path.add(nextNode);
-            new HamiltonianTask(adj, path, visited, 1).compute();
+            new HamiltonianTask(path, visited, 1).compute();
             path.remove(path.size() - 1);
             visited[nextNode] = false;
         }
     }
 
     public static void main(String[] args) {
-        // Example Graph (Adjacency List)
-        int[][] graph = {
-                { 1, 2, 3 }, { 2, 3, 0 }, { 3, 0, 1 }, { 0, 1, 2 } // A simple complete graph
-        };
+        // int[][] graph = {
+        // { 1, 2, 3 }, { 2, 3, 0 }, { 3, 0, 1 }, { 0, 1, 2 }
+        // };
+
+        int n = 40;
+        HamiltonianTask.adj = new int[n][n - 1];
+        for (int i = 0; i < n; i++) {
+            int idx = 0;
+            for (int j = 0; j < n; j++) {
+                if (i != j && Math.random() > 0.69)
+                    HamiltonianTask.adj[i][idx++] = j;
+            }
+        }
 
         ForkJoinPool pool = new ForkJoinPool();
         List<Integer> startPath = new ArrayList<>();
         startPath.add(0);
-        boolean[] visited = new boolean[graph.length];
+        boolean[] visited = new boolean[HamiltonianTask.adj.length];
         visited[0] = true;
 
-        pool.invoke(new HamiltonianTask(graph, startPath, visited, 8));
+        long startTime = System.nanoTime();
+        pool.invoke(new HamiltonianTask(startPath, visited, 2));
+        long endTime = System.nanoTime();
+
         System.out.println("Result: " + result.get());
+        System.out.println("Execution time (ms): " + (endTime - startTime) / 1_000_000.0);
     }
 }

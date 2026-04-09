@@ -14,14 +14,12 @@ public class AuditorThread extends Thread {
             while (running) {
                 Thread.sleep(intervalMillis);
 
-                // temporarily stop transfers
                 bank.pauseTransfers();
 
                 System.out.println("\n--- Auditor Paused Transfers ---");
                 bank.verifyIntegrity();
                 System.out.println("--- Auditor Resuming Transfers ---\n");
 
-                // resume transfers
                 bank.resumeTransfers();
             }
         } catch (InterruptedException e) {

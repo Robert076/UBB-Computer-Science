@@ -1,3 +1,12 @@
+% =========================================================
+% EXERCISE 1: Numerical Calculus - Taylor Polynomials
+% =========================================================
+
+% ---------------------------------------------------------
+% Part 1a: Graphing e^x and its Taylor Polynomials
+% ---------------------------------------------------------
+fprintf('--- Part 1a: Generating Plot ---\n');
+
 % Define the interval x from -3 to 3 with 100 points
 x = linspace(-3, 3, 100);
 
@@ -12,7 +21,7 @@ T4 = 1 + x + (x.^2)/2 + (x.^3)/6 + (x.^4)/24;
 
 % Create the plot
 figure;
-plot(x, f, 'k', 'LineWidth', 2); 
+plot(x, f, 'k', 'LineWidth', 2); % e^x line (change 'k' to 'c' if background is pure black)
 hold on;
 plot(x, T1, 'r', 'LineWidth', 1.5);
 plot(x, T2, 'g', 'LineWidth', 1.5);
@@ -20,54 +29,50 @@ plot(x, T3, 'b', 'LineWidth', 1.5);
 plot(x, T4, 'm', 'LineWidth', 1.5);
 hold off;
 
-% Add labels, legend, and grid
-title('Function e^x and its Taylor Polynomials');
-xlabel('x');
-ylabel('y');
-legend('e^x', 'T_1(x)', 'T_2(x)', 'T_3(x)', 'T_4(x)', 'Location', 'northwest');
+% Add labels, legend, and grid with white text
+title('Function e^x and its Taylor Polynomials', 'Color', 'w');
+xlabel('x', 'Color', 'w');
+ylabel('y', 'Color', 'w');
+
+% Create the legend and set text to white
+lgd = legend('e^x', 'T_1(x)', 'T_2(x)', 'T_3(x)', 'T_4(x)', 'Location', 'northwest');
+set(lgd, 'TextColor', 'w'); 
+
 grid on;
 
-% Define the vector of terms from k = 0 to 10
-k = 0:10;
+% Change the axes (box, tick marks, grid lines) to white
+set(gca, 'XColor', 'w', 'YColor', 'w');
+% set(gcf, 'Color', 'k'); % Uncomment this to force a black figure background
 
-% Calculate the sum of 1/k!
-e_approx = sum(1 ./ factorial(k));
 
-% Display the result with 6 decimal places
-fprintf('Approximation of e: %.6f\n', e_approx);
-
-% Part 1b: Approximate e with 6 correct decimals
+% ---------------------------------------------------------
+% Part 1b: Approximating e with 6 correct decimals
+% ---------------------------------------------------------
 fprintf('\n--- Part 1b: Approximating e ---\n');
 
-% Define the vector of terms from k = 0 to 10
-k = 0:10;
-
-% Calculate the Taylor series approximation for e^1
-% This computes the sum of 1/k!
-e_approx = sum(1 ./ factorial(k));
-
-% Display the result formatted to 6 decimal places
-fprintf('Approximation of e: %.6f\n', e_approx);
-
-% Calculate the exact value of e built into Octave
+% The exact value of e built into Octave
 e_exact = exp(1);
 
-% Calculate the absolute error between exact and approximated
-abs_error = abs(e_exact - e_approx);
+% The threshold for 6 correct decimals (0.5 * 10^-6)
+tolerance = 0.5 * 10^-6;
 
-% Define the threshold for 6 correct decimals
-threshold = 0.5 * 10^-6;
+% Start with an approximation of 0
+e_approx = 0;
 
-% Display the high-precision values to see what's happening under the hood
-fprintf('\n--- Verifying the Error ---\n');
-fprintf('Exact e:      %.10f\n', e_exact);
-fprintf('Approx e:     %.10f\n', e_approx);
-fprintf('Actual Error: %.10f\n', abs_error);
-fprintf('Threshold:    %.10f\n', threshold);
-
-% Perform the logical check
-if abs_error < threshold
-    fprintf('\nSUCCESS: The actual error is LESS than the threshold!\n');
-else
-    fprintf('\nFAILED: The error exceeds the threshold.\n');
+% Loop through possible degrees from 0 to 10
+for k = 0:10
+    
+    % Add the next term of the MacLaurin series (1/k!)
+    e_approx = e_approx + 1 / factorial(k);
+    
+    % Calculate the current absolute error
+    current_error = abs(e_exact - e_approx);
+    
+    % Check if we hit our target precision
+    if current_error < tolerance
+        fprintf('Target precision reached at degree k = %d\n', k);
+        fprintf('Current Error: %.10f (Must be < %.10f)\n', current_error, tolerance);
+        fprintf('Approximation of e: %.6f\n', e_approx);
+        break; % Target met, exit the loop
+    end
 end

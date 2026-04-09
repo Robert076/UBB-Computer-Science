@@ -4,3 +4,17 @@ obj/
 build/
 .ipynb_checkpoints
 *.exe
+# Compiled files
+*.class
+*.o
+*.out
+
+# VS Code
+.vscode/
+
+# Build files
+*.zip
+CMakeLists.txt
+
+# macOS
+.DS_Store

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func addPolynomials(a, b []int) []int {
@@ -51,22 +52,36 @@ func karatsubaMT(poly1, poly2 []int) []int {
 
 	var z0, z1, z2 []int
 	var wg sync.WaitGroup
-	wg.Add(3)
 
-	go func() {
-		defer wg.Done()
+	if len(low1) < 10000 || len(low2) < 10000 {
 		z0 = karatsubaMT(low1, low2)
-	}()
+	} else {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			z0 = karatsubaMT(low1, low2)
+		}()
+	}
 
-	go func() {
-		defer wg.Done()
+	if len(high1) < 10000 || len(high2) < 10000 {
 		z2 = karatsubaMT(high1, high2)
-	}()
+	} else {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			z2 = karatsubaMT(high1, high2)
+		}()
+	}
 
-	go func() {
-		defer wg.Done()
+	if len(low1) < 10000 || len(high1) < 10000 {
 		z1 = karatsubaMT(addPolynomials(low1, high1), addPolynomials(low2, high2))
-	}()
+	} else {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			z1 = karatsubaMT(addPolynomials(low1, high1), addPolynomials(low2, high2))
+		}()
+	}
 
 	wg.Wait()
 	z1 = subPolynomials(subPolynomials(z1, z0), z2)
@@ -81,7 +96,7 @@ func karatsubaMT(poly1, poly2 []int) []int {
 	for i := 0; i < len(z2); i++ {
 		res[i+2*mid] += z2[i]
 	}
-	// Trim trailing zeros
+
 	for len(res) > 1 && res[len(res)-1] == 0 {
 		res = res[:len(res)-1]
 	}
@@ -110,15 +125,50 @@ func readPolynomial() []int {
 	return coefficients
 }
 
+// A(x) * B(x) = (A_low + x^m*A_high) * (B_low + x^m*B_high) = A_low*B_low + A_low*x^m*B_high + B_low*x^m*A_high + x^2m*A_high*B_high
+
 func main() {
-	// A(x) * B(x) = (A_low + x^m*A_high) * (B_low + x^m*B_high) = A_low*B_low + A_low*x^m*B_high + B_low*x^m*A_high + x^2m*A_high*B_high
-	fmt.Println("Karatsuba multiplication with multithreading")
+	fmt.Println("Karatsuba multiplication without multithreading")
+	fmt.Println("Please pick one of the following:")
+	fmt.Println(" 1. Test on custom input")
+	fmt.Println(" 2. Test on a huge, prebuilt input")
+	var userChoice int
+	fmt.Scanln(&userChoice)
+	switch userChoice {
+	case 1:
+		testNormalInput()
+	case 2:
+		testLargeInput()
+	default:
+		fmt.Println("Unexpected input. Exiting...")
+	}
+}
+
+func testLargeInput() {
+	LIM := 100000
+	poly1 := make([]int, LIM)
+	for i := 0; i < LIM; i++ {
+		poly1[i] = 1
+	}
+	poly2 := make([]int, LIM)
+	for i := 0; i < LIM; i++ {
+		poly2[i] = 1
+	}
+	tStart := time.Now()
+	karatsubaMT(poly1, poly2)
+	tEnd := time.Now()
+	fmt.Printf("Duration: %.6f seconds.", tEnd.Sub(tStart).Seconds())
+}
+
+func testNormalInput() {
 	fmt.Printf("==========================\n")
 	fmt.Println("STEP 1: Reading the first polynomial")
 	poly1 := readPolynomial()
 	fmt.Printf("\nSTEP 2: Reading the second polynomial\n")
 	poly2 := readPolynomial()
 	fmt.Printf("\n==========================\n")
-	result := karatsubaMT(poly1, poly2)
-	fmt.Println("RESULT:", result)
+	tStart := time.Now()
+	karatsubaMT(poly1, poly2)
+	tEnd := time.Now()
+	fmt.Printf("Duration: %.6f seconds.\n", tEnd.Sub(tStart).Seconds())
 }

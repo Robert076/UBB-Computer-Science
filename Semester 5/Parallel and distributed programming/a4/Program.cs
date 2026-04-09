@@ -119,13 +119,27 @@ class ContinueWithDownloader
     public Task<byte[]> Run(string host, string path)
     {
         return socket.ConnectAsync(host, 80)
-            .ContinueWith(_ =>
+            .ContinueWith(t =>
             {
+                if (t.IsFaulted)
+                {
+                    Console.WriteLine("Connect failed: " + t.Exception?.InnerException?.Message);
+                    return Task.FromResult(0);
+                }
+
                 byte[] req = HttpHelpers.BuildGetRequest(host, path);
                 return socket.SendAsync(req);
             }).Unwrap()
-            .ContinueWith(_ => ReadLoop())
-            .Unwrap();
+            .ContinueWith(t =>
+            {
+                if (t.IsFaulted)
+                {
+                    Console.WriteLine("Send failed: " + t.Exception?.InnerException?.Message);
+                    return Task.FromResult(new byte[0]);
+                }
+
+                return ReadLoop();
+            }).Unwrap();
     }
 
     Task<byte[]> ReadLoop()
@@ -136,7 +150,16 @@ class ContinueWithDownloader
         {
             socket.ReceiveAsync(buffer).ContinueWith(tr =>
             {
+                if (tr.IsFaulted)
+                {
+                    Console.WriteLine("Receive failed: " + tr.Exception?.InnerException?.Message);
+                    socket.Close();
+                    tcs.SetResult(new byte[0]);
+                    return;
+                }
+
                 int n = tr.Result;
+
                 if (n == 0)
                 {
                     socket.Close();
@@ -144,7 +167,9 @@ class ContinueWithDownloader
                     return;
                 }
 
-                for (int i = 0; i < n; i++) received.Add(buffer[i]);
+                for (int i = 0; i < n; i++)
+                    received.Add(buffer[i]);
+
                 Loop();
             });
         }
@@ -187,23 +212,23 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        if (args.Length < 2)
+        if (args.Length != 2)
         {
-            Console.WriteLine("Usage:\n dotnet run callbacks url...\n dotnet run continuewith url...\n dotnet run async url...");
+            Console.WriteLine("Usage:\n dotnet run callbacks url\n dotnet run continuewith url\n dotnet run async url");
             return;
         }
 
         string mode = args[0];
-        string[] urls = args[1..];
+        string url = args[1];
+
+        Uri u = new Uri(url);
+        string host = u.Host;
+        string path = u.PathAndQuery;
 
         List<Task<byte[]>> tasks = new();
 
-        foreach (var url in urls)
+        for (int i = 0; i < 1000; i++)
         {
-            Uri u = new Uri(url);
-            string host = u.Host;
-            string path = u.PathAndQuery;
-
             if (mode == "callbacks")
             {
                 var dl = new CallbackHttpDownloader();
@@ -228,9 +253,11 @@ class Program
 
         byte[][] results = await Task.WhenAll(tasks);
 
-        for (int i = 0; i < urls.Length; i++)
+        Console.WriteLine($"Finished 1000 downloads of {url}");
+        for (int i = 0; i < results.Length; i++)
         {
-            Console.WriteLine($"Downloaded {results[i].Length} bytes from {urls[i]}");
+            Console.WriteLine($"Download #{i + 1}: {results[i].Length} bytes");
         }
     }
 }
+
